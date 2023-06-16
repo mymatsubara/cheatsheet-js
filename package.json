@@ -10,6 +10,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.6.4"
+    "@astrojs/svelte": "^3.0.0",
+    "@astrojs/tailwind": "^3.1.3",
+    "ace-builds": "^1.22.1",
+    "astro": "^2.6.4",
+    "browser-util-inspect": "^0.2.0",
+    "svelte": "^3.55.0",
+    "tailwindcss": "^3.0.24"
+  },
+  "devDependencies": {
+    "@types/browser-util-inspect": "^0.2.0"
   }
 }
