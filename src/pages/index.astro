@@ -24,12 +24,12 @@ const results = posts.map((post) => {
 });
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class="mt-6 flex flex-col gap-6 mx-auto max-w-5xl px-10">
+<Layout title="Welcome to Astro." lang="en">
+	<main class="mt-6 flex flex-col gap-6 mx-auto max-w-4xl px-6">
 		<h1 class="text-3xl font-bold">Interactive javascript cheatsheet</h1>
 
-		<section>
-			<h2 class="text-xl font-bold">Priting</h2>
+		<!-- <section>
+			<h2 class="text-xl font-bold">Basics</h2>
 			<div class="flex flex-col gap-2">
 				<div>
 					You can print text to screen using the function <code
@@ -41,33 +41,37 @@ const results = posts.map((post) => {
 					client:only="svelte"
 				/>
 			</div>
-		</section>
+		</section> -->
 
-		{
-			results.flatMap(({ nonCodeBlocksCompiled, codeBlocks }) => {
-				const nodes = nonCodeBlocksCompiled.flatMap(
-					(nonCodeBlock, i) => {
-						const result = [<Fragment set:html={nonCodeBlock} />];
+		<section class="prose max-w-none prose-h2:mb-2">
+			{
+				results.flatMap(({ nonCodeBlocksCompiled, codeBlocks }) => {
+					const nodes = nonCodeBlocksCompiled.flatMap(
+						(nonCodeBlock, i) => {
+							const result = [
+								<Fragment set:html={nonCodeBlock} />,
+							];
 
-						const codeBlock = codeBlocks[i];
-						if (codeBlock) {
-							const { code, language } = codeBlock;
-							result.push(
-								<CodeEditor
-									code={code ?? ""}
-									language={language}
-									client:only="svelte"
-								/>
-							);
+							const codeBlock = codeBlocks[i];
+							if (codeBlock) {
+								const { code, language } = codeBlock;
+								result.push(
+									<CodeEditor
+										code={code ?? ""}
+										language={language}
+										client:only="svelte"
+									/>
+								);
+							}
+
+							return result;
 						}
+					);
 
-						return result;
-					}
-				);
-
-				return nodes;
-			})
-		}
+					return nodes;
+				})
+			}
+		</section>
 	</main>
 </Layout>
 

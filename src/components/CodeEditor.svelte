@@ -7,7 +7,7 @@
 	export let height: number | undefined;
 
 	const newLines = [...code.matchAll(/\n/g)].length;
-	height = height ?? (newLines + 2) * 22;
+	height = height ?? (newLines + 1) * 22;
 
 	let editorElement: HTMLElement;
 	$: editor = makeEditor(editorElement, { theme });
