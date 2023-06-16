@@ -3,14 +3,14 @@
 	import { makeEditor, runCode } from "../scripts/editor";
 
 	export let code: string;
-	export let theme: string = "twilight";
+	export let theme: string = "monokai";
 	export let height: number | undefined;
 
 	const newLines = [...code.matchAll(/\n/g)].length;
 	height = height ?? (newLines + 2) * 22;
 
 	let editorElement: HTMLElement;
-	$: editor = makeEditor(editorElement, theme);
+	$: editor = makeEditor(editorElement, { theme });
 	let output: string | undefined = undefined;
 
 	function run() {

@@ -1,6 +1,27 @@
 ---
 import CodeEditor from "../components/CodeEditor.svelte";
 import Layout from "../layouts/Layout.astro";
+
+const posts = await Astro.glob("../pages/**/*.md");
+const results = posts.map((post) => {
+	const { rawContent, compiledContent } = post;
+
+	const compiled = compiledContent();
+	const raw = rawContent();
+
+	const rawCodePattern = /```(?<language>\w*)(\n)?(?<code>[^`]*)```/gs;
+	const compiledCodePattern = /<pre.*<\/pre>/;
+
+	const codeBlocks = [...raw.matchAll(rawCodePattern)].map(
+		(m) =>
+			({
+				...m.groups,
+			} as { language?: string; code?: string })
+	);
+	const nonCodeBlocksCompiled = compiled.split(compiledCodePattern);
+
+	return { nonCodeBlocksCompiled, codeBlocks };
+});
 ---
 
 <Layout title="Welcome to Astro.">
@@ -21,17 +42,37 @@ import Layout from "../layouts/Layout.astro";
 				/>
 			</div>
 		</section>
+
+		{
+			results.flatMap(({ nonCodeBlocksCompiled, codeBlocks }) => {
+				const nodes = nonCodeBlocksCompiled.flatMap(
+					(nonCodeBlock, i) => {
+						const result = [<Fragment set:html={nonCodeBlock} />];
+
+						const codeBlock = codeBlocks[i];
+						if (codeBlock) {
+							const { code, language } = codeBlock;
+							result.push(
+								<CodeEditor
+									code={code ?? ""}
+									language={language}
+									client:only="svelte"
+								/>
+							);
+						}
+
+						return result;
+					}
+				);
+
+				return nodes;
+			})
+		}
 	</main>
 </Layout>
 
 <style>
 	.ultra-height {
 		height: 3000px;
-	}
-
-	code {
-		border-radius: 3px;
-		background: #3333;
-		padding: 1px 3px;
 	}
 </style>
