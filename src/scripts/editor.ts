@@ -1,11 +1,15 @@
 import ace from "ace-builds";
 import inspect from "browser-util-inspect";
 
-interface EditorConfigs {
+export interface EditorConfigs {
 	theme?: string;
 	language?: string;
 	showPrintMargin?: boolean;
 	showLineNumbers?: boolean;
+	showGutter?: boolean;
+	paddingX?: number;
+	paddingY?: number;
+	lineHighlight?: boolean;
 }
 
 const CDN = "https://cdn.jsdelivr.net/npm/ace-builds@1.22.1/src-min-noconflict";
@@ -17,21 +21,37 @@ ace.config.set("modePath", CDN);
 ace.config.set("themePath", CDN);
 ace.config.set("workerPath", CDN);
 
+const defaultConfig = {
+	theme: "dracula",
+	language: "javascript",
+	showPrintMargin: false,
+	showLineNumbers: false,
+	showGutter: false,
+	paddingX: 20,
+	paddingY: 10,
+	lineHighlight: false,
+} as const satisfies EditorConfigs;
+
 export function makeEditor(e: Element, config?: EditorConfigs) {
 	let cfg = {
-		theme: "monokai",
-		language: "javascript",
-		showPrintMargin: false,
-		showLineNumbers: false,
+		...defaultConfig,
 		...config,
 	};
 
 	const editor = ace.edit(e);
 
+	const px = cfg.paddingX;
+	const py = cfg.paddingY;
+
+	editor.renderer.setScrollMargin(py, py, py, py);
+	editor.renderer.setPadding(px);
+
 	editor.setTheme(`ace/theme/${cfg.theme}`);
 	editor.session.setMode(`ace/mode/${cfg.language}`);
 	editor.setShowPrintMargin(cfg.showPrintMargin);
 	editor.setOption("showLineNumbers", cfg.showLineNumbers);
+	editor.setOption("showGutter", cfg.showGutter);
+	editor.setHighlightActiveLine(cfg.lineHighlight);
 
 	return editor;
 }

@@ -16,6 +16,11 @@ const { title, lang } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
 		<slot />
@@ -32,18 +37,64 @@ const { title, lang } = Astro.props;
 			white 60%
 		);
 	}
-	h2 {
-		font-size: 10rem;
-	}
+
+	/* Defaults */
 	html {
-		font-family: system-ui, sans-serif;
+		font-family: "Fira Code", ui-sans-serif, system-ui, -apple-system,
+			BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
+			Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+			Segoe UI Symbol, Noto Color Emoji;
 		background-color: #f6f6f6;
 	}
+
 	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-			DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+		font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
+			Consolas, Liberation Mono, Courier New, monospace;
 		border-radius: 3px;
 		background: #3333;
 		padding: 1px 3px;
+	}
+
+	li {
+		list-style-type: disc;
+		list-style-position: inside;
+	}
+
+	li::marker {
+		color: #333e;
+	}
+
+	ul {
+		list-style-type: disc;
+		list-style-position: inside;
+	}
+
+	ol {
+		list-style-type: decimal;
+		list-style-position: inside;
+	}
+
+	ul ul,
+	ol ul {
+		list-style-type: circle;
+		list-style-position: inside;
+		margin-left: 15px;
+	}
+
+	ol ol,
+	ul ol {
+		list-style-type: lower-latin;
+		list-style-position: inside;
+		margin-left: 15px;
+	}
+
+	/* Utilities */
+	.code-font {
+		font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
+			Consolas, Liberation Mono, Courier New, monospace;
+	}
+
+	.ace_hidden-cursors {
+		opacity: 0;
 	}
 </style>

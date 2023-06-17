@@ -1,77 +1,73 @@
 ---
-import CodeEditor from "../components/CodeEditor.svelte";
+import { getCollection } from "astro:content";
+import CheatSheet from "../components/CheatSheet.svelte";
+import type { SectionData } from "../components/types";
 import Layout from "../layouts/Layout.astro";
+import { sectionTitle } from "../lib/sections/declarations";
+import {
+	sectionIndex,
+	subsectionIndex,
+	subsectionSchema,
+} from "../lib/sections/helpers";
 
-const posts = await Astro.glob("../pages/**/*.md");
-const results = posts.map((post) => {
-	const { rawContent, compiledContent } = post;
+const lang = "pt";
 
-	const compiled = compiledContent();
-	const raw = rawContent();
+const post = await Astro.glob(`../content/**/*.md`);
 
-	const rawCodePattern = /```(?<language>\w*)(\n)?(?<code>[^`]*)```/gs;
-	const compiledCodePattern = /<pre.*<\/pre>/;
+// This is only called to make validations of the document collections
+await getCollection(lang);
 
-	const codeBlocks = [...raw.matchAll(rawCodePattern)].map(
-		(m) =>
-			({
-				...m.groups,
-			} as { language?: string; code?: string })
-	);
-	const nonCodeBlocksCompiled = compiled.split(compiledCodePattern);
+const sectionsRecord = post
+	.map((post) => {
+		const { rawContent, compiledContent, file, frontmatter } = post;
 
-	return { nonCodeBlocksCompiled, codeBlocks };
-});
+		const title = frontmatter.title;
+		const filePaths = file.split("/");
+
+		const data = {
+			subsection: filePaths.at(-1)?.replace(/\.mdx?/, ""),
+			section: filePaths.at(-2),
+			language: filePaths.at(-3),
+		};
+
+		const content = {
+			compiled: compiledContent(),
+			raw: rawContent(),
+		};
+
+		return { ...subsectionSchema.parse(data), title, content };
+	})
+	.filter(({ language }) => language === lang)
+	.reduce((result, { section, subsection, title, language, content }) => {
+		const subsectionData = {
+			index: subsectionIndex[section][subsection],
+			title,
+			compiledContent: content.compiled,
+			rawContent: content.raw,
+		};
+
+		const sectionData = result[section];
+		if (!sectionData) {
+			result[section] = {
+				index: sectionIndex[section],
+				title: sectionTitle[language][section],
+				subsections: [subsectionData],
+			};
+		} else {
+			sectionData.subsections.push(subsectionData);
+		}
+
+		return result;
+	}, {} as Record<string, SectionData>);
+
+const sections = Object.values(sectionsRecord);
 ---
 
-<Layout title="Welcome to Astro." lang="en">
-	<main class="mt-6 flex flex-col gap-6 mx-auto max-w-4xl px-6">
+<Layout title="Welcome to Astro." {lang}>
+	<main class="mt-6 mb-12 flex flex-col gap-6 mx-auto px-6">
 		<h1 class="text-3xl font-bold">Interactive javascript cheatsheet</h1>
 
-		<!-- <section>
-			<h2 class="text-xl font-bold">Basics</h2>
-			<div class="flex flex-col gap-2">
-				<div>
-					You can print text to screen using the function <code
-						>console.log()</code
-					>
-				</div>
-				<CodeEditor
-					code="console.log('hello word');"
-					client:only="svelte"
-				/>
-			</div>
-		</section> -->
-
-		<section class="prose max-w-none prose-h2:mb-2">
-			{
-				results.flatMap(({ nonCodeBlocksCompiled, codeBlocks }) => {
-					const nodes = nonCodeBlocksCompiled.flatMap(
-						(nonCodeBlock, i) => {
-							const result = [
-								<Fragment set:html={nonCodeBlock} />,
-							];
-
-							const codeBlock = codeBlocks[i];
-							if (codeBlock) {
-								const { code, language } = codeBlock;
-								result.push(
-									<CodeEditor
-										code={code ?? ""}
-										language={language}
-										client:only="svelte"
-									/>
-								);
-							}
-
-							return result;
-						}
-					);
-
-					return nodes;
-				})
-			}
-		</section>
+		<CheatSheet client:only="svelte" {sections} />
 	</main>
 </Layout>
 
