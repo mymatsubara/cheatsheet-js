@@ -2,16 +2,17 @@
 import CheatSheet from "../components/CheatSheet.svelte";
 import { content } from "../content";
 import Layout from "../layouts/Layout.astro";
+import { trimEndNewLine } from "../lib/helpers/object";
 
 const lang = "en";
 
 const sections = content[lang];
+trimEndNewLine(sections);
 ---
 
 <Layout title="Welcome to Astro." {lang}>
 	<main class="mt-6 mb-12 flex flex-col gap-6 mx-auto px-6">
 		<h1 class="text-3xl font-bold">Interactive javascript cheatsheet</h1>
-
 		<CheatSheet client:only="svelte" {sections} />
 	</main>
 </Layout>

@@ -26,7 +26,7 @@
 	<div class="subsection-container">
 		{#if open}
 			<div>
-				<div class="border-neutral-200">
+				<div class="border-neutral-200 mb-3">
 					<CodeEditor {code} />
 				</div>
 			</div>
