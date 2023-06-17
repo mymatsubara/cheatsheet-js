@@ -17,8 +17,7 @@
 	$: editor = makeEditor(editorElement, config);
 
 	function run() {
-		const newOutput = runCode(editor);
-		output = newOutput.replaceAll("\n", "<br>");
+		output = runCode(editor);
 	}
 
 	$: {
@@ -52,7 +51,7 @@
 			>
 				<div class="font-semibold">Output:</div>
 				<div>
-					<div>{@html output}</div>
+					<div class="whitespace-pre">{output}</div>
 				</div>
 			</div>
 		{/if}

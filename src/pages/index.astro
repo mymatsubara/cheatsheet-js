@@ -1,66 +1,11 @@
 ---
-import { getCollection } from "astro:content";
 import CheatSheet from "../components/CheatSheet.svelte";
-import type { SectionData } from "../components/types";
+import { content } from "../content";
 import Layout from "../layouts/Layout.astro";
-import { sectionTitle } from "../lib/sections/declarations";
-import {
-	sectionIndex,
-	subsectionIndex,
-	subsectionSchema,
-} from "../lib/sections/helpers";
 
-const lang = "pt";
+const lang = "en";
 
-const post = await Astro.glob(`../content/**/*.md`);
-
-// This is only called to make validations of the document collections
-await getCollection(lang);
-
-const sectionsRecord = post
-	.map((post) => {
-		const { rawContent, compiledContent, file, frontmatter } = post;
-
-		const title = frontmatter.title;
-		const filePaths = file.split("/");
-
-		const data = {
-			subsection: filePaths.at(-1)?.replace(/\.mdx?/, ""),
-			section: filePaths.at(-2),
-			language: filePaths.at(-3),
-		};
-
-		const content = {
-			compiled: compiledContent(),
-			raw: rawContent(),
-		};
-
-		return { ...subsectionSchema.parse(data), title, content };
-	})
-	.filter(({ language }) => language === lang)
-	.reduce((result, { section, subsection, title, language, content }) => {
-		const subsectionData = {
-			index: subsectionIndex[section][subsection],
-			title,
-			compiledContent: content.compiled,
-			rawContent: content.raw,
-		};
-
-		const sectionData = result[section];
-		if (!sectionData) {
-			result[section] = {
-				index: sectionIndex[section],
-				title: sectionTitle[language][section],
-				subsections: [subsectionData],
-			};
-		} else {
-			sectionData.subsections.push(subsectionData);
-		}
-
-		return result;
-	}, {} as Record<string, SectionData>);
-
-const sections = Object.values(sectionsRecord);
+const sections = content[lang];
 ---
 
 <Layout title="Welcome to Astro." {lang}>

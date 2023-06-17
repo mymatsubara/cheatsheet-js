@@ -1,9 +1,10 @@
 <script lang="ts">
-	import SubsectionContent from "./SubsectionContent.svelte";
+	import CodeEditor from "./CodeEditor.svelte";
 	import ChevronDown from "./icons/ChevronDown.svelte";
-	import type { SubsectionData } from "./types";
 
-	export let data: SubsectionData;
+	export let title: string;
+	export let code: string;
+
 	export let open = false;
 </script>
 
@@ -12,7 +13,7 @@
 		<div class="hover:bg-neutral-100 p-1.5 border-b border-neutral-200">
 			<div class="flex justify-between items-center">
 				<h3 class="text-blue-700 font-semibold text-sm">
-					{data.title}
+					{title}
 				</h3>
 				<div class="chevron">
 					<ChevronDown class="h-5 text-neutral-700" />
@@ -26,7 +27,7 @@
 		{#if open}
 			<div>
 				<div class="border-neutral-200">
-					<SubsectionContent {data} />
+					<CodeEditor {code} />
 				</div>
 			</div>
 		{/if}

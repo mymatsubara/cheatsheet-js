@@ -20,6 +20,7 @@
 	},
 	"devDependencies": {
 		"@types/browser-util-inspect": "^0.2.0",
+		"prettier": "^2.8.8",
 		"typescript": "^5.1.3"
 	}
 }
