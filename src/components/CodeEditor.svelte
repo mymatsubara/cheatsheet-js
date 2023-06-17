@@ -3,16 +3,18 @@
 	import { makeEditor, runCode, type EditorConfigs } from "../scripts/editor";
 
 	export let code: string;
-	export let height: number | undefined = undefined;
+	export let height: string | undefined = undefined;
 	export let autorun = true;
-	export let config: EditorConfigs | undefined = undefined;
-
-	const newLines = [...code.matchAll(/\n/g)].length;
-	height = height ?? (newLines + 2) * 21;
+	export let config: EditorConfigs = {};
 
 	let editorElement: HTMLElement;
-	$: editor = makeEditor(editorElement, config);
 	let output: string | undefined = undefined;
+
+	if (!height) {
+		config.maxLines = config.maxLines ?? 100;
+	}
+
+	$: editor = makeEditor(editorElement, config);
 
 	function run() {
 		const newOutput = runCode(editor);
@@ -39,7 +41,7 @@
 	<div
 		bind:this={editorElement}
 		class="text-sm rounded code-font"
-		style="height: {height}px"
+		style={height ? `height: ${height}` : ""}
 	>
 		{code}
 	</div>

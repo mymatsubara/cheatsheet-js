@@ -10,6 +10,7 @@ export interface EditorConfigs {
 	paddingX?: number;
 	paddingY?: number;
 	lineHighlight?: boolean;
+	maxLines?: number;
 }
 
 const CDN = "https://cdn.jsdelivr.net/npm/ace-builds@1.22.1/src-min-noconflict";
@@ -49,9 +50,13 @@ export function makeEditor(e: Element, config?: EditorConfigs) {
 	editor.setTheme(`ace/theme/${cfg.theme}`);
 	editor.session.setMode(`ace/mode/${cfg.language}`);
 	editor.setShowPrintMargin(cfg.showPrintMargin);
+
 	editor.setOption("showLineNumbers", cfg.showLineNumbers);
 	editor.setOption("showGutter", cfg.showGutter);
 	editor.setHighlightActiveLine(cfg.lineHighlight);
+	if (cfg.maxLines) {
+		editor.setOption("maxLines", cfg.maxLines);
+	}
 
 	return editor;
 }
