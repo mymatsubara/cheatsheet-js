@@ -2,8 +2,6 @@
 title: Combinar strings
 ---
 
-Você pode juntar uma ou mais strings usando `+` ou `${}` (apenas em strings delimitadas por crase - `` ` ``).
-
 ```javascript
 const s1 = "Hello";
 const s2 = "World";

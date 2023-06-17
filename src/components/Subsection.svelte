@@ -9,11 +9,9 @@
 
 <div class="subsection">
 	<label class="cursor-pointer">
-		<div
-			class="bg-neutral-200 hover:bg-neutral-300 p-2 border-b border-neutral-300"
-		>
+		<div class="hover:bg-neutral-100 p-1.5 border-b border-neutral-200">
 			<div class="flex justify-between items-center">
-				<h3 class="text-blue-700 font-semibold font-sm code-font">
+				<h3 class="text-blue-700 font-semibold text-sm">
 					{data.title}
 				</h3>
 				<div class="chevron">
@@ -27,7 +25,7 @@
 	<div class="subsection-container">
 		{#if open}
 			<div>
-				<div class="px-3 pt-3 pb-7 border-neutral-200">
+				<div class="border-neutral-200">
 					<SubsectionContent {data} />
 				</div>
 			</div>

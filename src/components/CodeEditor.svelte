@@ -37,25 +37,25 @@
 	});
 </script>
 
-<div class="flex flex-col gap-2">
+<div>
 	<div
 		bind:this={editorElement}
-		class="text-sm rounded code-font"
+		class="text-sm code-font"
 		style={height ? `height: ${height}` : ""}
 	>
 		{code}
 	</div>
 	<div class="flex gap-2">
-		<div class="flex flex-col gap-1 grow">
-			{#if output}
+		{#if output}
+			<div
+				class="code-font text-sm flex flex-col gap-1 px-5 py-2 grow bg-neutral-200"
+			>
 				<div class="font-semibold">Output:</div>
-				<div
-					class="flex flex-col gap-1 px-5 py-2 rounded bg-neutral-200"
-				>
-					<div class="text-sm code-font">{@html output}</div>
+				<div>
+					<div>{@html output}</div>
 				</div>
-			{/if}
-		</div>
+			</div>
+		{/if}
 		{#if !autorun}
 			<button
 				on:click={run}

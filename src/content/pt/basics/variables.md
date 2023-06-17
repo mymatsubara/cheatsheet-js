@@ -2,10 +2,6 @@
 title: Variáveis
 ---
 
-Você pode nomear valores com variáveis usando uma expressão na seguinte forma:
-
-`prefixo` `nome_da_variavel` `=` `valor_da_variavel`;
-
 ```javascript
 const variavelConst = "v1";
 let variavelLet = "v2";
