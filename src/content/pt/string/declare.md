@@ -2,7 +2,7 @@
 title: Declarar strings
 ---
 
-Você pode declarar uma string usando:
+Você pode declarar uma string (uma sequência de caracteres) usando:
 
 -   `"`: aspas simples
 -   `'`: aspas dupla

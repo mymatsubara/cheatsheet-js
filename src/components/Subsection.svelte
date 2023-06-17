@@ -27,7 +27,7 @@
 	<div class="subsection-container">
 		{#if open}
 			<div>
-				<div class="p-3 border-neutral-200">
+				<div class="px-3 pt-3 pb-7 border-neutral-200">
 					<SubsectionContent {data} />
 				</div>
 			</div>

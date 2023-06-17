@@ -59,7 +59,7 @@
 		{#if nodeData.type === "code"}
 			<CodeEditor code={nodeData.content} />
 		{:else}
-			<div>
+			<div class="prose">
 				{@html nodeData.content}
 			</div>
 		{/if}

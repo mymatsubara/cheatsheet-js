@@ -8,7 +8,7 @@
 	export let config: EditorConfigs | undefined = undefined;
 
 	const newLines = [...code.matchAll(/\n/g)].length;
-	height = height ?? (newLines + 2) * 20;
+	height = height ?? (newLines + 2) * 21;
 
 	let editorElement: HTMLElement;
 	$: editor = makeEditor(editorElement, config);
