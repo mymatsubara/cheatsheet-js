@@ -6,4 +6,5 @@
 	class="rounded bg-neutral-100 px-3 py-1 text-neutral-700 shadow code-font"
 	bind:value={$searchQuery}
 	type="search"
+	aria-label="Search"
 />
