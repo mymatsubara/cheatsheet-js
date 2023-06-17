@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ChevronDown from "../icons/ChevronDown.svelte";
-	import CodeEditor from "./CodeEditor.svelte";
+	import CodeEditor from "../CodeEditor.svelte";
+	import ChevronDownIcon from "../icons/ChevronDownIcon.svelte";
 
 	export let title: string;
 	export let code: string;
@@ -16,7 +16,7 @@
 					{title}
 				</h3>
 				<div class="chevron">
-					<ChevronDown class="h-5 text-neutral-700" />
+					<ChevronDownIcon class="h-5 text-neutral-700" />
 				</div>
 			</div>
 			<input bind:value={open} class="hidden" type="checkbox" />
