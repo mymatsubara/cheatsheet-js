@@ -1,6 +1,6 @@
 <script lang="ts">
+	import ChevronDown from "../icons/ChevronDown.svelte";
 	import CodeEditor from "./CodeEditor.svelte";
-	import ChevronDown from "./icons/ChevronDown.svelte";
 
 	export let title: string;
 	export let code: string;

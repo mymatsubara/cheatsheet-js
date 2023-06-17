@@ -1,6 +1,6 @@
 ---
 import { content } from "../cheatsheet";
-import CheatSheet from "../components/CheatSheet.svelte";
+import CheatSheet from "../components/cheatsheet/CheatSheet.svelte";
 import Layout from "../layouts/Layout.astro";
 import { trimEndNewLineInPlace } from "../lib/helpers/object";
 
@@ -9,8 +9,11 @@ trimEndNewLineInPlace(sections);
 ---
 
 <Layout title="Interactive Cheatsheet - Javascript">
+	<header class="py-3 px-6 bg-neutral-200 sticky top-0">
+		<img class="h-10" src="/logo.svg" alt="logo" />
+	</header>
+
 	<main class="mt-6 mb-12 flex flex-col gap-6 mx-auto px-6">
-		<h1 class="text-3xl font-bold">Interactive javascript cheatsheet</h1>
 		<CheatSheet client:only="svelte" {sections} />
 	</main>
 </Layout>

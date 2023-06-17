@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { onDestroy } from "svelte";
-	import { makeEditor, runCode, type EditorConfigs } from "../scripts/editor";
+	import {
+		makeEditor,
+		runCode,
+		type EditorConfigs
+	} from "../../scripts/editor";
 
 	export let code: string;
 	export let height: string | undefined = undefined;
