@@ -3,14 +3,13 @@ import "../app.css";
 
 export interface Props {
 	title: string;
-	lang: string;
 }
 
-const { title, lang } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang={lang}>
+<html>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />

@@ -1,4 +1,4 @@
-const s = "12345";
+const s = "abcdefg";
 const position = 3;
 
 console.log(s.charAt(position));
