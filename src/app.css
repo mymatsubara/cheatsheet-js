@@ -26,8 +26,30 @@ code {
 }
 
 /* Prose modifiers */
+.prose {
+    font-size: 0.9rem;
+}
+
 .prose p {
     margin-bottom: 0.3rem;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+    font-weight: 700;
+}
+
+.prose h1 {
+    font-size: 1.5rem;
+}
+
+.prose h2 {
+    font-size: 1.3rem;
+}
+
+.prose h3 {
+    font-size: 1rem;
 }
 
 .prose a {

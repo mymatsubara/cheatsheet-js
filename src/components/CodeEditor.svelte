@@ -47,9 +47,9 @@
 	<div class="flex gap-2">
 		{#if output}
 			<div
-				class="code-font text-sm flex flex-col gap-1 px-5 py-2 grow bg-neutral-200"
+				class="code-font text-sm flex flex-col gap-1 px-5 py-2 grow bg-neutral-200 border border-neutral-300"
 			>
-				<div class="font-semibold">Output:</div>
+				<div class="font-semibold underline">Output:</div>
 				<div>
 					<div class="whitespace-pre">{output}</div>
 				</div>

@@ -1,9 +1,10 @@
 <script lang="ts">
+	import type { Content } from "../../cheatsheet/parse";
 	import CodeEditor from "../CodeEditor.svelte";
 	import ChevronDownIcon from "../icons/ChevronDownIcon.svelte";
 
+	export let contents: Content[];
 	export let title: string;
-	export let code: string;
 
 	export let open = false;
 </script>
@@ -26,9 +27,17 @@
 	<div class="subsection-container">
 		{#if open}
 			<div>
-				<div class="border-neutral-200 mb-3">
-					<CodeEditor {code} />
-				</div>
+				{#each contents as block}
+					{#if block.type === "code"}
+						<div class="mb-3">
+							<CodeEditor code={block.content} />
+						</div>
+					{:else}
+						<div class="prose my-3 px-3">
+							{@html block.content}
+						</div>
+					{/if}
+				{/each}
 			</div>
 		{/if}
 	</div>

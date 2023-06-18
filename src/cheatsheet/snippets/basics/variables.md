@@ -1,3 +1,4 @@
+```javascript
 // You can name values by defining variables
 const variable1 = "1️⃣";
 let variable2 = "2️⃣";
@@ -14,3 +15,4 @@ console.log(variable1, variable2, variable3);
 // `const` variables cannot be reassigned (uncomment line bellow)
 // variable1 = "error";
 // console.log(variable1);
+```

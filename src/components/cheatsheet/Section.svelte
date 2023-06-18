@@ -10,8 +10,8 @@
 	<h2 class="text-xl font-bold">{title}</h2>
 	<hr />
 	<div>
-		{#each Object.entries(subsections) as [subsectionTitle, code] (subsectionTitle)}
-			<Subsection title={subsectionTitle} {code} />
+		{#each Object.entries(subsections) as [subsectionTitle, contents] (subsectionTitle)}
+			<Subsection title={subsectionTitle} {contents} />
 		{/each}
 	</div>
 </section>

@@ -1,1 +1,3 @@
+```javascript
 alert("👾 Hacker detected 👾");
+```

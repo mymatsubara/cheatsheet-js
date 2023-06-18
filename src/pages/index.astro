@@ -3,14 +3,8 @@ import { content } from "../cheatsheet";
 import SearchBar from "../components/SearchBar.svelte";
 import CheatSheet from "../components/cheatsheet/CheatSheet.svelte";
 import Layout from "../layouts/Layout.astro";
-import { trimEndNewLineInPlace } from "../lib/helpers/object";
-
-import codeBlock from "../cheatsheet/snippets/code-only.md?raw";
-
-console.log({ codeBlock });
 
 const sections = content;
-trimEndNewLineInPlace(sections);
 ---
 
 <Layout title="Interactive Cheatsheet - Javascript">
