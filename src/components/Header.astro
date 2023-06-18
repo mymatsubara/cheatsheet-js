@@ -1,0 +1,26 @@
+---
+import SearchBar from "./SearchBar.svelte";
+---
+
+<header
+    class="py-3 px-3 sm:px-6 bg-neutral-200 sticky top-0 flex items-center justify-between gap-2"
+>
+    <div class="flex gap-2 sm:gap-3 items-center">
+        <img class="h-6 sm:h-10" src="/logo.svg" alt="cheatsheet.js logo" />
+        <h1
+            class="text-[0.5rem] leading-[0.5rem] logo-text sm:text-xs sm:leading-3 font-medium code-font"
+        >
+            Interactive javascript cheatsheet
+        </h1>
+    </div>
+    <div>
+        <SearchBar client:only="svelte" />
+    </div>
+</header>
+
+<style>
+    .logo-text {
+        word-spacing: 100vw;
+        width: min-content;
+    }
+</style>

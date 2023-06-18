@@ -1,17 +1,74 @@
-<script>
+<script lang="ts">
 	import { searchQuery } from "../scripts/svelte/search-store";
 	import SearchIcon from "./icons/SearchIcon.svelte";
+
+	let search: HTMLElement;
+	let innerWidth: number;
+	export let open: boolean | undefined = undefined;
+
+	$: {
+		if (open === undefined && innerWidth) {
+			open = innerWidth > 640;
+		}
+	}
 </script>
 
+<svelte:window bind:innerWidth />
+
 <label class="relative h-max">
-	<SearchIcon
-		class="fill-neutral-700 absolute left-1.5 top-1/2 -translate-y-1/2 h-5"
-	/>
 	<input
-		class="rounded bg-neutral-100 pl-9 pr-2 py-1 text-neutral-700 shadow code-font"
+		on:click={() => search.focus()}
+		bind:checked={open}
+		class="hidden"
+		type="checkbox"
+	/>
+	<div
+		class="rounded icon fill-neutral-700 absolute left-1.5 top-1/2 -translate-y-1/2 h-8 p-1"
+	>
+		<SearchIcon class="h-full" />
+	</div>
+	<input
+		class="search rounded bg-neutral-100 py-1 pl-8 pr-2 text-neutral-700 shadow code-font invisible w-0"
 		bind:value={$searchQuery}
+		bind:this={search}
 		type="search"
 		aria-label="Search"
 		placeholder="Search"
 	/>
 </label>
+
+<style>
+	label {
+		--animation: ease-in-out 200ms;
+
+		display: block;
+		min-width: 2rem;
+	}
+
+	label:has(:not(input[type="checkbox"]:checked)) {
+		cursor: pointer;
+	}
+
+	.search {
+		transition: width var(--animation);
+	}
+
+	input[type="checkbox"]:checked ~ .search {
+		visibility: visible;
+		width: 300px;
+	}
+
+	/* Icon */
+	.icon {
+		transition: height var(--animation);
+	}
+
+	input[type="checkbox"]:not(:checked) ~ .icon:hover {
+		background-color: #3333;
+	}
+
+	input[type="checkbox"]:checked ~ .icon {
+		height: 1.25rem;
+		padding: 0;
+	}
+</style>
