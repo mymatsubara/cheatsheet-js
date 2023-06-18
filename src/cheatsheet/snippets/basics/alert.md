@@ -1,3 +1,0 @@
-```javascript
-alert("👾 Hacker detected 👾");
-```

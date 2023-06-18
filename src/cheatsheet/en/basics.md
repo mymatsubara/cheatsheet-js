@@ -1,3 +1,24 @@
+## console.log()
+
+```javascript
+// Edit the messages bellow
+console.log("👋");
+console.log("message1", "message2", "message3");
+```
+
+## comments
+
+```javascript
+// Single line comments
+/* 
+    Multi-line comments:
+    - a
+    - b
+*/
+```
+
+## variables
+
 ```javascript
 // You can name values by defining variables
 const variable1 = "1️⃣";
@@ -15,4 +36,10 @@ console.log(variable1, variable2, variable3);
 // `const` variables cannot be reassigned (uncomment line bellow)
 // variable1 = "error";
 // console.log(variable1);
+```
+
+## alert
+
+```javascript
+alert("👾 Hacker detected 👾");
 ```
