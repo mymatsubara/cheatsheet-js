@@ -16,3 +16,15 @@ export function trimEnd(s: string, chars: string) {
 export function escapeRegExp(s: string) {
 	return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 }
+
+// From: https://gist.github.com/codeguy/6684588?permalink_comment_id=3332719#gistcomment-3332719
+export function slugify(s: string) {
+	return s
+		.toString()
+		.normalize("NFD") // split an accented letter in the base letter and the acent
+		.replace(/[\u0300-\u036f]/g, "") // remove all previously split accents
+		.toLowerCase()
+		.trim()
+		.replace(/\s+/g, "-")
+		.replace(/[^\w\-]+/g, "");
+}
