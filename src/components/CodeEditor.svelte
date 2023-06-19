@@ -4,8 +4,10 @@
 
 	export let code: string;
 	export let height: string | undefined = undefined;
-	export let autorun = true;
 	export let config: EditorConfigs = {};
+	export let autorun = true;
+	let canRun =
+		config.language === undefined || config.language === "javascript";
 
 	let editorElement: HTMLElement;
 	let output: string | undefined = undefined;
@@ -21,7 +23,7 @@
 	}
 
 	$: {
-		if (autorun) {
+		if (autorun && canRun) {
 			run();
 			editor.session.on("change", () => {
 				run();
@@ -55,7 +57,7 @@
 				</div>
 			</div>
 		{/if}
-		{#if !autorun}
+		{#if !autorun && canRun}
 			<button
 				on:click={run}
 				class="px-3 py-2 rounded-xl bg-neutral-300 hover:bg-neutral-400 h-max font-semibold"

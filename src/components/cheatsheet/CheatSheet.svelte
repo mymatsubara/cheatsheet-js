@@ -16,14 +16,7 @@
 	);
 
 	const fuse = new Fuse(mapped, {
-		keys: [
-			{
-				name: "section",
-				weight: 6
-			},
-			{ name: "subsection", weight: 3 },
-			{ name: "code", weight: 1 }
-		]
+		keys: ["section", "subsection"]
 	});
 	type FuzzySearcher = typeof fuse;
 
@@ -59,9 +52,6 @@
 		title,
 		subsections
 	}));
-
-	console.log(items);
-	const test = ["abc", "bcjl"];
 </script>
 
 <Masonry

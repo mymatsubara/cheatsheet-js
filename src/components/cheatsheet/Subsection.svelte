@@ -30,7 +30,10 @@
 				{#each contents as block}
 					{#if block.type === "code"}
 						<div class="mb-3">
-							<CodeEditor code={block.content} />
+							<CodeEditor
+								code={block.content}
+								config={{ language: block.language }}
+							/>
 						</div>
 					{:else}
 						<div class="prose my-3 px-3">
