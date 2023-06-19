@@ -17,7 +17,8 @@
 		"browser-util-inspect": "^0.2.0",
 		"fuse.js": "^6.6.2",
 		"marked": "^5.1.0",
-		"svelte": "^3.55.0"
+		"svelte": "^3.55.0",
+		"svelte-bricks": "^0.2.0"
 	},
 	"devDependencies": {
 		"@astrojs/tailwind": "^3.1.3",

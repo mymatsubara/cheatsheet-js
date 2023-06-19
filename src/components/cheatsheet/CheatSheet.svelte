@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Fuse from "fuse.js";
+	import Masonry from "svelte-bricks";
 	import { searchQuery } from "../../scripts/svelte/search-store";
 	import Section from "./Section.svelte";
 	import type { CheatSheetData } from "./types";
@@ -18,7 +19,7 @@
 		keys: [
 			{
 				name: "section",
-				weight: 3
+				weight: 6
 			},
 			{ name: "subsection", weight: 3 },
 			{ name: "code", weight: 1 }
@@ -54,10 +55,25 @@
 	$: filteredSections = $searchQuery
 		? filter(sections, $searchQuery, fuse)
 		: sections;
+	$: items = Object.entries(filteredSections).map(([title, subsections]) => ({
+		title,
+		subsections
+	}));
+
+	console.log(items);
+	const test = ["abc", "bcjl"];
 </script>
 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-5 code-font">
-	{#each Object.entries(filteredSections) as [title, subsections] (title)}
-		<Section {title} {subsections} />
-	{/each}
-</div>
+<Masonry
+	animate={false}
+	maxColWidth={1000}
+	minColWidth={500}
+	gap={20}
+	{items}
+	idKey="title"
+	let:item
+>
+	{#if item}
+		<Section title={item.title} subsections={item.subsections} />
+	{/if}
+</Masonry>

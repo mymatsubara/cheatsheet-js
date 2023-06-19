@@ -22,6 +22,9 @@ dependencies:
   svelte:
     specifier: ^3.55.0
     version: 3.59.1
+  svelte-bricks:
+    specifier: ^0.2.0
+    version: 0.2.0
 
 devDependencies:
   '@astrojs/tailwind':
@@ -3020,6 +3023,12 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  /svelte-bricks@0.2.0:
+    resolution: {integrity: sha512-PPm4JkGFloaC1mB9v/M5QYtquxr8hWTo5OZtN+6+NfP58mxF1v5uSCMZ71TW0S/pjZdO2b2KL8+VU1r0mur0lg==}
+    dependencies:
+      svelte: 3.59.1
+    dev: false
 
   /svelte-hmr@0.15.2(svelte@3.59.1):
     resolution: {integrity: sha512-q/bAruCvFLwvNbeE1x3n37TYFb3mTBJ6TrCq6p2CoFbSTNhDE9oAtEfpy+wmc9So8AG0Tja+X0/mJzX9tSfvIg==}
