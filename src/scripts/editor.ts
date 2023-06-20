@@ -64,20 +64,20 @@ export function makeEditor(e: Element, config?: EditorConfigs) {
 export function runCode(editor: ace.Ace.Editor): string {
 	const code = editor.getValue();
 
-	const logs: any[][] = [];
+	const logs: string[] = [];
 	console.log = (...data: any[]) => {
-		logs.push(data);
+		logs.push(format(...data));
 	};
 
 	try {
 		eval(code);
 	} catch (e) {
-		logs.push([`❌ Error: ${e}`]);
+		logs.push(`❌ Error: ${e}`);
 	} finally {
 		console.log = defaultLogger;
 	}
 
-	return logs.map((l) => format(...l)).join("\n");
+	return logs.join("\n");
 }
 
 function format(...args: any[]) {
