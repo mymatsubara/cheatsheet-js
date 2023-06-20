@@ -1,8 +1,10 @@
 import basics from "./en/basics.md?raw";
+import number from "./en/number.md?raw";
 import string from "./en/string.md?raw";
 import { parseCheatcheat } from "./parse";
 
 export const content = parseCheatcheat({
 	Basics: basics,
-	String: string
+	String: string,
+	Number: number
 });

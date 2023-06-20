@@ -30,13 +30,13 @@ const defaultConfig = {
 	showGutter: false,
 	paddingX: 20,
 	paddingY: 10,
-	lineHighlight: false,
+	lineHighlight: false
 } as const satisfies EditorConfigs;
 
 export function makeEditor(e: Element, config?: EditorConfigs) {
 	let cfg = {
 		...defaultConfig,
-		...config,
+		...config
 	};
 
 	const editor = ace.edit(e);

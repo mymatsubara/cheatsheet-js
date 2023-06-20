@@ -15,8 +15,11 @@
 		}))
 	);
 
+	console.log({ mapped });
+
 	const fuse = new Fuse(mapped, {
-		keys: ["section", "subsection"]
+		keys: ["section", "subsection"],
+		threshold: 0.2
 	});
 	type FuzzySearcher = typeof fuse;
 

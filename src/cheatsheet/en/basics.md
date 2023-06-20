@@ -133,3 +133,14 @@ console.log(variable1, variable2, variable3);
 ```javascript
 alert("👾 Hacker detected 👾");
 ```
+
+## undefined and null
+
+```javascript
+// Special value for not assigned data
+const u = undefined;
+// Special value for empty or blank value
+const n = null;
+
+console.log(u, n);
+```
