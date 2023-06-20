@@ -174,7 +174,7 @@ console.log(filtered);
 console.log(array);
 ```
 
-For more informations check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
 ## .map(): transform one array to another
 
@@ -188,7 +188,7 @@ console.log(mapped);
 console.log(array);
 ```
 
-For more informations check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
+For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
 
 ## .reduce(): iterate over array and accumulate over a value
 
@@ -206,7 +206,7 @@ const sum = array.reduce(predicate, initialValue);
 console.log(sum);
 ```
 
-For more informations check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
+For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
 
 ## .forEach(): iterate over elements of an array
 

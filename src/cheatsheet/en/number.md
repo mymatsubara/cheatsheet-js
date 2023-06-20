@@ -1,3 +1,17 @@
+## introduction
+
+`Number` represents a floating-point number.
+
+```javascript
+const n1 = 10;
+const n2 = 1.5;
+
+console.log(n1);
+console.log(n2);
+```
+
+For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
 ## arithmetic operations
 
 ```javascript
