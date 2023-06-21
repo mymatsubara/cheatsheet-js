@@ -1,6 +1,6 @@
-# Cheatsheet.js
+# cheatsheet.js
 
-Cheatsheet.js is an interactive javascript cheatsheet website.
+cheatsheet.js is an interactive javascript cheatsheet website.
 
 ![Website usage](/public/cheatsheet-js.gif)
 

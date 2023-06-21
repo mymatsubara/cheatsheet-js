@@ -2,7 +2,7 @@
 
 First of all, thank you very much for wanting to contribute to our project. All help is more than welcomed!
 
-You can contribute `Cheatsheet.js` by:
+You can contribute `cheatsheet.js` by:
 
 - [Fixing a typo / Improving some existing content / Creating a new subsection (eg. Basics/alert)](#fixes)
 - [Creating a new section (eg. Dates)](#section)
