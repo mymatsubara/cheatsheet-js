@@ -124,7 +124,7 @@ greeting();
 greetingRef();
 ```
 
-**Arrow functions** have the same behavior:
+- **Arrow functions** have the same behavior:
 
 ```javascript
 const greeting = () => {
@@ -142,7 +142,7 @@ greeting();
 greetingRef();
 ```
 
-**Function references** can be passed as **arguments to other functions**. This is a **common pattern** in javascript, so this is really important!
+- **Function references** can be passed as **arguments to other functions**. This is a **common pattern** in javascript, so this is really important!
 
 ```javascript
 function exec(f) {
@@ -160,7 +160,7 @@ exec(() => {
 });
 ```
 
-A more **useful example** usage of function references is the function `filter`:
+- A more **useful example** usage of function references is the function `filter`:
 
 ```javascript
 function filter(array, predicate) {

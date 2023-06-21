@@ -38,10 +38,10 @@
 	});
 </script>
 
-<div>
+<div class="mb-6">
 	<div
 		bind:this={editorElement}
-		class="text-sm code-font"
+		class="text-sm code-editor font-semibold"
 		style={height ? `height: ${height}` : ""}
 	>
 		{code}
@@ -49,9 +49,9 @@
 	<div class="flex gap-2">
 		{#if output}
 			<div
-				class="code-font text-sm flex flex-col gap-1 px-5 py-2 grow bg-neutral-200 border border-neutral-300"
+				class="code-font text-sm flex flex-col gap-1 px-5 py-2 grow bg-neutral-100 border border-neutral-200"
 			>
-				<div class="font-semibold underline">Output:</div>
+				<div class="underline">Output:</div>
 				<div>
 					<div class="whitespace-pre">{output}</div>
 				</div>

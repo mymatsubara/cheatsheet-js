@@ -56,7 +56,7 @@ console.log(not);
 
 ## if, else if and else
 
-Use a `Boolean` to conditionally execute a block of code with the `if` statement:
+- Use a `Boolean` to conditionally execute a block of code with the `if` statement:
 
 ```javascript
 // Change the conditions bellow and check the output
@@ -69,7 +69,7 @@ if (3 > 1) {
 }
 ```
 
-To execute another block of code when a `if` condition is not met, use the `else` statement:
+- To execute another block of code when a `if` condition is not met, use the `else` statement:
 
 ```javascript
 // Change the value bellow to `true` and check the output
@@ -80,7 +80,7 @@ if (true) {
 }
 ```
 
-If you want to add more blocks of code to the equation, you can also use `else if` statements:
+- If you want to add more blocks of code to the equation, you can also use `else if` statements:
 
 ```javascript
 // Only the first block of code whose condition is `true` executes

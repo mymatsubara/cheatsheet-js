@@ -21,11 +21,16 @@ code {
         Consolas, Liberation Mono, Courier New, monospace;
 }
 
+.code-editor {
+    font-family: 'Source Code Pro', "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, Liberation Mono, Courier New, monospace;
+}
+
 .ace_hidden-cursors {
     opacity: 0;
 }
 
 /* Overriding dracula */
-.ace-dracula .ace_comment {
+/* .ace-dracula .ace_comment {
     color: #6A9955
-}
+} */
