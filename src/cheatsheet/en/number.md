@@ -22,6 +22,46 @@ console.log(10 / 3);
 console.log(3 % 2); // modulo: reminider of integer division
 ```
 
+## subtraction and decrement assignment
+
+- Some ways to increment a number:
+
+```javascript
+let i = 0;
+const n = 2;
+console.log(i);
+
+// increment `i` by `n`
+i = i + n;
+console.log(i);
+
+// increment `i` by `n`
+i += n; // equivalent to `i = i + n`
+console.log(i);
+
+i++; // increment `i` by 1
+console.log(i);
+```
+
+- Some ways to decrement a number:
+
+```javascript
+let i = 0;
+const n = 2;
+console.log(i);
+
+// increment `i` by `n`
+i = i - n;
+console.log(i);
+
+// increment `i` by `n`
+i -= n; // equivalent to `i = i - n`
+console.log(i);
+
+i--; // increment `i` by 1
+console.log(i);
+```
+
 ## from other types
 
 ```javascript
