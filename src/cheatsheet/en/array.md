@@ -228,3 +228,23 @@ const separator = "@";
 
 console.log(array.join(separator));
 ```
+
+## create an array filled with zeros
+
+```javascript
+const length = 5;
+const array = Array(length).fill(0);
+
+console.log(array);
+```
+
+## create an array filled with number from 0 to n-1
+
+```javascript
+const n = 5;
+const array = Array(n)
+	.fill(0)
+	.map((_, i) => i);
+
+console.log(array);
+```
