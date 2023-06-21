@@ -18,7 +18,7 @@ For more informations about functions check the [mdn docs](https://developer.moz
 
 ## function with inputs
 
-You can create functions with **one input**:
+- You can create functions which **receives one input**:
 
 ```javascript
 function hello(name) {
@@ -32,15 +32,15 @@ hello(name1);
 hello(name2);
 ```
 
-You can also create functions that receiver **more than one input**:
+- You can also create functions which **receives more than one input**:
 
 ```javascript
-// receive three inputs
+// receives three inputs
 function threeInputs(a, b, c) {
 	console.log(`function: a = ${a}, b = ${b}, c = ${c}`);
 }
 
-// receive an arbitrary number of inputs
+// receives an arbitrary number of inputs
 function nInputs(...args) {
 	console.log(`function: args =`, args);
 }
@@ -68,7 +68,7 @@ console.log("result1 =", result1);
 console.log("result2 =", result2);
 ```
 
-If you want to return more than one data from a function you can use an `Array` or an `Object`:
+To **return more than one data** from a function, use an `Array` or an `Object`:
 
 ```javascript
 function multipleValues() {
@@ -104,7 +104,9 @@ Arrow function have some other minor differences. For more informations check th
 
 ## function references
 
-When you **declare a function**, it is the same a **declaring a variable**. You can even log the function without calling it!
+When you **declare a function**, it is the same a **declaring a variable**.
+
+You can even log the function without calling it!
 
 ```javascript
 function greeting() {
@@ -186,9 +188,9 @@ The `filter` function have similiar behavior as the method [`Array.prototype.fil
 
 ## higher order function
 
-In javascript functions can be passed as argument and returned from functions.
+In javascript **functions can be passed as argument** and **returned from functions**.
 
-A `higher order function` is a special kind of function that **takes as input one or more functions and returns a function**.
+A `higher order function` is a special kind of function that **takes as input one or more functions and returns another function**.
 
 ```javascript
 // Higher order function
@@ -212,7 +214,7 @@ console.log(tripleThenSquare(a)); // (3 * a) * (3 * a)
 
 ## recursion
 
-A function can call itself. When this happens we usually call it a `recursive function`:
+A function can **call itself**. When this happens we usually call it a `recursive function`:
 
 ```javascript
 function factorial(n) {

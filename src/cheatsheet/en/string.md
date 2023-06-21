@@ -30,14 +30,13 @@ console.log(s1 + " " + s2);
 ```javascript
 const name = "<INPUT>";
 
-// You can replace values in a string
-// surronded by backticks using ${value}
+// Replace values in a string delimited by backticks using ${value}
 console.log(`Hello, my name is ${name}`);
 ```
 
 ## escape characters
 
-If you want to display some special characters in a string, you might need to escape them. To escape a character, prepend it with `\`.
+If you want to display some special characters in a `String`, you might need to escape them. To escape a character, prepend it with `\`.
 
 Bellow are some cases where you might need to escape a character:
 
@@ -50,19 +49,23 @@ console.log(newLine);
 const path = "\\home\\usr\\.vimrc";
 console.log(path);
 
-// To indicate that `'` is not an string delimiter
-const message1 = 'You\'ve said: "I had it!"';
-console.log(message1);
+// To indicate that `'` is not a string delimiter
+const singleQuote = 'You\'ve said: "I had it!"';
+console.log(singleQuote);
 
-// To indicate that `"` is not an string delimiter
-const message2 = "\"It's mine test's\"";
-console.log(message2);
+// To indicate that `"` is not a string delimiter
+const doubleQuote = "\"It's mine test's\"";
+console.log(doubleQuote);
+
+// To indicate that "`" is not a string delimiter
+const backticks = `variable \`message\` is not defined`;
+console.log(backticks);
 ```
 
 If you want to ignore `\` as an escaping character, you can use `String.raw`:
 
 ```javascript
-// should be used with backticks
+// should be used string delimited by backticks
 const newLine = String.raw`line1\nline2\n`;
 console.log(newLine);
 
@@ -74,8 +77,9 @@ console.log(path);
 
 ```javascript
 const s = "12345";
+const length = s.length;
 
-console.log(s.length);
+console.log("s.length =", length);
 ```
 
 ## .split()
@@ -84,18 +88,23 @@ console.log(s.length);
 const s = "a,b,c,123";
 const separator = ",";
 
-console.log(s.split(separator));
+const split = s.split(separator);
+
+console.log(`s.split(separator) =`, split);
 ```
 
 ## .substring()
 
 ```javascript
-const s = "123456789";
+const s = "12345";
 const start = 1;
-const end = 6;
+const end = 3;
 
-console.log(s.substring(start));
-console.log(s.substring(start, end));
+const s1 = s.substring(start);
+const s2 = s.substring(start, end);
+
+console.log("s.substring(start):", s1);
+console.log("s.substring(start, end):", s2);
 ```
 
 ## .charAt()
@@ -104,7 +113,9 @@ console.log(s.substring(start, end));
 const s = "abcdefg";
 const position = 3;
 
-console.log(s.charAt(position));
+const char = s.charAt(position);
+
+console.log("s.charAt(position):", char);
 ```
 
 ## .toLowerCase()

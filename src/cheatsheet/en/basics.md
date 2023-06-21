@@ -1,12 +1,12 @@
 ## execute javascript from the browser console
 
-1. Press `f12` or `Ctrl+Shift+I` (Windows) or `Cmd+Shift+I` (Mac) to open your browser's `Developer tools`
-2. Go to the `Console` tab
+1. Press `f12` or `Ctrl+Shift+I` (Windows) or `Cmd+Shift+I` (Mac) to open your browser's `Developer tools`.
+2. Go to the `Console` tab.
 3. Type a line of code and press `Enter` to execute it.
 
 ![Executing javascript on console](/cheatsheet-js/cheatsheet/basics/dev-tools.gif)
 
-## execute javascript from an html inline <script> tag
+## execute javascript from in an inline html <script> tag
 
 You can add your **javascript script** directly to your **html files** using the `<script>` tag.
 
@@ -47,7 +47,7 @@ You can reference an **external script** in your html using using `<script src="
 console.log("hello from external script");
 ```
 
-2. Create html file called `index.html` in the same folder as `script.js` with the followin content:
+2. Create html file called `index.html` in the **same folder** as `script.js` with the following content:
 
 ```html
 <html>
@@ -64,7 +64,7 @@ console.log("hello from external script");
 </html>
 ```
 
-3. Open `index.html` in your browser
+3. Open `index.html` in your browser.
 
 ### Step by step
 
@@ -91,7 +91,7 @@ console.log("hello from Node.js");
 ## console.log()
 
 ```javascript
-// Edit the messages bellow
+// Edit the messages bellow and see the output change
 console.log("👋");
 console.log("message1", "message2", "message3");
 ```

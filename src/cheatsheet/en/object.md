@@ -13,14 +13,14 @@ const father = {
 	name: "Jujuba",
 	surname: "Monstra",
 	age: 66,
-	// You can nest objects and arrays
+	// You can nest `Object` and/or `Array`
 	child: child
 };
 
 console.log(father);
 ```
 
-## access object value
+## access an object's value
 
 ```javascript
 const equipment = {
@@ -39,7 +39,7 @@ console.log(equipment.status.attack);
 console.log(equipment[key]);
 ```
 
-## insert/modify object element
+## insert/modify an object's value
 
 ```javascript
 const equipment = {
@@ -51,7 +51,7 @@ const equipment = {
 };
 
 equipment.name = "bad ring";
-equipment.owner = "Gigachad"; // insert new key
+equipment.owner = "Gigachad"; // insert new key-value pair
 
 console.log(equipment);
 ```

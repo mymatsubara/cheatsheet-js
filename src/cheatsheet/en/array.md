@@ -38,7 +38,7 @@ for (let index in array) {
 }
 ```
 
-## .push(): add item to the end of the array
+## .push(): add item to the end of an array
 
 ```javascript
 const array = ["element0", "element1"];
@@ -48,7 +48,7 @@ array.push(1);
 console.log(array);
 ```
 
-## .unshift(): add item to the start of the array
+## .unshift(): add item to the start of an array
 
 ```javascript
 const array = ["element0", "element1"];
@@ -99,7 +99,7 @@ console.log(slice2);
 console.log(slice3);
 ```
 
-## .splice(): remove or replace existing elements and/or adding new ones
+## .splice(): remove or replace existing elements and/or add new ones
 
 - Split array in two: `array.splice(start)`:
 

@@ -1,6 +1,6 @@
 ## introduction
 
-`Boolean` is primitive value which can be either `true` or `false`.
+`Boolean` is a primitive value which can be either `true` or `false`.
 
 ```javascript
 const on = true;
@@ -10,7 +10,7 @@ console.log(on);
 console.log(off);
 ```
 
-They are widely used to execute code conditionally using `if`, `for` and `while` statements.
+They are widely used to execute code conditionally using `if`, `while` or `for` statements.
 
 For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean).
 
@@ -56,10 +56,10 @@ console.log(not);
 
 ## if, else if and else
 
-You can a `boolean` to conditionally execute a block of code using the `if` statement:
+Use a `Boolean` to conditionally execute a block of code with the `if` statement:
 
 ```javascript
-// Change the conditions bellow to see the result
+// Change the conditions bellow and check the output
 if (5 !== 5) {
 	console.log("if.1: executed");
 }
@@ -69,10 +69,10 @@ if (3 > 1) {
 }
 ```
 
-To execute an block of code when a `if` condition is not met, use the else `statement`:
+To execute another block of code when a `if` condition is not met, use the `else` statement:
 
 ```javascript
-// Change the value bellow to `true` and see the result
+// Change the value bellow to `true` and check the output
 if (true) {
 	console.log("if: executed");
 } else {
@@ -84,7 +84,7 @@ If you want to add more blocks of code to the equation, you can also use `else i
 
 ```javascript
 // Only the first block of code whose condition is `true` executes
-// Change the boolean values bellow as you like and see the results
+// Change the boolean values bellow as you like and check the output
 if (true) {
 	console.log("if: executed");
 } else if (true) {
@@ -107,7 +107,7 @@ if (false) {
 
 ## while loops
 
-Use a `while` to execute a block of code while a condition is `true`:
+`while` statements can execute a block of code while a **condition** is `true`:
 
 ```javascript
 let i = 5;

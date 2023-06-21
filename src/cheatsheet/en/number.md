@@ -22,7 +22,7 @@ console.log(10 / 3);
 console.log(3 % 2); // modulo: reminider of integer division
 ```
 
-## subtraction and decrement assignment
+## increment and decrement assignment
 
 - Some ways to increment a number:
 
@@ -50,19 +50,19 @@ let i = 0;
 const n = 2;
 console.log(i);
 
-// increment `i` by `n`
+// decrement `i` by `n`
 i = i - n;
 console.log(i);
 
-// increment `i` by `n`
+// decrement `i` by `n`
 i -= n; // equivalent to `i = i - n`
 console.log(i);
 
-i--; // increment `i` by 1
+i--; // decrement `i` by 1
 console.log(i);
 ```
 
-## from other types
+## convert from other types
 
 ```javascript
 const fromString1 = Number("12345");
@@ -73,13 +73,13 @@ const fromFalse = Number(false);
 const fromUndefined = Number(undefined);
 const fromNull = Number(null);
 
-console.log("Number('12345') =", fromString1);
-console.log("Number('1.5') =", fromString2);
-console.log("Number('text') =", fromString3); // NaN: Not-A-Number
-console.log("Number(true) =", fromTrue);
-console.log("Number(false) =", fromFalse);
-console.log("Number(undefined) =", fromUndefined);
-console.log("Number(null) =", fromNull);
+console.log("Number('12345'):", fromString1);
+console.log("Number('1.5'): ", fromString2);
+console.log("Number('text'): ", fromString3); // NaN: Not-A-Number
+console.log("Number(true): ", fromTrue);
+console.log("Number(false): ", fromFalse);
+console.log("Number(undefined): ", fromUndefined);
+console.log("Number(null): ", fromNull);
 ```
 
 ## parseInt()
@@ -126,8 +126,8 @@ console.log(hexadecimal); // hexadecimal representation (base-16)
 ## bitwise operations
 
 ```javascript
-const a = 0b1001; // 9
-const b = 0b1111; // 15
+const a = 0b1001; // decimal: 9
+const b = 0b1111; // decimal: 15
 const shift = 2;
 
 // Bitwise operations
@@ -156,6 +156,7 @@ For more informations check [the w3schools tutorial](https://www.w3schools.com/j
 ## NaN: Not-A-Number
 
 ```javascript
+// Special value to represent `Not-A-Number`
 const n1 = NaN;
 const n2 = Number("test");
 const check1 = isNaN(n2);
