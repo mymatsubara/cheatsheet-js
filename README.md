@@ -4,7 +4,7 @@ Cheatsheet.js is a interactive javascript cheatsheet website.
 
 ![Website usage](/public/cheatsheet-js.gif)
 
-> 🔴 Check out the live website: [here]()
+> ## 🔴 Check out the live website: [here](https://mymatsubara.github.io/cheatsheet-js/)
 
 ## Contributing
 
