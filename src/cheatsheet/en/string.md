@@ -35,12 +35,56 @@ const name = "<INPUT>";
 console.log(`Hello, my name is ${name}`);
 ```
 
+## escape characters
+
+If you want to display some special characters in a string, you might need to escape them. To escape a character, prepend it with `\`.
+
+Bellow are some cases where you might need to escape a character:
+
+```javascript
+// To add a new line `\n` character
+const newLine = "line1\nline2\n";
+console.log(newLine);
+
+// To display `\`
+const path = "\\home\\usr\\.vimrc";
+console.log(path);
+
+// To indicate that `'` is not an string delimiter
+const message1 = 'You\'ve said: "I had it!"';
+console.log(message1);
+
+// To indicate that `"` is not an string delimiter
+const message2 = "\"It's mine test's\"";
+console.log(message2);
+```
+
+If you want to ignore `\` as an escaping character, you can use `String.raw`:
+
+```javascript
+// should be used with backticks
+const newLine = String.raw`line1\nline2\n`;
+console.log(newLine);
+
+const path = String.raw`\home\usr\.vimrc`;
+console.log(path);
+```
+
 ## .length
 
 ```javascript
 const s = "12345";
 
 console.log(s.length);
+```
+
+## .split()
+
+```javascript
+const s = "a,b,c,123";
+const separator = ",";
+
+console.log(s.split(separator));
 ```
 
 ## .substring()
