@@ -219,3 +219,12 @@ array.forEach((element, index) => {
 	console.log("index:", index);
 });
 ```
+
+## .join(): join an array into a string
+
+```javascript
+const array = ["apple", "pinnaple", "grape"];
+const separator = "@";
+
+console.log(array.join(separator));
+```
