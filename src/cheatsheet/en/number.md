@@ -165,3 +165,32 @@ console.log(n1);
 console.log(n2);
 console.log(check1);
 ```
+
+## to formatted number string (eg. decimal and thousand separators)
+
+```javascript
+const number = 123456.789;
+// Locale list: https://www.techonthenet.com/js/language_tags.php
+const locale = "de-DE";
+
+// German: `,` as decimal separator and `.` as thousand separator
+console.log(number.toLocaleString(locale));
+```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString).
+
+## to formatted currency string
+
+```javascript
+const value = 420.69;
+
+const formatted = value.toLocaleString(undefined, {
+	currency: "BRL",
+	maximumFractionDigits: 2,
+	style: "currency"
+});
+
+console.log(formatted);
+```
+
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString).
