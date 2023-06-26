@@ -99,7 +99,7 @@ console.log(slice2);
 console.log(slice3);
 ```
 
-## .splice(): remove or replace existing elements and/or add new ones
+## .splice(): remove or replace existing elements and/or insert new ones
 
 - Split array in two: `array.splice(start)`:
 
@@ -120,6 +120,17 @@ const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const removed = array.splice(start, 1);
 
 console.log(removed);
+console.log(array);
+```
+
+- Insert `element` at `index`
+
+```javascript
+const element = 420;
+const index = 4;
+const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+array.splice(index, 0, element);
+
 console.log(array);
 ```
 
