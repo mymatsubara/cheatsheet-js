@@ -166,7 +166,7 @@ console.log(n2);
 console.log(check1);
 ```
 
-## to formatted number string (eg. decimal and thousand separators)
+## .toLocaleString(): to formatted number string (eg. decimal and thousand separators)
 
 ```javascript
 const number = 123456.789;
@@ -179,7 +179,7 @@ console.log(number.toLocaleString(locale));
 
 For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString).
 
-## to formatted currency string
+## .toLocaleString(): to formatted currency string
 
 ```javascript
 const value = 420.69;
