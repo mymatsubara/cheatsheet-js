@@ -1,6 +1,6 @@
 ## introduction
 
-A function is a **reference to a block of code** that can called many time in your program:
+A function is a **reference to a block of code** that can be called many time in your program:
 
 ```javascript
 // Declare a function called `greeting`
