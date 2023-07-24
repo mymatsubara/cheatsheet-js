@@ -234,3 +234,120 @@ function factorial(n) {
 const result = factorial(3);
 console.log(result);
 ```
+
+## .call(): call a function with another `this`
+
+If you want to change the `this` bindind when calling a function, use the `call` method.
+
+```javascript
+const obj1 = {
+	name: "obj1",
+	printThis: function () {
+		console.log(this);
+	}
+};
+
+const obj2 = {
+	name: "obj2"
+};
+
+// Call the method normally
+obj1.printThis();
+
+// Call the method with `this` replaced by `obj2`
+obj1.printThis.call(obj2);
+```
+
+You can also pass function arguments to `call`.
+
+```javascript
+const obj1 = {
+	name: "obj1",
+	printThis: function (arg1, arg2) {
+		console.log(this);
+		console.log("arg1:", arg1);
+		console.log("arg2:", arg2);
+	}
+};
+
+const obj2 = {
+	name: "obj2"
+};
+
+// Call the method normally
+obj1.printThis(69, "yeet");
+
+// Call the method with `this` replaced by `obj2`
+obj1.printThis.call(obj2, 420, "gigachad");
+```
+
+## .apply(): call a function with another `this`
+
+The only difference between `apply` and `call` is that the former take function arguments as an array.
+
+```javascript
+const obj1 = {
+	name: "obj1",
+	printThis: function (arg1, arg2) {
+		console.log(this);
+		console.log("arg1:", arg1);
+		console.log("arg2:", arg2);
+	}
+};
+
+const obj2 = {
+	name: "obj2"
+};
+
+// Arguments are passed as an array
+obj1.printThis.apply(obj2, [333, "apply"]);
+
+// Arguments are passed individually
+obj1.printThis.call(obj2, 420, "call");
+```
+
+## .bind(): create a new function with a bound `this`
+
+When a new function is created with `bind` the value of `this` will not change with the context.
+
+```javascript
+function returnThis() {
+	return this;
+}
+
+const obj2 = {
+	name: "obj2"
+};
+
+const obj1 = {
+	name: "obj1"
+};
+
+const returnThisBound = returnThis.bind(obj2);
+obj1.returnThis = returnThis;
+obj1.returnThisBound = returnThisBound;
+
+// Global `this``
+console.log("returnThis() =", returnThis());
+
+// `obj1` `this`
+console.log("obj1.returnThis() =", obj1.returnThis());
+
+// `this` is bound to `obj2`
+console.log("returnThisBound() =", returnThisBound());
+
+// `this` is bound to `obj2`
+console.log("obj1.returnThisBound() =", obj1.returnThisBound());
+```
+
+It is worth noting that `bind` does not change `this` for `arrow functions`.
+
+```javascript
+const returnThis = () => this;
+const returnThisBound = returnThis.bind({ name: "bound" });
+
+console.log("returnThis() =", returnThis());
+console.log("returnThisBound() =", returnThisBound());
+```
+
+For more informations about `bind` check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
