@@ -56,6 +56,57 @@ equipment.owner = "Gigachad"; // insert new key-value pair
 console.log(equipment);
 ```
 
+## method: a function property
+
+A `function` saved inside an `object` is often refered as a `method`.
+
+```javascript
+const calculator = {
+	add: (a, b) => a + b,
+	sub: (a, b) => a - b
+};
+
+console.log(calculator);
+console.log(calculator.add(1, 2));
+console.log(calculator.sub(1, 2));
+```
+
+## this: reference other properties inside an object's method
+
+If you want to access another property of the same `object`, you can use the `this` binding.
+
+```javascript
+const person = {
+	age: 20,
+	getThis: function () {
+		return this;
+	},
+	isUnder18: function () {
+		return this.age < 18;
+	}
+};
+
+console.log("this:", person.getThis());
+console.log("Is under 18?", person.isUnder18());
+```
+
+It is worth noting that [arrow functions](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/Arrow_functions) do not provide their own `this` binding.
+
+```javascript
+const person = {
+	age: 20,
+	isUnder18: () => this.age < 18,
+	getThis: () => this
+};
+
+console.log("this:", person.getThis());
+
+// Should error because `this` is `undefined`
+console.log("Is under 18?", person.isUnder18());
+```
+
+There a lot more details related to `this` keyword. For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/this).
+
 ## Object.keys(): list object keys
 
 ```javascript
