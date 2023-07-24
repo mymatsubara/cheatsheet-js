@@ -2,7 +2,7 @@
 	import { searchQuery } from "../scripts/svelte/search-store";
 	import SearchIcon from "./icons/SearchIcon.svelte";
 
-	let search: HTMLElement;
+	let search: HTMLInputElement;
 	let innerWidth: number;
 	export let open: boolean | undefined = undefined;
 
@@ -11,6 +11,15 @@
 			open = innerWidth > 640;
 		}
 	}
+
+	document.addEventListener("keypress", (event) => {
+		const key = event.key;
+
+		if (key === "/") {
+			event.preventDefault();
+			search.focus();
+		}
+	});
 </script>
 
 <svelte:window bind:innerWidth />
@@ -33,8 +42,18 @@
 		bind:this={search}
 		type="search"
 		aria-label="Search"
-		placeholder="Search"
+		placeholder=" "
 	/>
+	<div
+		class="placeholder absolute top-1/2 -translate-y-1/2 left-8 text-neutral-500 pointer-events-none gap-1"
+	>
+		Type
+		<span
+			class="text-sm font-semibold rounded border-neutral-500 border px-1 pb-[1px] h-max leading-0"
+			>/</span
+		>
+		to search
+	</div>
 </label>
 
 <style>
@@ -70,5 +89,20 @@
 	input[type="checkbox"]:checked ~ .icon {
 		height: 1.25rem;
 		padding: 0;
+	}
+
+	/* Placeholder */
+	.placeholder {
+		transition: opacity var(--animation);
+		opacity: 1;
+	}
+
+	.search:not(:placeholder-shown) ~ .placeholder {
+		display: none;
+	}
+
+	input[type="checkbox"]:not(:checked) ~ .placeholder {
+		opacity: 0;
+		transition: opacity var(--animation);
 	}
 </style>
