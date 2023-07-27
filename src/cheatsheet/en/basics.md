@@ -144,3 +144,8 @@ const n = null;
 
 console.log(u, n);
 ```
+
+## good links
+
+- [javascript.info](https://javascript.info/): articles about javascript concepts from basics to advanced
+- [MDN docs](https://developer.mozilla.org/): detailed documentation for most javascript concepts
