@@ -8,7 +8,7 @@ html {
 }
 
 code {
-    font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    font-family: 'Source Code Pro', "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
         Consolas, Liberation Mono, Courier New, monospace;
     border-radius: 3px;
     background: #3333;
@@ -17,7 +17,7 @@ code {
 
 /* Utilities */
 .code-font {
-    font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    font-family: 'Source Code Pro', "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
         Consolas, Liberation Mono, Courier New, monospace;
 }
 
