@@ -142,3 +142,82 @@ const person = {
 
 console.log(Object.entries(person));
 ```
+
+## prototype object
+
+Every javascript object has a `prototype object` associated to it. A `prototype object` can also have another `prototype object` associated to it, thus forming a `prototype chain`.
+
+Prototypes are important because everytime an object's `property` is accessed, the javascript runtime also checks if the `property` is present in one of its `prototype objects` in the prototype chain.
+
+```javascript
+const person = {
+	name: "Gigachad"
+};
+
+// `person` has its prototype set as `Object.prototype`
+console.log(Object.getPrototypeOf(person) === Object.prototype);
+
+// The function `toString` is saved in `Object.prototype`,
+// allowing us to call `person.toString()` without defining it ourselves
+console.log(person.toString());
+
+// Set a new prototype for `person`
+const newPrototype = {
+	sayHello: function () {
+		console.log(`Hello, my name is ${this.name}`);
+	}
+};
+Object.setPrototypeOf(person, newPrototype);
+
+// `person` now can call `sayHello()`
+person.sayHello();
+
+// The following protype chain is set:
+// `person`->`newPrototype`->`Object.prototype`
+console.log(
+	"person->newPrototype:",
+	Object.getPrototypeOf(person) === newPrototype
+);
+console.log(
+	"newPrototype->Object.prototype:",
+	Object.getPrototypeOf(newPrototype) === Object.prototype
+);
+
+// Because of the prototype chain `person` still has access to `toString`
+console.log(person.toString());
+```
+
+## `new` keyword
+
+The `new` keyword is used in pair with a `constructor` function to create a new instance of an object.
+
+```javascript
+function Person(name, age) {
+	this.name = name;
+	this.age = age;
+	this.isUnder18 = function () {
+		return this.age < 18;
+	};
+}
+
+Person.prototype.isOver18 = function () {
+	return this.age >= 18;
+};
+
+// In this example, the `new` keyword does the following:
+// 	1. Instanciate an empty object - let's call it `newInstance` for convenience
+// 	2. Assigns `Person.prototype` to `newInstance's` prototype
+// 	3. Execute the function `Person` with `this` bound to `newInstance`
+//	4. Since the function `Person` does not return an object,
+//	   the expression `new Person("Gigachad", 420)` returns `newInstance`
+const person = new Person("Gigachad", 420);
+
+console.log("person =", person);
+console.log("Person.prototype =", Person.prototype);
+console.log(Object.getPrototypeOf(person) === Person.prototype);
+
+console.log("Is under 18?", person.isUnder18());
+console.log("Is over 18?", person.isOver18());
+```
+
+For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/new).
