@@ -15,8 +15,6 @@
 		}))
 	);
 
-	console.log({ mapped });
-
 	const fuse = new Fuse(mapped, {
 		keys: ["section", "subsection"],
 		threshold: 0.2

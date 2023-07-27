@@ -1,35 +1,47 @@
 <script lang="ts">
+	import type { Ace } from "ace-builds";
 	import { onDestroy } from "svelte";
+	import { writable } from "svelte/store";
 	import { makeEditor, runCode, type EditorConfigs } from "../scripts/editor";
 
 	export let code: string;
 	export let height: string | undefined = undefined;
 	export let config: EditorConfigs = {};
 	export let autorun = true;
+
 	let canRun =
 		config.language === undefined || config.language === "javascript";
 
 	let editorElement: HTMLElement;
-	let output: string | undefined = undefined;
+	let editor: Ace.Editor;
+	let setup = false;
+	let logs = writable<string[]>([]);
 
 	if (!height) {
 		config.maxLines = config.maxLines ?? 100;
 	}
 
-	$: editor = makeEditor(editorElement, config);
-
 	function run() {
-		output = runCode(editor);
+		logs = writable([]);
+		runCode(editor, logs);
 	}
 
 	$: {
-		if (autorun && canRun) {
-			run();
-			editor.session.on("change", () => {
+		if (editorElement && !setup) {
+			let debounceTimeout: NodeJS.Timeout;
+			editor = makeEditor(editorElement, config);
+
+			if (autorun && canRun) {
 				run();
-			});
-		} else {
-			editor.session.removeListener("change", () => {});
+				editor.session.on("change", () => {
+					debounceTimeout && clearTimeout(debounceTimeout);
+					debounceTimeout = setTimeout(run, 500);
+				});
+			} else {
+				editor.session.removeListener("change", () => {});
+			}
+
+			setup = true;
 		}
 	}
 
@@ -47,13 +59,15 @@
 		{code}
 	</div>
 	<div class="flex gap-2">
-		{#if output}
+		{#if $logs?.length}
 			<div
 				class="code-font text-sm flex flex-col gap-1 px-5 py-2 grow bg-neutral-100 border border-neutral-200"
 			>
 				<div class="underline">Output:</div>
 				<div>
-					<div class="whitespace-pre">{output}</div>
+					{#each $logs as line}
+						<div class="whitespace-pre">{line}</div>
+					{/each}
 				</div>
 			</div>
 		{/if}

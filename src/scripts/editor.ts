@@ -1,5 +1,6 @@
 import ace from "ace-builds";
 import inspect from "browser-util-inspect";
+import type { Writable } from "svelte/store";
 
 export interface EditorConfigs {
 	theme?: string;
@@ -61,26 +62,37 @@ export function makeEditor(e: Element, config?: EditorConfigs) {
 	return editor;
 }
 
-export function runCode(editor: ace.Ace.Editor): string {
-	const code = editor.getValue();
+let count = 0;
 
-	const logs: string[] = [];
-	console.log = (...data: any[]) => {
-		logs.push(format(...data));
+export function runCode(editor: ace.Ace.Editor, logs: Writable<string[]>) {
+	const log = `log_${count++}`;
+	count %= 50;
+
+	let code = editor.getValue();
+	code = code.replace(/console[\s\t\n\r]*.[\s\t\n\r]*log/g, `console.${log}`);
+
+	(console as any)[log] = (...data: any[]) => {
+		logs?.update((logs) => {
+			logs?.push(format(...data));
+			return logs;
+		});
 	};
 
 	try {
 		eval(code);
 	} catch (e) {
-		logs.push(`❌ Error: ${e}`);
-	} finally {
-		console.log = defaultLogger;
+		logs.update((logs) => {
+			logs.push(`❌ Error: ${e}`);
+			return logs;
+		});
 	}
-
-	return logs.join("\n");
 }
 
 function format(...args: any[]) {
+	if (args.length === 0) {
+		return "\n";
+	}
+
 	return args
 		.map((l: any) => (typeof l === "string" ? l : inspect(l)))
 		.join(" ");
