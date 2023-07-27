@@ -42,7 +42,7 @@
 		bind:this={search}
 		type="search"
 		aria-label="Search"
-		placeholder=" "
+		placeholder="Search"
 	/>
 	<div
 		class="placeholder absolute top-1/2 -translate-y-1/2 left-8 text-neutral-500 pointer-events-none gap-1"
@@ -68,8 +68,14 @@
 		cursor: pointer;
 	}
 
+	/* Search */
+
 	.search {
 		transition: width var(--animation);
+	}
+
+	.search::placeholder {
+		opacity: 0;
 	}
 
 	input[type="checkbox"]:checked ~ .search {
@@ -103,6 +109,15 @@
 
 	input[type="checkbox"]:not(:checked) ~ .placeholder {
 		opacity: 0;
-		transition: opacity var(--animation);
+	}
+
+	@media (max-width: 640px) {
+		.placeholder {
+			display: none;
+		}
+
+		.search::placeholder {
+			opacity: 1;
+		}
 	}
 </style>
