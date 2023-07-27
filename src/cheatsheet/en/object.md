@@ -56,6 +56,19 @@ equipment.owner = "Gigachad"; // insert new key-value pair
 console.log(equipment);
 ```
 
+## remove an objects's key/value
+
+```javascript
+const person = {
+	name: "Gigachad",
+	age: 420
+};
+
+console.log(person);
+delete person.age; // Removes "age"
+console.log(person);
+```
+
 ## method: a function property
 
 A `function` saved inside an `object` is often refered as a `method`.
