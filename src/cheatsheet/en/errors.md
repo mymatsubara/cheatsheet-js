@@ -89,3 +89,27 @@ function finallyWithReturn() {
 const result = finallyWithReturn();
 console.log("result = ", result);
 ```
+
+## custom errors
+
+Create a custom error class by extending `Error`.
+
+```javascript
+class CustomError extends Error {
+	constructor(message) {
+		super(message);
+		this.name = "CustomError";
+	}
+}
+
+try {
+	throw new CustomError("custom message");
+} catch (err) {
+	if (err instanceof CustomError) {
+		console.log("err is a CustomError");
+	}
+
+	console.log(err.name);
+	console.log(err.message);
+}
+```
