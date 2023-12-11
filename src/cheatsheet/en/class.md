@@ -109,3 +109,144 @@ setTimeout(() => printer.print(), 2000);
 // Have the same effect
 setTimeout(printer.printArrowFunc, 3000);
 ```
+
+## inheritance
+
+Use the keyword `extends` to inherit another class.
+Inheritance allows you to create a new class with new or overriden functionality over a base class.
+
+```javascript
+class Item {
+	constructor(value) {
+		this.value = value;
+	}
+
+	sell() {
+		console.log(`Sold for $${this.value}`);
+	}
+
+	use() {
+		console.log("Item used");
+	}
+}
+
+// Sword inherits Item
+class Sword extends Item {
+	// Override Item's constructor
+	constructor(value, damage) {
+		super(value); // Call Item's constructor (obligatory when overriding a constructor)
+		this.damage = damage;
+	}
+
+	// Add a new method
+	attack() {
+		console.log(`Attack with sword (${this.damage} damage)`);
+	}
+
+	// Override Item's `use` method
+	use() {
+		console.log("Inspecting sword...");
+		super.use(); // Call Item's `use` method
+	}
+}
+
+const sword = new Sword(10, 666);
+
+sword.sell();
+sword.attack();
+sword.use();
+```
+
+```javascript
+class Animal {
+	name = "animal";
+
+	constructor() {
+		alert(this.name);
+	}
+}
+
+class Rabbit extends Animal {
+	name = "rabbit";
+
+	constructor() {
+		super();
+		alert(this.name);
+	}
+}
+
+new Animal(); // animal
+new Rabbit(); // animal
+```
+
+## static methods/properties
+
+A **static method** is just like a normal function with `this` set to the class constructor. Prepend a method with the keyword `static` to create a static method. Also static methods cannot be called from a object instanciated from the class.
+
+```javascript
+class Calculator {
+	static add(a, b) {
+		return a + b;
+	}
+}
+
+console.log(Calculator.add(1, 1));
+
+// This won't work:
+// const calculator = new Calculator();
+// calculator.add(1, 1);
+```
+
+You can also create **static properties**:
+
+```javascript
+class Calculator {
+	static pi = 3.14;
+}
+
+console.log(Calculator.pi);
+```
+
+## private methods/properties
+
+Sometimes we want to prevent some methods or properties to be accessed from outside or inheriting classes. Prepend a method/property with `#` to make it private and hide from the consumer of the class.
+
+```javascript
+class Counter {
+	#count = 0; // private property
+
+	increment() {
+		this.#count++;
+		console.log(this.#count);
+	}
+
+	#reset() {
+		this.#count = 0;
+	}
+}
+
+const counter = new Counter();
+
+counter.increment();
+counter.increment();
+
+// These won't work:
+// counter.#reset();
+// console.log(counter.#count);
+// counter.#count = 0;
+```
+
+## instanceof
+
+Use the `instanceof` operator to check if an object is belongs to a specific class. Inheritance is also considered.
+
+```javascript
+class Parent {}
+class Child extends Parent {}
+
+const child = new Child();
+
+console.log(child instanceof Parent);
+console.log(child instanceof Child);
+console.log(child instanceof Array);
+```
