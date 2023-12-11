@@ -1,6 +1,6 @@
 ---
+import GithubLink from "./GithubLink.svelte";
 import SearchBar from "./SearchBar.svelte";
-import GithubIcon from "./icons/GithubIcon.astro";
 ---
 
 <header
@@ -14,15 +14,10 @@ import GithubIcon from "./icons/GithubIcon.astro";
 			Interactive javascript cheatsheet
 		</h1>
 	</div>
-	<div class="flex sm:gap-2 items-center">
-		<a
-			class="hover:bg-[#3333] p-1 rounded"
-			href="https://github.com/mymatsubara/cheatsheet-js"
-			target="_blank"
-			aria-label="Github project"
-		>
-			<GithubIcon extraClasses="h-6" />
-		</a>
+	<div class="flex sm:gap-4 items-center">
+		<div class="hidden sm:block">
+			<GithubLink client:only="svelte" />
+		</div>
 		<SearchBar client:only="svelte" />
 	</div>
 </header>
