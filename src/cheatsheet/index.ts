@@ -3,6 +3,7 @@ import basics from "./en/basics.md?raw";
 import boolean from "./en/boolean.md?raw";
 import _class from "./en/class.md?raw";
 import date from "./en/date.md?raw";
+import errors from "./en/errors.md?raw";
 import func from "./en/function.md?raw";
 import number from "./en/number.md?raw";
 import object from "./en/object.md?raw";
@@ -18,5 +19,6 @@ export const content = parseCheatcheat({
 	Function: func,
 	Object: object,
 	Class: _class,
-	Date: date
+	Date: date,
+	Errors: errors
 });
