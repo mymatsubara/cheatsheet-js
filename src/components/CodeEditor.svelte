@@ -3,6 +3,7 @@
 	import { onDestroy } from "svelte";
 	import { writable } from "svelte/store";
 	import { makeEditor, runCode, type EditorConfigs } from "../scripts/editor";
+	import RefreshIcon from "./icons/RefreshIcon.svelte";
 
 	export let code: string;
 	export let height: string | undefined = undefined;
@@ -63,7 +64,21 @@
 			<div
 				class="code-font text-sm flex flex-col gap-1 px-5 py-2 grow bg-neutral-100 border border-neutral-200"
 			>
-				<div class="underline">Output:</div>
+				<div class="flex gap-2 items-center">
+					<div class="underline">Output:</div>
+					<button
+						class="hover:bg-neutral-300 rounded p-1"
+						title="Rerun"
+						on:click={() => {
+							$logs = [];
+							setTimeout(() => {
+								run();
+							}, 100);
+						}}
+					>
+						<RefreshIcon stroke-width="2.0" class="text-neutral-500 h-4" />
+					</button>
+				</div>
 				<div>
 					{#each $logs as line}
 						<div class="whitespace-pre">{line}</div>
