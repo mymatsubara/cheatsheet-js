@@ -5,6 +5,7 @@ import _class from "./en/class.md?raw";
 import date from "./en/date.md?raw";
 import errors from "./en/errors.md?raw";
 import func from "./en/function.md?raw";
+import generator from "./en/generator.md?raw";
 import number from "./en/number.md?raw";
 import object from "./en/object.md?raw";
 import promise from "./en/promise.md?raw";
@@ -22,5 +23,6 @@ export const content = parseCheatcheat({
 	Class: _class,
 	Date: date,
 	Errors: errors,
-	Promise: promise
+	Promise: promise,
+	Generator: generator
 });
