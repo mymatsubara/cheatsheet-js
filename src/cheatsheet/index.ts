@@ -7,6 +7,7 @@ import errors from "./en/errors.md?raw";
 import func from "./en/function.md?raw";
 import number from "./en/number.md?raw";
 import object from "./en/object.md?raw";
+import promise from "./en/promise.md?raw";
 import string from "./en/string.md?raw";
 import { parseCheatcheat } from "./parse";
 
@@ -20,5 +21,6 @@ export const content = parseCheatcheat({
 	Object: object,
 	Class: _class,
 	Date: date,
-	Errors: errors
+	Errors: errors,
+	Promise: promise
 });

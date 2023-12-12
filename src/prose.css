@@ -8,7 +8,7 @@
 }
 
 .prose p {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.7rem;
 }
 
 /* Headings */
@@ -30,6 +30,11 @@
 
 .prose h3 {
     font-size: 1rem;
+}
+
+.prose ul,
+.prose li {
+    margin-bottom: 0.7rem;
 }
 
 /* Link */
