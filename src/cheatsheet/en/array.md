@@ -1,6 +1,6 @@
 ## introduction
 
-Use an array to store multiple items in one place:
+An `Array` is an object which can store multiple elements in sequence.
 
 ```javascript
 const array = ["string", 2, false];
@@ -22,23 +22,28 @@ console.log(array[3]); // out of bonds
 
 ## for loop: iterate over an array
 
+Use `for...of` to iterate over elements of an array:
+
 ```javascript
 const array = ["element0", "element1", "element2"];
 
-console.log("Iterating over array elements (`of`):");
 for (let element of array) {
 	console.log("element =", element);
 }
+```
 
-console.log();
-console.log("Iterating over array indexes (`in`):");
+Use `for...in` to iterate over the indexes of an array:
+
+```javascript
+const array = ["element0", "element1", "element2"];
+
 for (let index in array) {
 	console.log("index =", index);
 	console.log(`array[${index}] =`, array[index]);
 }
 ```
 
-## .push(): add item to the end of an array
+## .push(): add an item to the end of an array
 
 ```javascript
 const array = ["element0", "element1"];
@@ -84,46 +89,46 @@ console.log("removed =", removed);
 
 ## .slice(): get a slice of an array
 
+`array.slice(start, end)` returns a part of an array.
+
 ```javascript
 const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const start = 3; // inclusive start range index
-const end = 6; // exclusive end range index
 
-const slice1 = array.slice(start);
-const slice2 = array.slice(start, end);
-const slice3 = array.slice(0, end);
+// Change these values and see what happens
+const start = 3;
+const end = 6;
 
 console.log(array);
-console.log(slice1);
-console.log(slice2);
-console.log(slice3);
+console.log(array.slice(start));
+console.log(array.slice(start, end));
+console.log(array.slice(0, end));
 ```
 
 ## .splice(): remove or replace existing elements and/or insert new ones
 
-- Split array in two: `array.splice(start)`:
+- Split array in two: `array.splice(index)`:
 
 ```javascript
-const start = 3;
+const index = 3;
 const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const rightPart = array.splice(start);
+const rightPart = array.splice(index);
 
 console.log(rightPart);
 console.log(array);
 ```
 
-- Remove element from index `start`: `array.splice(start, 1)`:
+- Remove an element from `index`: `array.splice(index, 1)`:
 
 ```javascript
-const start = 3;
+const index = 3;
 const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const removed = array.splice(start, 1);
+const removed = array.splice(index, 1);
 
 console.log(removed);
 console.log(array);
 ```
 
-- Insert `element` at `index`
+- Insert an `element` at `index`:
 
 ```javascript
 const element = 420;
@@ -185,21 +190,21 @@ console.log(filtered);
 console.log(array);
 ```
 
-For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
 ## .map(): transform one array to another
 
 ```javascript
 const array = [1, 2, 3, 4, 5];
 
-// Create a new array if each value of `array` doubled
+// Create a new array with each element doubled
 const mapped = array.map((n) => n * 2);
 
 console.log(mapped);
 console.log(array);
 ```
 
-For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
+For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
 
 ## .reduce(): iterate over array and accumulate over a value
 
@@ -217,7 +222,7 @@ const sum = array.reduce(predicate, initialValue);
 console.log(sum);
 ```
 
-For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
+For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
 
 ## .forEach(): iterate over elements of an array
 
@@ -234,7 +239,7 @@ array.forEach((element, index) => {
 ## .join(): join an array into a string
 
 ```javascript
-const array = ["apple", "pinnaple", "grape"];
+const array = ["apple", "pineapple", "grape"];
 const separator = "@";
 
 console.log(array.join(separator));

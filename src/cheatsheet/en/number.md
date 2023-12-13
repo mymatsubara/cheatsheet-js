@@ -1,6 +1,6 @@
 ## introduction
 
-`Number` represents a floating-point number.
+A `Number` represents a floating-point number.
 
 ```javascript
 const n1 = 10;
@@ -10,7 +10,7 @@ console.log(n1);
 console.log(n2);
 ```
 
-For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
+For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number).
 
 ## arithmetic operations
 
@@ -19,12 +19,12 @@ console.log(1 + 1);
 console.log(0.1 + 0.2);
 console.log(4 * 5);
 console.log(10 / 3);
-console.log(3 % 2); // modulo: reminider of integer division
+console.log(3 % 2); // modulo: reminder of integer division
 ```
 
 ## increment and decrement assignment
 
-- Some ways to increment a number:
+- **Increment a number**:
 
 ```javascript
 let i = 0;
@@ -43,7 +43,7 @@ i++; // increment `i` by 1
 console.log(i);
 ```
 
-- Some ways to decrement a number:
+- **Decrement a number**:
 
 ```javascript
 let i = 0;
@@ -62,20 +62,30 @@ i--; // decrement `i` by 1
 console.log(i);
 ```
 
-## convert from other types
+## from string
+
+Use the `Number()` function to convert a `string`
 
 ```javascript
 const fromString1 = Number("12345");
 const fromString2 = Number("1.5");
 const fromString3 = Number("text");
+
+console.log("Number('12345'):", fromString1);
+console.log("Number('1.5'): ", fromString2);
+console.log("Number('text'): ", fromString3); // NaN: Not-A-Number
+```
+
+## from boolean/undefined/null
+
+Use the `Number()` function to convert a `boolean`/`undefined`/`null`:
+
+```javascript
 const fromTrue = Number(true);
 const fromFalse = Number(false);
 const fromUndefined = Number(undefined);
 const fromNull = Number(null);
 
-console.log("Number('12345'):", fromString1);
-console.log("Number('1.5'): ", fromString2);
-console.log("Number('text'): ", fromString3); // NaN: Not-A-Number
 console.log("Number(true): ", fromTrue);
 console.log("Number(false): ", fromFalse);
 console.log("Number(undefined): ", fromUndefined);
@@ -83,6 +93,8 @@ console.log("Number(null): ", fromNull);
 ```
 
 ## parseInt()
+
+Use `parseInt()` to convert a `string` into an integer `number`.
 
 ```javascript
 console.log(parseInt("123"));
@@ -92,35 +104,53 @@ console.log(parseInt("text"));
 
 ## parseFloat()
 
+Use `parseFloat()` to convert a `string` into a floating point `number`.
+
 ```javascript
 console.log(parseFloat("123"));
 console.log(parseFloat("1.5"));
 console.log(parseFloat("test"));
 ```
 
-## hexadecimal, binary and decimal exponetial notations
+## hexadecimal, binary and decimal exponential notations
+
+You can also declare numbers using the following notations:
+
+- **Hexadecimal notation**:
 
 ```javascript
-const hexadecimal = 0xff; // prefix `0x`
-const binary = 0b11111111; // prefix `0b`
-const decimalExponential = 0.255e3; // prefix `e<N>`
-
-console.log(hexadecimal);
-console.log(binary);
-console.log(decimalExponential);
+const number = 0xff; // prefix `0x`
+console.log(number);
 ```
 
-## .toString(): decimal, hexadecimal and binary repesentation strings
+- **Binary notation**:
 
 ```javascript
-const n = 255;
-const decimal = n.toString();
-const binary = n.toString(2);
-const hexadecimal = n.toString(16);
+const number = 0b11111111; // prefix `0b`
+console.log(number);
+```
 
-console.log(decimal); // decimal representation
-console.log(binary); // binary representation (base-2)
-console.log(hexadecimal); // hexadecimal representation (base-16)
+- **Decimal exponential notation**:
+
+```javascript
+const number = 0.255e3; // prefix `e<N>`
+console.log(number);
+```
+
+## .toString(): hexadecimal and binary representation strings
+
+- **Hexadecimal representation** (base-16):
+
+```javascript
+const number = 255;
+console.log(number.toString(16));
+```
+
+- **Binary representation** (base-2):
+
+```javascript
+const number = 255;
+console.log(number.toString(2));
 ```
 
 ## bitwise operations
@@ -151,35 +181,39 @@ console.log(`${aBin} >> ${shift} = ${signedRightShift.toString(2)}`);
 console.log(`${aBin} >>> ${shift} = ${zeroFillRightShift.toString(2)}`);
 ```
 
-For more informations check [the w3schools tutorial](https://www.w3schools.com/js/js_bitwise.asp).
+For more information check out [the w3schools tutorial](https://www.w3schools.com/js/js_bitwise.asp).
 
 ## NaN: Not-A-Number
 
+`NaN` is a special value used to represent **Not-A-Number**.
+
 ```javascript
-// Special value to represent `Not-A-Number`
 const n1 = NaN;
 const n2 = Number("test");
-const check1 = isNaN(n2);
+const check = isNaN(n2);
 
 console.log(n1);
 console.log(n2);
-console.log(check1);
+console.log(check);
 ```
 
-## .toLocaleString(): to formatted number string (eg. decimal and thousand separators)
+## .toLocaleString(): format a number separators (eg. decimal and thousand separators)
+
+Use `number.toLocaleString(locale)` to format a number according to a locale. [[Locale list](https://www.techonthenet.com/js/language_tags.php)]
 
 ```javascript
 const number = 123456.789;
-// Locale list: https://www.techonthenet.com/js/language_tags.php
 const locale = "de-DE";
 
 // German: `,` as decimal separator and `.` as thousand separator
 console.log(number.toLocaleString(locale));
 ```
 
-For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString).
+For more information check the out [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString).
 
-## .toLocaleString(): to formatted currency string
+## .toLocaleString(): format currency
+
+Use `number.toLocaleString()` to format a number as a currency. [[Currency list](https://www.techonthenet.com/js/currency_codes.php)]
 
 ```javascript
 const value = 420.69;

@@ -38,17 +38,23 @@ console.log(person);
 
 ## getter and setter
 
+Use a **getter** to control the value returned by a `property`. Define a getter using the `set property()` syntax.
+
+Use a **setter** to control how the value of a `property` is set. Define a setter using the `set property(value)` syntax.
+
 ```javascript
 class Contact {
 	constructor(email) {
 		this.email = email; // setter is called
 	}
 
+	// Setter for `email`
 	set email(value) {
 		console.log("email set");
 		this._email = value;
 	}
 
+	// Getter for `email`
 	get email() {
 		console.log("email get");
 		return this._email;
@@ -82,6 +88,8 @@ console.log(person);
 
 ## bind `this` to the instance object
 
+One way to bind `this` to a class instance object is using an **arrow function**:
+
 ```javascript
 class ThisPrinter {
 	constructor(value) {
@@ -100,7 +108,7 @@ class ThisPrinter {
 
 const printer = new ThisPrinter("hello");
 
-// `this` is bind to global this
+// `this` is bind to global this (which should be undefined)
 setTimeout(printer.print, 1000);
 
 // Call the method with `this` bound to the instance object
@@ -113,9 +121,10 @@ setTimeout(printer.printArrowFunc, 3000);
 ## inheritance
 
 Use the keyword `extends` to inherit another class.
-Inheritance allows you to create a new class with new or overriden functionality over a base class.
+Inheritance allows you to create a new class with new or overridden functionality over a base class.
 
 ```javascript
+// Base class
 class Item {
 	constructor(value) {
 		this.value = value;
@@ -134,7 +143,7 @@ class Item {
 class Sword extends Item {
 	// Override Item's constructor
 	constructor(value, damage) {
-		super(value); // Call Item's constructor (obligatory when overriding a constructor)
+		super(value); // call Item's constructor (obligatory when overriding a constructor)
 		this.damage = damage;
 	}
 
@@ -146,7 +155,7 @@ class Sword extends Item {
 	// Override Item's `use` method
 	use() {
 		console.log("Inspecting sword...");
-		super.use(); // Call Item's `use` method
+		super.use(); // call Item's `use` method
 	}
 }
 
@@ -157,31 +166,9 @@ sword.attack();
 sword.use();
 ```
 
-```javascript
-class Animal {
-	name = "animal";
-
-	constructor() {
-		alert(this.name);
-	}
-}
-
-class Rabbit extends Animal {
-	name = "rabbit";
-
-	constructor() {
-		super();
-		alert(this.name);
-	}
-}
-
-new Animal(); // animal
-new Rabbit(); // animal
-```
-
 ## static methods/properties
 
-A **static method** is just like a normal function with `this` set to the class constructor. Prepend a method with the keyword `static` to create a static method. Also static methods cannot be called from a object instanciated from the class.
+A **static method** is just like a normal function with `this` set to the class constructor. To create a static method insert the `static` keyword before the method. Also static methods cannot be called from a object instantiated from the class.
 
 ```javascript
 class Calculator {
@@ -197,7 +184,7 @@ console.log(Calculator.add(1, 1));
 // calculator.add(1, 1);
 ```
 
-You can also create **static properties**:
+- You can also create **static properties**:
 
 ```javascript
 class Calculator {
@@ -209,7 +196,7 @@ console.log(Calculator.pi);
 
 ## private methods/properties
 
-Sometimes we want to prevent some methods or properties to be accessed from outside or inheriting classes. Prepend a method/property with `#` to make it private and hide from the consumer of the class.
+Sometimes we want to prevent some methods or properties to be accessed from outside. Prepend a method or property with `#` to make it private and hide from the consumer of the class.
 
 ```javascript
 class Counter {
@@ -220,6 +207,7 @@ class Counter {
 		console.log(this.#count);
 	}
 
+	// Private method
 	#reset() {
 		this.#count = 0;
 	}
@@ -230,7 +218,8 @@ const counter = new Counter();
 counter.increment();
 counter.increment();
 
-// These won't work:
+// Since you can't access private methods/properties
+// outside the class, these won't work 👇:
 // counter.#reset();
 // console.log(counter.#count);
 // counter.#count = 0;
@@ -246,7 +235,7 @@ class Child extends Parent {}
 
 const child = new Child();
 
-console.log(child instanceof Parent);
-console.log(child instanceof Child);
-console.log(child instanceof Array);
+console.log(child instanceof Parent); // true
+console.log(child instanceof Child); // true
+console.log(child instanceof Array); // false
 ```

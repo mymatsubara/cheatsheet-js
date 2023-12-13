@@ -1,6 +1,6 @@
 ## introduction
 
-`Boolean` is a primitive value which can be either `true` or `false`.
+A `Boolean` is a primitive value which can be either `true` or `false`.
 
 ```javascript
 const on = true;
@@ -12,46 +12,77 @@ console.log(off);
 
 They are widely used to execute code conditionally using `if`, `while` or `for` statements.
 
-For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean).
+For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean).
 
 ## comparison operators (==, ===, !=, !==, >, >=, <, <=)
 
-```javascript
-const equal = 1 == 1;
-const strictEqual = 1 === 1;
-const notEqual = 2 != 1;
-const strictNotEqual = 2 !== 1;
-const greaterThan = 10 > 10;
-const greaterEqualThan = 10 >= 10;
-const lessThan = 15 < 14;
-const lessEqualThan = 15 <= 16;
+- Equality comparison (`==` or `===`)
 
-console.log("equal =", equal);
-console.log("scriptEqual =", equal);
-console.log("noEqual =", notEqual);
-console.log("strictNotEqual =", strictNotEqual);
-console.log("greateThan =", greaterThan);
-console.log("greaterEqualThan =", greaterEqualThan);
-console.log("lessThan =", lessThan);
-console.log("lessEqualThan =", lessEqualThan);
+```javascript
+console.log(1 == 1); // equality
+console.log(1 === 1); // strict equality
+
+console.log(1 == "1"); // equality
+console.log(1 === "1"); // strict equality
 ```
 
-For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Expressions_and_operators#comparison_operators).
+- Inequality comparison (`!=` or `!==`)
+
+```javascript
+console.log(1 != 1); // inequality
+console.log(1 !== 1); // strict inequality
+
+console.log(1 != "1"); // inequality
+console.log(1 !== "1"); // strict inequality
+```
+
+- Greater than (`>`) and greater than or equal (`>=`)
+
+```javascript
+console.log(10 > 10); // greater than
+console.log(10 >= 10); // greater than of equal
+```
+
+- Less than (`<`) and less than or equal (`<=`)
+
+```javascript
+console.log(10 > 10); // less than
+console.log(10 >= 10); // less than or equal
+```
+
+For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Expressions_and_operators#comparison_operators).
 
 ## logical operators (&&, ||, !)
 
 - `&&`: and
+
+```javascript
+console.log(true && true); // true
+console.log(true && false); // false
+console.log(false && true); // false
+console.log(false && false); // false
+
+console.log(1 > 2 && 2 > 3);
+```
+
 - `||`: or
+
+```javascript
+console.log(true || true); // true
+console.log(true || false); // true
+console.log(false || true); // true
+console.log(false || false); // false
+
+console.log(1 < 0 || 2 === 2);
+```
+
 - `!`: not (flip boolean)
 
 ```javascript
-const and = 1 > 2 && 2 > 3;
-const or = 1 < 0 || 2 === 2;
-const not = !(4 > 5);
+console.log(!true); // false
+console.log(!false); // true
 
-console.log(and);
-console.log(or);
-console.log(not);
+console.log(!(4 > 5));
 ```
 
 ## if, else if and else
@@ -80,11 +111,11 @@ if (true) {
 }
 ```
 
-- If you want to add more blocks of code to the equation, you can also use `else if` statements:
+- If you want to add more blocks of code to the mix, you can also use `else if` statements:
 
 ```javascript
 // Only the first block of code whose condition is `true` executes
-// Change the boolean values bellow as you like and check the output
+// Change the boolean values bellow and check the output
 if (true) {
 	console.log("if: executed");
 } else if (true) {

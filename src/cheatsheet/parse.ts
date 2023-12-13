@@ -8,7 +8,7 @@ export type CheatcheatMarkdowns = {
 	[section: string]: string;
 };
 
-export function parseCheatcheat(data: CheatcheatMarkdowns): CheatcheatContent {
+export function parseCheatsheet(data: CheatcheatMarkdowns): CheatcheatContent {
 	return Object.entries(data).reduce((result, [section, content]) => {
 		result[section] = parseSectionMarkdown(content);
 		return result;

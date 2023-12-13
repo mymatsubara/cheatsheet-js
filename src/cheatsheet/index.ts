@@ -10,9 +10,9 @@ import number from "./en/number.md?raw";
 import object from "./en/object.md?raw";
 import promise from "./en/promise.md?raw";
 import string from "./en/string.md?raw";
-import { parseCheatcheat } from "./parse";
+import { parseCheatsheet } from "./parse";
 
-export const content = parseCheatcheat({
+export const content = parseCheatsheet({
 	Basics: basics,
 	String: string,
 	Number: number,

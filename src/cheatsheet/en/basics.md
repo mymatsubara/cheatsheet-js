@@ -2,11 +2,11 @@
 
 1. Press `f12` or `Ctrl+Shift+I` (Windows) or `Cmd+Shift+I` (Mac) to open your browser's `Developer tools`.
 2. Go to the `Console` tab.
-3. Type a line of code and press `Enter` to execute it.
+3. Write some javascript and press `Enter` to execute it.
 
 ![Executing javascript on console](/cheatsheet/basics/dev-tools.gif)
 
-## execute javascript from in an inline html <script> tag
+## execute javascript from an inline <script> tag
 
 You can add your **javascript script** directly to your **html files** using the `<script>` tag.
 
@@ -47,7 +47,7 @@ You can reference an **external script** in your html using using `<script src="
 console.log("hello from external script");
 ```
 
-2. Create html file called `index.html` in the **same folder** as `script.js` with the following content:
+2. Create a html file called `index.html` in the **same folder** as `script.js` with the following content:
 
 ```html
 <html>
@@ -90,6 +90,8 @@ console.log("hello from Node.js");
 
 ## console.log()
 
+Use `console.log()` to print messages to the screen.
+
 ```javascript
 // Edit the messages bellow and see the output change
 console.log("👋");
@@ -97,6 +99,10 @@ console.log("message1", "message2", "message3");
 ```
 
 ## comments
+
+Use `//` to create a **single line comment**.
+
+Use `/**/` to create a **multi-line comment**.
 
 ```javascript
 // Single line comments
@@ -137,15 +143,17 @@ alert("👾 Hacker detected 👾");
 ## undefined and null
 
 ```javascript
-// Special value for not assigned data
+// Special value which represents not assigned data
 const u = undefined;
-// Special value for empty or blank value
+// Special value which represents empty or blank value
 const n = null;
 
 console.log(u, n);
 ```
 
-## good links
+## good references
+
+Most of the content on this cheatsheet is based on the following websites:
 
 - [javascript.info](https://javascript.info/): articles about javascript concepts from basics to advanced
 - [MDN docs](https://developer.mozilla.org/): detailed documentation for most javascript concepts

@@ -1,6 +1,6 @@
 ## introduction
 
-A generator is can return multiple values without storing all of them in memory. Use the `function*` syntax to create a function which returns a generator, which is also an iterable. Use the `yield` syntax to return a value from a generator function.
+A generator can return multiple values without storing all of them in memory. Use the `function*` syntax to create a function which returns a generator. Use the `yield` syntax to return a value from a generator function.
 
 ```javascript
 function* createGenerator() {
@@ -16,7 +16,7 @@ function* createGenerator() {
 
 const generator = createGenerator();
 
-// Use .next to manually iterate over the generator
+// Use .next to manually iterate over a generator
 console.log("1:", generator.next());
 console.log("3:", generator.next());
 console.log("5:", generator.next());
@@ -34,7 +34,7 @@ function* createGenerator() {
 
 const generator = createGenerator();
 
-// Use for...of to iterator over a generator
+// Use for...of to iterate over a generator
 for (let i of generator) {
 	console.log(i);
 }
@@ -45,12 +45,14 @@ for (let i of generator) {
 Use the `yield*` syntax to combine (join) multiple generators together.
 
 ```javascript
+// Generator function
 function* range(start, end) {
 	for (let i = start; i < end; i++) {
 		yield i;
 	}
 }
 
+// Generator function which combines 2 generators
 function* combined() {
 	yield* range(0, 3);
 	yield* range(20, 23);

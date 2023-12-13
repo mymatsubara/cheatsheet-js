@@ -1,6 +1,6 @@
 ## why we need them?
 
-Before talking about `Promise`, we first need to understand why we need them. You may have already seem that the javascript runtime provide ways to execute code asyncronously - code which will execute in a later time. One way to do this is using the `setTimeout` function which receives a **callback** - a function which will be called later. For example:
+Before talking about `Promise`, we first need to understand why we need them. You may have already seem that the javascript runtime provide ways to execute code asynchronously - code which will execute in a later time. One way to do this is using the `setTimeout` function which receives a **callback** - a function which will be called later. For example:
 
 ```javascript
 const time = 500;
@@ -11,7 +11,7 @@ const callback = () => {
 setTimeout(callback, time);
 ```
 
-The problem starts to show when we want to execute many asyncronous actions in sequence. For instance, if we want to print a messages in sequence separated by specified intervals, we could use multiple nested `setTimeout` calls:
+The problem starts to show when we want to execute many asynchronous actions in sequence. For instance, if we want to print a messages in sequence separated by specified intervals, we could use multiple nested `setTimeout` calls:
 
 ```javascript
 setTimeout(() => {
@@ -27,18 +27,18 @@ setTimeout(() => {
 }, 500);
 ```
 
-This code is definately **not easy to read**, and it gets even worse when we add more actions. This uncomfortable **nesting of callbacks** is commonly called as [callback hell](http://callbackhell.com/). One way to solve this problem is using `Promise`s.
+The code above is definitely **not easy to read**, and it gets even worse when we add more actions. This uncomfortable **nesting of callbacks** is commonly called as [callback hell](http://callbackhell.com/). One way to solve this problem is using `Promise`s.
 
 ## introduction
 
-A `Promise` allow you to wrap a asyncronous action which can be subscribed using the methods `.then()`, `.catch()` and `.finally()`.
+A `Promise` allows you to wrap an asynchronous action which can then be subscribed to using the methods `.then()`, `.catch()` and `.finally()`.
 
-You usually don't need to create `Promise` manually, but it is good to know how to do it. It'll help you understand **async/await** or if you need to promisify a function.
+You usually don't create `Promise`s manually, but it is good to know how to do it. It'll help you understand **async/await** and it'll come in handy if you need to _"promisify"_ a function yourself.
 
-To create a `Promise`, you need to pass an **executor function** - the function which wraps the asyncronous action. The executor function should have the following 2 arguments:
+To create a `Promise`, you need to pass an **executor function** - the function which wraps the asynchronous action. The executor function will receive the following 2 arguments:
 
-- `resolve(result)`: function which you have to call when the asyncronous action completes successfully.
-- `reject(error)`: function which you have to call when the asyncronous action fails.
+- `resolve(result)`: a function which you have to call when the asynchronous action **completes successfully**.
+- `reject(error)`: a function which you have to call when the asynchronous action **fails**.
 
 Bellow is an example of an `Promise` which resolves after `500` milliseconds:
 
@@ -50,8 +50,8 @@ const executorFunction = (resolve, reject) => {
 		console.log("inside timeout");
 
 		if (success) {
-			// Notify all subscribers that the promisse fullfilled successfully
-			resolve("success");
+			// Notify all subscribers that the promises fulfilled
+			resolve("return value");
 		} else {
 			// Notify all subscribers that the promise failed
 			reject(new Error("error message"));
@@ -80,11 +80,11 @@ promise
 // because `.then`, `.catch` and `.finally` also returns a `Promise`
 ```
 
-For more informations about promises check out the [javascript.info article](https://javascript.info/promise-basics)
+For more information about promises check out the [javascript.info article](https://javascript.info/promise-basics)
 
 ## chaining
 
-The handler passed to `.then()` can return a `value` which can also be a promise. This allow you to chain multiple `Promise`s which will run in sequence. This pattern can be used to avoid the dreaded [callback hell](http://callbackhell.com/).
+The handler passed to `.then()` can return a `value` which can also be a `Promise`. This allow you to chain multiple `Promise`s which will run in sequence. This pattern can be used to avoid the dreaded [callback hell](http://callbackhell.com/).
 
 ```javascript
 // Return a Promise which resolve after `time` milliseconds
@@ -108,7 +108,7 @@ wait(500)
 	.then(() => console.log("fourth message"));
 ```
 
-If we don't use `Promise` chains, the solution could be like this:
+If we use **callbacks** instead, the solution would be like this:
 
 ```javascript
 setTimeout(() => {
@@ -125,7 +125,7 @@ setTimeout(() => {
 }, 500);
 ```
 
-This solution is a little bit harder to read compared to `Promise` chaining. Still, the `Promise` chaining solution is still a little cumbersome. As an alternative, you can use `async/await` which will be explained in sequence.
+The code above is a little bit **harder to read** compared to using `Promise` chaining. Still, the `Promise` chaining solution is still cumbersome. As an alternative, you can use `async/await` which will be explained in sequence.
 
 ## async/await
 
@@ -142,7 +142,7 @@ const promise = number();
 promise.then((result) => console.log(result));
 ```
 
-`async` by itself is not very useful, and that's why we have the `await` keyword - which can only be used inside an function marked as `async` (some modern browsers allow top-level `await` though).
+`async` by itself is not very useful, and that's why we have the `await` keyword - which can only be used inside an function marked as `async` (some modern browsers also allow top-level `await` though).
 
 Use the `await` keyword before a `Promise` to _"await"_ until the promise is resolved:
 
@@ -176,7 +176,7 @@ async function execute() {
 execute().then((result) => console.log("result =", result));
 ```
 
-if we'd write the same the `execute` function without using `async`/`await`, we'd get something like this:
+If we'd write the same code without `async`/`await`, we'd get something like this:
 
 ```javascript
 // Returns a Promise which resolves after `time` milliseconds
@@ -214,7 +214,7 @@ A little bit harder to understand compared to the `async/await` solution, right?
 
 ## Promise.all()
 
-Use `Promise.all(promises)` to wait for multiple promises concurrently. Resolves to an array with all the promises results in the order they were provided.
+- Use `Promise.all(promises)` to await for multiple promises concurrently. It resolves to an array with all the promises results in the order they were provided.
 
 ```javascript
 const promises = [
@@ -227,7 +227,7 @@ const promises = [
 Promise.all(promises).then((result) => console.log(result));
 ```
 
-If one of the promises is rejected, then `Promise.all(promises)` is also rejected.
+- If one of the promises is rejected, then `Promise.all(promises)` is also rejected.
 
 ```javascript
 const promises = [
@@ -246,9 +246,9 @@ Promise.all(promises)
 
 ## Promise.allSettled()
 
-Use `Promise.allSettled(promises)` to wait for multiple promises even if a rejection occurs. Resolves to an array objects of the following types:
+Use `Promise.allSettled(promises)` to await for multiple promises **even if a rejection occurs**. Resolves to an array objects of the following types:
 
-- `{status: "fullfilled", value: result}`
+- `{status: "fulfilled", value: result}`
 - `{status: "rejected", reason: error}`
 
 ```javascript
@@ -272,7 +272,7 @@ TODO
 
 ## error handling
 
-If an exception occurs when `await`ing for a `Promise`, you can handle the error like a common error using a `try...catch` block.
+If an exception occurs when `await`ing for a `Promise`, you can handle the error just like a common error using a `try...catch` block.
 
 ```javascript
 function promiseReject() {
@@ -281,21 +281,23 @@ function promiseReject() {
 
 async function execute() {
 	try {
-		// if the promise is not awaited, the exception cannot be catched
+		// If the promise is not awaited, the exception cannot be caught
 		promiseReject();
 
 		console.log("before await");
 		await promiseReject();
 		console.log("after await");
 	} catch (err) {
-		console.log("error catched. message:", err.message);
+		console.log("error caught. message:", err.message);
 	}
 }
 
 execute();
 ```
 
-You can also handle `Promise`s exceptions using the `.catch()` method:
+`.catch()` can also be used to handle `Promise` exceptions.
+
+- You can use `.catch()` for rejected `Promise`s:
 
 ```javascript
 // Rejected promise
@@ -312,6 +314,8 @@ promise
 	});
 ```
 
+- You can use `.catch()` for `Promise`s that throws:
+
 ```javascript
 // Promise that throws
 const promise = new Promise((resolve, reject) => {
@@ -327,11 +331,13 @@ promise
 	});
 ```
 
+- You can use `.catch()` to handle errors from preceding `.then()` handlers:
+
 ```javascript
 // Change this to see the results
 const error = true;
 
-// Successfull promise
+// Successful promise
 const promise = new Promise((resolve, reject) => {
 	resolve("ok");
 });

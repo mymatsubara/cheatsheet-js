@@ -8,15 +8,15 @@ function greeting() {
 	console.log("hello from function");
 }
 
-// Use `()` in front of the name of the function to call it
+// Place `()` in front of the name of the function to call it
 greeting();
 greeting();
 greeting();
 ```
 
-For more informations about functions check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Functions).
+For more information about functions check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Functions).
 
-## function with inputs
+## function which receives inputs
 
 - You can create functions which **receives one input**:
 
@@ -35,12 +35,12 @@ hello(name2);
 - You can also create functions which **receives more than one input**:
 
 ```javascript
-// receives three inputs
+// Receives three inputs
 function threeInputs(a, b, c) {
 	console.log(`function: a = ${a}, b = ${b}, c = ${c}`);
 }
 
-// receives an arbitrary number of inputs
+// Receives an arbitrary number of inputs
 function nInputs(...args) {
 	console.log(`function: args =`, args);
 }
@@ -51,7 +51,7 @@ nInputs(4, 2);
 nInputs(4, 2, 1, 5, 6);
 ```
 
-## function with return value
+## function returns returns a value
 
 ```javascript
 function sum(a, b) {
@@ -81,7 +81,7 @@ console.log(result);
 
 ## arrow functions
 
-Another way to declare functions is using using the `arrow function expression (=>)`:
+Another way to declare functions is using using the **arrow function expression** (`=>`):
 
 ```javascript
 const greeting = () => {
@@ -92,7 +92,8 @@ const sum1 = (a, b) => {
 	return a + b;
 };
 
-// if return value
+// If the body of the arrow function is a single line expression,
+// you can omit the `return` statement
 const sum2 = (a, b) => a + b;
 
 greeting();
@@ -100,7 +101,7 @@ console.log(sum1(1, 2));
 console.log(sum2(1, 2));
 ```
 
-Arrow function have some other minor differences. For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Functions#arrow_functions).
+Arrow function have some other minor differences. For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Functions#arrow_functions).
 
 ## function references
 
@@ -151,12 +152,12 @@ function exec(f) {
 }
 
 function greeting() {
-	console.log("hello from greeting\n");
+	console.log("1: hello from greeting\n");
 }
 
 exec(greeting);
 exec(() => {
-	console.log("hello from anonymous function\n");
+	console.log("2: hello from anonymous function\n");
 });
 ```
 
@@ -184,11 +185,11 @@ console.log(evenNumbers);
 console.log(greaterThan4);
 ```
 
-The `filter` function have similiar behavior as the method [`Array.prototype.filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+The `filter` function have similar behavior as the method [`Array.prototype.filter()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
 ## higher order function
 
-In javascript **functions can be passed as argument** and **returned from functions**.
+In javascript, **functions can be passed as argument** and **returned from functions**.
 
 A `higher order function` is a special kind of function that **takes as input one or more functions and returns another function**.
 
@@ -214,7 +215,7 @@ console.log(tripleThenSquare(a)); // (3 * a) * (3 * a)
 
 ## recursion
 
-A function can **call itself**. When this happens we usually call it a `recursive function`:
+A function that **calls itself** is usually called an **recursive function**:
 
 ```javascript
 function factorial(n) {
@@ -237,7 +238,7 @@ console.log(result);
 
 ## .call(): call a function with another `this`
 
-If you want to change the `this` bindind when calling a function, use the `call` method.
+- If you want to change the `this` binding when calling a function, use the `.call()` method:
 
 ```javascript
 const obj1 = {
@@ -258,7 +259,7 @@ obj1.printThis();
 obj1.printThis.call(obj2);
 ```
 
-You can also pass function arguments to `call`.
+- You can also pass function arguments to `.call()`:
 
 ```javascript
 const obj1 = {
@@ -283,7 +284,7 @@ obj1.printThis.call(obj2, 420, "gigachad");
 
 ## .apply(): call a function with another `this`
 
-The only difference between `apply` and `call` is that the former take function arguments as an array.
+The only difference between `.apply()` and `.call()` is that the former take function arguments as an array.
 
 ```javascript
 const obj1 = {
@@ -308,7 +309,7 @@ obj1.printThis.call(obj2, 420, "call");
 
 ## .bind(): create a new function with a bound `this`
 
-When a new function is created with `bind` the value of `this` will not change with the context.
+When a new function is created with `.bind()`, the value of `this` will not change with the context.
 
 ```javascript
 function returnThis() {
@@ -327,7 +328,7 @@ const returnThisBound = returnThis.bind(obj2);
 obj1.returnThis = returnThis;
 obj1.returnThisBound = returnThisBound;
 
-// Global `this``
+// Global `this`
 console.log("returnThis() =", returnThis());
 
 // `obj1` `this`
@@ -350,4 +351,4 @@ console.log("returnThis() =", returnThis());
 console.log("returnThisBound() =", returnThisBound());
 ```
 
-For more informations about `bind` check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
+For more information about `bind` check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).

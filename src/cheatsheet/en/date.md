@@ -1,6 +1,6 @@
 ## introduction
 
-`Date` is a javascript object which enables working with datetimes.
+A `Date` is a javascript object which enables working with datetime.
 
 ```javascript
 const now = new Date();
@@ -20,7 +20,7 @@ console.log(date1);
 console.log(date2);
 ```
 
-For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format).
+For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format).
 
 ## from year, month, day, hours, minutes and seconds
 
@@ -47,34 +47,81 @@ console.log(startSecond);
 
 ## get year, month, day, weekday, hours, minutes, seconds, milliseconds and timestamp
 
+- `date.getFullYear()`:
+
 ```javascript
 const date = new Date();
+console.log(date);
+console.log(date.getFullYear());
+```
 
-const year = date.getFullYear();
-const month = date.getMonth();
-const day = date.getDate();
-const weekday = date.getDay();
-const hours = date.getHours();
-const minutes = date.getMinutes();
-const seconds = date.getSeconds();
-const milliseconds = date.getMilliseconds();
-const timestamp = date.getTime(); // unix time stamp
+- `date.getMonth()` (returns 0-indexed month. eg. January: 0):
 
-console.log("date:", date);
-console.log("date.getFullYear():", year);
-console.log("date.getMonth():", month, "(0-indexed - eg. January: 0)");
-console.log("date.getDate():", day);
-console.log("date.getDay():", weekday, "(0-indexed - eg. Sunday: 0)");
-console.log("date.getHours():", hours);
-console.log("date.getMinutes():", minutes);
-console.log("date.getSeconds():", seconds);
-console.log("date.getMilliseconds():", milliseconds);
-console.log("date.getTime():", timestamp);
+```javascript
+const date = new Date();
+console.log(date);
+console.log(date.getMonth());
+```
+
+- `date.getDate()`:
+
+```javascript
+const date = new Date();
+console.log(date);
+console.log(date.getDate());
+```
+
+- `date.getDay()` (returns 0-indexed week day. eg. Sunday: 0):
+
+```javascript
+const date = new Date();
+console.log(date);
+console.log(date.getDay());
+```
+
+- `date.getHours()`:
+
+```javascript
+const date = new Date();
+console.log(date);
+console.log(date.getHours());
+```
+
+- `date.getMinutes()`:
+
+```javascript
+const date = new Date();
+console.log(date);
+console.log(date.getMinutes());
+```
+
+- `date.getSeconds()`:
+
+```javascript
+const date = new Date();
+console.log(date);
+console.log(date.getSeconds());
+```
+
+- `date.getMilliseconds()`:
+
+```javascript
+const date = new Date();
+console.log(date);
+console.log(date.getMilliseconds());
+```
+
+- `date.getTime()` (returns [unix timestamp](https://en.wikipedia.org/wiki/Unix_time)):
+
+```javascript
+const date = new Date();
+console.log(date);
+console.log(date.getTime()); // unix timestamp
 ```
 
 ## from epoch timestamp
 
-`Epoch timestamp` is the number of miliseconds elapsed after the midnight at the beginning of January 1, 1970, UTC.
+`Epoch timestamp` is the number of milliseconds elapsed after the midnight at the beginning of January 1st, 1970, UTC.
 
 ```javascript
 const date = new Date(628021800000);
@@ -84,36 +131,75 @@ console.log(date);
 
 ## to formatted string
 
+- `date.toString()`:
+
 ```javascript
 const date = new Date();
+console.log(date.toString());
+```
 
-const toString = date.toString();
-const toDateString = date.toDateString();
-const toTimeString = date.toTimeString();
-const toISOString = date.toISOString();
-const toJSON = date.toJSON();
-const toUTCString = date.toUTCString();
-const toLocaleString = date.toLocaleString();
-const toLocaleDateString = date.toLocaleDateString();
-const toLocaleTimeString = date.toLocaleTimeString();
+- `date.toDateString()`:
 
-console.log(toString, "- date.toString()");
-console.log(toDateString, "- date.toDateString()");
-console.log(toTimeString, "- date.toTimeString()");
-console.log(toISOString, "- date.toISOString()");
-console.log(toJSON, "- date.toJSON()");
-console.log(toUTCString, "- date.toUTCString()");
-console.log(toLocaleString, "- date.toLocaleString()");
-console.log(toLocaleDateString, "- date.toLocaleDateString()");
-console.log(toLocaleTimeString, "- date.toLocaleTimeString()");
+```javascript
+const date = new Date();
+console.log(date.toDateString());
+```
+
+- `date.toTimeString()`:
+
+```javascript
+const date = new Date();
+console.log(date.toTimeString());
+```
+
+- `date.toISOString()`:
+
+```javascript
+const date = new Date();
+console.log(date.toISOString());
+```
+
+- `date.toJSON()`:
+
+```javascript
+const date = new Date();
+console.log(date.toJSON());
+```
+
+- `date.toUTCString()`:
+
+```javascript
+const date = new Date();
+console.log(date.toUTCString());
+```
+
+- `date.toLocaleString()`:
+
+```javascript
+const date = new Date();
+console.log(date.toLocaleString());
+```
+
+- `date.toLocaleDateString()`:
+
+```javascript
+const date = new Date();
+console.log(date.toLocaleDateString());
+```
+
+- `date.toLocaleTimeString()`:
+
+```javascript
+const date = new Date();
+console.log(date.toLocaleTimeString());
 ```
 
 ## .toLocaleDateString(): more control over formatted string
 
 ```javascript
-// Set locale to `undefined` to use browser default language
+// Set locale to `undefined` to use the browser's default language
 const locale = "en-US";
-// All available options are listed bellow this code block
+
 const options = {
 	weekday: "long",
 	year: "2-digit",
@@ -159,4 +245,19 @@ interface DateTimeFormatOptions {
 }
 ```
 
-For more informations check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString).
+For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString).
+
+## to specific timezone
+
+Use `date.toLocaleString()` to format a `Date` to a specific timezone. [[Timezones list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)]
+
+```javascript
+const now = new Date();
+const formatted = now.toLocaleString(undefined, {
+	timezone: "America/Cambridge_Bay"
+});
+
+console.log(formatted);
+```
+
+For more information about `date.toLocaleString()` check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString).

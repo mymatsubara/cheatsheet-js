@@ -6,25 +6,23 @@ Usually when something unexpected happens in your code, an error is thrown and y
 // If an error occurs inside the `try` block,
 // the code execution jumps to the `catch` block
 try {
-	console.log("before error");
-
+	console.log("1: before error");
 	undefined_variable;
-
-	console.log("after error"); // not executed
+	console.log("x: after error (not executed)");
 } catch (err) {
-	console.log("inside catch");
+	console.log("2: inside catch");
 
-	// `err` contains informations about error (usually a `name` and `message`,
-	// sometimes a `stack` depending on the runtime)
-	console.log(err.name);
-	console.log(err.message);
-	console.log(err.stack);
+	// `err` contains information about the error (usually the `name` and `message`,
+	// sometimes the `stack` depending on the runtime)
+	console.log("3:", err.name);
+	console.log("4:", err.message);
+	console.log("5:", err.stack);
 }
 ```
 
 ## throw
 
-If you want to generate your own errors, use the `throw` statement followed by an error object. If you want, the error thrown can then be catched using a `try...catch`.
+Use the `throw` statement emit your own custom errors. Even though you can `throw` any value (primitives or objects), it is advised to `throw` an object which inherits from `Error`.
 
 ```javascript
 function divide(a, b) {
@@ -48,22 +46,36 @@ try {
 
 ## finally
 
-Use the `finally` construct along with `try...catch` construct to run a block of code whether a error is throw or not. `finally` block also executes if a `return` statement is put inside a `try` block.
+Use the `finally` construct along with `try...catch` to run a block of code whether a error is thrown or not. The `finally` block also executes if a `return` statement is put inside a `try` block. Bellow are some example:
+
+- Without errors:
 
 ```javascript
-// WITHOUT ERROR
 try {
 	console.log("try block executed");
 } catch (err) {
 	console.log("catch block executed");
-	throw err;
 } finally {
 	console.log("🚩 FINALLY BLOCK EXECUTED");
 }
 ```
 
+- Error inside `try` block:
+
 ```javascript
-// WITH ERROR
+try {
+	console.log("try block executed");
+	bad_code;
+} catch (err) {
+	console.log("catch block executed");
+} finally {
+	console.log("🚩 FINALLY BLOCK EXECUTED");
+}
+```
+
+- Error inside `catch` block:
+
+```javascript
 try {
 	console.log("try block executed");
 	bad_code;
@@ -75,8 +87,9 @@ try {
 }
 ```
 
+- `return` inside `try` block:
+
 ```javascript
-// WITH RETURN
 function finallyWithReturn() {
 	try {
 		console.log("try block executed");
@@ -92,7 +105,7 @@ console.log("result = ", result);
 
 ## custom errors
 
-Create a custom error class by extending `Error`.
+Create a custom error class by extending from `Error`.
 
 ```javascript
 class CustomError extends Error {
