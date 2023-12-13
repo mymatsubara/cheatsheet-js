@@ -5,7 +5,7 @@ Before talking about `Promise`, we first need to understand why we need them. Yo
 ```javascript
 const time = 500;
 const callback = () => {
-	console.log("execute after delay");
+	console.log('execute after delay');
 };
 
 setTimeout(callback, time);
@@ -15,13 +15,13 @@ The problem starts to show when we want to execute many asynchronous actions in 
 
 ```javascript
 setTimeout(() => {
-	console.log("first message");
+	console.log('first message');
 
 	setTimeout(() => {
-		console.log("second message");
+		console.log('second message');
 
 		setTimeout(() => {
-			console.log("third message");
+			console.log('third message');
 		}, 600);
 	}, 1000);
 }, 500);
@@ -47,14 +47,14 @@ const success = true; // set to `false` to trigger reject
 
 const executorFunction = (resolve, reject) => {
 	setTimeout(() => {
-		console.log("inside timeout");
+		console.log('inside timeout');
 
 		if (success) {
 			// Notify all subscribers that the promises fulfilled
-			resolve("return value");
+			resolve('return value');
 		} else {
 			// Notify all subscribers that the promise failed
-			reject(new Error("error message"));
+			reject(new Error('error message'));
 		}
 	}, 500);
 };
@@ -65,15 +65,15 @@ const promise = new Promise(executorFunction);
 // Subscribe to the promise
 promise
 	.then((result) => {
-		console.log("inside .then");
-		console.log("result =", result);
+		console.log('inside .then');
+		console.log('result =', result);
 	})
 	.catch((err) => {
-		console.log("inside .catch");
-		console.log("err =", err);
+		console.log('inside .catch');
+		console.log('err =', err);
 	})
 	.finally(() => {
-		console.log("inside .finally");
+		console.log('inside .finally');
 	});
 
 // Obs: we can chain methods over a `Promise`,
@@ -94,31 +94,31 @@ function wait(time) {
 
 wait(500)
 	.then(() => {
-		console.log("first message");
+		console.log('first message');
 		return wait(700);
 	})
 	.then(() => {
-		console.log("second message");
+		console.log('second message');
 		return wait(800);
 	})
 	.then(() => {
-		console.log("third message");
+		console.log('third message');
 		return wait(1000);
 	})
-	.then(() => console.log("fourth message"));
+	.then(() => console.log('fourth message'));
 ```
 
 If we use **callbacks** instead, the solution would be like this:
 
 ```javascript
 setTimeout(() => {
-	console.log("first message");
+	console.log('first message');
 	setTimeout(() => {
-		console.log("second message");
+		console.log('second message');
 		setTimeout(() => {
-			console.log("third message");
+			console.log('third message');
 			setTimeout(() => {
-				console.log("fourth message");
+				console.log('fourth message');
 			}, 1000);
 		}, 800);
 	}, 700);
@@ -149,14 +149,12 @@ Use the `await` keyword before a `Promise` to _"await"_ until the promise is res
 ```javascript
 // Returns a Promise which resolves after `time` milliseconds
 function wait(time) {
-	return new Promise((resolve, reject) =>
-		setTimeout(() => resolve(time), time)
-	);
+	return new Promise((resolve, reject) => setTimeout(() => resolve(time), time));
 }
 
 // Since this function is marked as `async`, we can `await` promises
 async function execute() {
-	console.log("starting async function...");
+	console.log('starting async function...');
 
 	const promise = wait(500); // save the promise returned in a variable
 	const time1 = await promise; // await until the promise is resolved
@@ -168,12 +166,12 @@ async function execute() {
 	const time3 = await wait(700); // await the promise directly
 	console.log(`message after ${time3} ms`);
 
-	console.log("ending async function...");
-	return "async function";
+	console.log('ending async function...');
+	return 'async function';
 }
 
 // Async functions return a `Promise`
-execute().then((result) => console.log("result =", result));
+execute().then((result) => console.log('result =', result));
 ```
 
 If we'd write the same code without `async`/`await`, we'd get something like this:
@@ -181,13 +179,11 @@ If we'd write the same code without `async`/`await`, we'd get something like thi
 ```javascript
 // Returns a Promise which resolves after `time` milliseconds
 function wait(time) {
-	return new Promise((resolve, reject) =>
-		setTimeout(() => resolve(time), time)
-	);
+	return new Promise((resolve, reject) => setTimeout(() => resolve(time), time));
 }
 
 function execute() {
-	console.log("starting async function...");
+	console.log('starting async function...');
 
 	const promise = wait(500); // save the promise returned in a variable
 	return promise.then((time1) => {
@@ -199,15 +195,15 @@ function execute() {
 			return wait(700).then((time3) => {
 				console.log(`message after ${time3} ms`);
 
-				console.log("ending async function...");
-				return "async function";
+				console.log('ending async function...');
+				return 'async function';
 			});
 		});
 	});
 }
 
 // Async functions return a `Promise`
-execute().then((result) => console.log("result =", result));
+execute().then((result) => console.log('result =', result));
 ```
 
 A little bit harder to understand compared to the `async/await` solution, right? That's the power of `async/await`!
@@ -232,16 +228,13 @@ Promise.all(promises).then((result) => console.log(result));
 ```javascript
 const promises = [
 	new Promise((resolve, _) => setTimeout(() => resolve(3), 100)),
-	new Promise(
-		(_, reject) => setTimeout(() => reject(new Error("promise rejected"))),
-		200
-	),
+	new Promise((_, reject) => setTimeout(() => reject(new Error('promise rejected'))), 200),
 	new Promise((resolve, _) => setTimeout(() => resolve(3), 300))
 ];
 
 Promise.all(promises)
 	.then((result) => console.log(result))
-	.catch((err) => console.log("Error:", err));
+	.catch((err) => console.log('Error:', err));
 ```
 
 ## Promise.allSettled()
@@ -254,21 +247,14 @@ Use `Promise.allSettled(promises)` to await for multiple promises **even if a re
 ```javascript
 const promises = [
 	new Promise((resolve, _) => setTimeout(() => resolve(3), 100)),
-	new Promise(
-		(_, reject) => setTimeout(() => reject(new Error("promise rejected"))),
-		200
-	),
+	new Promise((_, reject) => setTimeout(() => reject(new Error('promise rejected'))), 200),
 	new Promise((resolve, _) => setTimeout(() => resolve(3), 300))
 ];
 
 Promise.allSettled(promises)
 	.then((result) => console.log(result))
-	.catch((err) => console.log("Error:", err));
+	.catch((err) => console.log('Error:', err));
 ```
-
-## thenable
-
-TODO
 
 ## error handling
 
@@ -276,7 +262,7 @@ If an exception occurs when `await`ing for a `Promise`, you can handle the error
 
 ```javascript
 function promiseReject() {
-	return new Promise((_, reject) => reject(new Error("promise reject")));
+	return new Promise((_, reject) => reject(new Error('promise reject')));
 }
 
 async function execute() {
@@ -284,11 +270,11 @@ async function execute() {
 		// If the promise is not awaited, the exception cannot be caught
 		promiseReject();
 
-		console.log("before await");
+		console.log('before await');
 		await promiseReject();
-		console.log("after await");
+		console.log('after await');
 	} catch (err) {
-		console.log("error caught. message:", err.message);
+		console.log('error caught. message:', err.message);
 	}
 }
 
@@ -302,15 +288,15 @@ execute();
 ```javascript
 // Rejected promise
 const promise = new Promise((resolve, reject) => {
-	reject(new Error("promise rejected"));
+	reject(new Error('promise rejected'));
 });
 
 promise
 	.then((result) => {
-		console.log("then not executed");
+		console.log('then not executed');
 	})
 	.catch((error) => {
-		console.log("error message:", error.message);
+		console.log('error message:', error.message);
 	});
 ```
 
@@ -319,15 +305,15 @@ promise
 ```javascript
 // Promise that throws
 const promise = new Promise((resolve, reject) => {
-	throw new Error("error thrown");
+	throw new Error('error thrown');
 });
 
 promise
 	.then((result) => {
-		console.log("then not executed");
+		console.log('then not executed');
 	})
 	.catch((error) => {
-		console.log("error message:", error.message);
+		console.log('error message:', error.message);
 	});
 ```
 
@@ -339,23 +325,23 @@ const error = true;
 
 // Successful promise
 const promise = new Promise((resolve, reject) => {
-	resolve("ok");
+	resolve('ok');
 });
 
 promise
 	.then((result) => {
-		console.log("first .then() result =", result);
+		console.log('first .then() result =', result);
 
 		if (error) {
-			throw new Error("unexpected error");
+			throw new Error('unexpected error');
 		} else {
 			return 10;
 		}
 	})
 	.catch((error) => {
-		console.log("error message:", error.message);
+		console.log('error message:', error.message);
 	})
 	.then((result) => {
-		console.log("second .then() result =", result);
+		console.log('second .then() result =', result);
 	});
 ```

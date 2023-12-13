@@ -83,26 +83,18 @@ console.log(path);
 
 ## .length
 
-`string.length` contains the number of characters of a string.
+`string.length` contains the number of characters in a string.
 
 ```javascript
-const s = '12345';
-const length = s.length;
-
-console.log('s.length =', length);
+console.log('12345'.length);
 ```
 
 ## .split()
 
-`string.split(separator)` returns an array of the substrings delimited by `separator`.
+`string.split(separator)` returns an array of the substrings delimited by a `separator`.
 
 ```javascript
-const s = 'a,b,c,123';
-const separator = ',';
-
-const split = s.split(separator);
-
-console.log(`s.split(separator) =`, split);
+console.log('a,b,c,123'.split(','));
 ```
 
 ## .substring()
@@ -126,12 +118,7 @@ console.log('s.substring(start, end):', s2);
 `string.charAt(index)` returns the character at `index`.
 
 ```javascript
-const s = 'abcdefg';
-const index = 3;
-
-const char = s.charAt(index);
-
-console.log('s.charAt(index):', char);
+console.log('abcdefg'.chatAt(3));
 ```
 
 ## .toLowerCase()
@@ -139,8 +126,7 @@ console.log('s.charAt(index):', char);
 `string.toLowerCase()` returns a copy of `string` with all characters in lowercase.
 
 ```javascript
-const s = 'Hello World!';
-console.log(s.toLowerCase());
+console.log('Hello World!'.toLowerCase());
 ```
 
 ## .toUpperCase()
@@ -148,6 +134,5 @@ console.log(s.toLowerCase());
 `string.toUpperCase()` returns a copy of `string` with all characters in uppercase.
 
 ```javascript
-const s = 'Hello World!';
-console.log(s.toUpperCase());
+console.log('Hello World!'.toUpperCase());
 ```

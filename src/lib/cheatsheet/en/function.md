@@ -5,7 +5,7 @@ A function is a **reference to a block of code** that can be called many time in
 ```javascript
 // Declare a function called `greeting`
 function greeting() {
-	console.log("hello from function");
+	console.log('hello from function');
 }
 
 // Place `()` in front of the name of the function to call it
@@ -25,8 +25,8 @@ function hello(name) {
 	console.log(`Hello, ${name}!`);
 }
 
-const name1 = "World";
-const name2 = "Gigachad";
+const name1 = 'World';
+const name2 = 'Gigachad';
 
 hello(name1);
 hello(name2);
@@ -58,21 +58,21 @@ function sum(a, b) {
 	console.log(`Summing ${a} + ${b}...`);
 	return a + b;
 
-	console.log("not executed: function has already exited/returned");
+	console.log('not executed: function has already exited/returned');
 }
 
 const result1 = sum(1, 2);
 const result2 = sum(5, 3);
 
-console.log("result1 =", result1);
-console.log("result2 =", result2);
+console.log('result1 =', result1);
+console.log('result2 =', result2);
 ```
 
 To **return more than one data** from a function, use an `Array` or an `Object`:
 
 ```javascript
 function multipleValues() {
-	return ["a", "b"];
+	return ['a', 'b'];
 }
 
 const result = multipleValues();
@@ -85,7 +85,7 @@ Another way to declare functions is using using the **arrow function expression*
 
 ```javascript
 const greeting = () => {
-	console.log("hello from greeting");
+	console.log('hello from greeting');
 };
 
 const sum1 = (a, b) => {
@@ -111,7 +111,7 @@ You can even log the function without calling it!
 
 ```javascript
 function greeting() {
-	console.log("hello from function");
+	console.log('hello from function');
 }
 
 // Log the function reference without calling it
@@ -129,7 +129,7 @@ greetingRef();
 
 ```javascript
 const greeting = () => {
-	console.log("hello from function");
+	console.log('hello from function');
 };
 
 // Log the function reference without calling it
@@ -147,17 +147,17 @@ greetingRef();
 
 ```javascript
 function exec(f) {
-	console.log("Executing function reference", f);
+	console.log('Executing function reference', f);
 	f();
 }
 
 function greeting() {
-	console.log("1: hello from greeting\n");
+	console.log('1: hello from greeting\n');
 }
 
 exec(greeting);
 exec(() => {
-	console.log("2: hello from anonymous function\n");
+	console.log('2: hello from anonymous function\n');
 });
 ```
 
@@ -242,14 +242,14 @@ console.log(result);
 
 ```javascript
 const obj1 = {
-	name: "obj1",
+	name: 'obj1',
 	printThis: function () {
 		console.log(this);
 	}
 };
 
 const obj2 = {
-	name: "obj2"
+	name: 'obj2'
 };
 
 // Call the method normally
@@ -263,23 +263,23 @@ obj1.printThis.call(obj2);
 
 ```javascript
 const obj1 = {
-	name: "obj1",
+	name: 'obj1',
 	printThis: function (arg1, arg2) {
 		console.log(this);
-		console.log("arg1:", arg1);
-		console.log("arg2:", arg2);
+		console.log('arg1:', arg1);
+		console.log('arg2:', arg2);
 	}
 };
 
 const obj2 = {
-	name: "obj2"
+	name: 'obj2'
 };
 
 // Call the method normally
-obj1.printThis(69, "yeet");
+obj1.printThis(69, 'yeet');
 
 // Call the method with `this` replaced by `obj2`
-obj1.printThis.call(obj2, 420, "gigachad");
+obj1.printThis.call(obj2, 420, 'gigachad');
 ```
 
 ## .apply(): call a function with another `this`
@@ -288,23 +288,20 @@ The only difference between `.apply()` and `.call()` is that the former take fun
 
 ```javascript
 const obj1 = {
-	name: "obj1",
+	name: 'obj1',
 	printThis: function (arg1, arg2) {
 		console.log(this);
-		console.log("arg1:", arg1);
-		console.log("arg2:", arg2);
+		console.log('arg1:', arg1);
+		console.log('arg2:', arg2);
 	}
 };
 
 const obj2 = {
-	name: "obj2"
+	name: 'obj2'
 };
 
 // Arguments are passed as an array
-obj1.printThis.apply(obj2, [333, "apply"]);
-
-// Arguments are passed individually
-obj1.printThis.call(obj2, 420, "call");
+obj1.printThis.apply(obj2, [333, 'apply']);
 ```
 
 ## .bind(): create a new function with a bound `this`
@@ -317,11 +314,11 @@ function returnThis() {
 }
 
 const obj2 = {
-	name: "obj2"
+	name: 'obj2'
 };
 
 const obj1 = {
-	name: "obj1"
+	name: 'obj1'
 };
 
 const returnThisBound = returnThis.bind(obj2);
@@ -329,26 +326,26 @@ obj1.returnThis = returnThis;
 obj1.returnThisBound = returnThisBound;
 
 // Global `this`
-console.log("returnThis() =", returnThis());
+console.log('returnThis() =', returnThis());
 
 // `obj1` `this`
-console.log("obj1.returnThis() =", obj1.returnThis());
+console.log('obj1.returnThis() =', obj1.returnThis());
 
 // `this` is bound to `obj2`
-console.log("returnThisBound() =", returnThisBound());
+console.log('returnThisBound() =', returnThisBound());
 
 // `this` is bound to `obj2`
-console.log("obj1.returnThisBound() =", obj1.returnThisBound());
+console.log('obj1.returnThisBound() =', obj1.returnThisBound());
 ```
 
 It is worth noting that `bind` does not change `this` for `arrow functions`.
 
 ```javascript
 const returnThis = () => this;
-const returnThisBound = returnThis.bind({ name: "bound" });
+const returnThisBound = returnThis.bind({ name: 'bound' });
 
-console.log("returnThis() =", returnThis());
-console.log("returnThisBound() =", returnThisBound());
+console.log('returnThis() =', returnThis());
+console.log('returnThisBound() =', returnThisBound());
 ```
 
 For more information about `bind` check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
