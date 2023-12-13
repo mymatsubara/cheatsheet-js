@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { searchQuery } from "../scripts/svelte/search-store";
-	import SearchIcon from "./icons/SearchIcon.svelte";
+	import { searchQuery } from '$lib/stores/search';
+	import { onMount } from 'svelte';
+	import SearchIcon from './icons/SearchIcon.svelte';
 
 	let search: HTMLInputElement;
 	let innerWidth: number;
@@ -12,28 +13,23 @@
 		}
 	}
 
-	document.addEventListener("keypress", (event) => {
-		const key = event.key;
+	onMount(async () => {
+		document.addEventListener('keypress', (event) => {
+			const key = event.key;
 
-		if (key === "/") {
-			event.preventDefault();
-			search.focus();
-		}
+			if (key === '/') {
+				event.preventDefault();
+				search.focus();
+			}
+		});
 	});
 </script>
 
 <svelte:window bind:innerWidth />
 
 <label class="relative h-max">
-	<input
-		on:click={() => search.focus()}
-		bind:checked={open}
-		class="hidden"
-		type="checkbox"
-	/>
-	<div
-		class="rounded icon fill-neutral-700 absolute left-1.5 top-1/2 -translate-y-1/2 h-8 p-1"
-	>
+	<input on:click={() => search.focus()} bind:checked={open} class="hidden" type="checkbox" />
+	<div class="rounded icon fill-neutral-700 absolute left-1.5 top-1/2 -translate-y-1/2 h-8 p-1">
 		<SearchIcon class="h-full" />
 	</div>
 	<input
@@ -64,7 +60,7 @@
 		min-width: 2rem;
 	}
 
-	label:has(:not(input[type="checkbox"]:checked)) {
+	label:has(:not(input[type='checkbox']:checked)) {
 		cursor: pointer;
 	}
 
@@ -78,7 +74,7 @@
 		opacity: 0;
 	}
 
-	input[type="checkbox"]:checked ~ .search {
+	input[type='checkbox']:checked ~ .search {
 		visibility: visible;
 		width: 300px;
 	}
@@ -88,11 +84,11 @@
 		transition: height var(--animation);
 	}
 
-	input[type="checkbox"]:not(:checked) ~ .icon:hover {
+	input[type='checkbox']:not(:checked) ~ .icon:hover {
 		background-color: #3333;
 	}
 
-	input[type="checkbox"]:checked ~ .icon {
+	input[type='checkbox']:checked ~ .icon {
 		height: 1.25rem;
 		padding: 0;
 	}
@@ -107,7 +103,7 @@
 		display: none;
 	}
 
-	input[type="checkbox"]:not(:checked) ~ .placeholder {
+	input[type='checkbox']:not(:checked) ~ .placeholder {
 		opacity: 0;
 	}
 

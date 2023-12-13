@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { slugify } from "../../lib/helpers/string";
-	import Subsection from "./Subsection.svelte";
-	import type { SectionData } from "./types";
+	import { slugify } from '$lib/utils/string';
+	import Subsection from './Subsection.svelte';
+	import type { SectionData } from './types';
 
 	export let subsections: SectionData;
 	export let title: string;

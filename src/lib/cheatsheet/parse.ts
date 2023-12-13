@@ -1,27 +1,27 @@
-import { marked } from "marked";
+import { marked } from 'marked';
 
-export type CheatcheatContent = {
+export type CheatsheetContent = {
 	[section: string]: SectionContent;
 };
 
-export type CheatcheatMarkdowns = {
+export type CheatsheetMarkdowns = {
 	[section: string]: string;
 };
 
-export function parseCheatsheet(data: CheatcheatMarkdowns): CheatcheatContent {
+export function parseCheatsheet(data: CheatsheetMarkdowns): CheatsheetContent {
 	return Object.entries(data).reduce((result, [section, content]) => {
 		result[section] = parseSectionMarkdown(content);
 		return result;
-	}, {} as CheatcheatContent);
+	}, {} as CheatsheetContent);
 }
 
 export type HtmlContent = {
-	type: "html";
+	type: 'html';
 	content: string;
 };
 
 export type CodeBlockContent = {
-	type: "code";
+	type: 'code';
 	content: string;
 	language?: string;
 };
@@ -41,25 +41,22 @@ export function parseSectionMarkdown(markdown: string): SectionContent {
 
 	// Insert first subsection heading if not found
 	const firstToken = tokens[0];
-	if (firstToken.type !== "heading" || firstToken.depth !== 2) {
+	if (firstToken.type !== 'heading' || firstToken.depth !== 2) {
 		tokens.unshift({
-			type: "heading",
+			type: 'heading',
 			depth: 2,
-			raw: "## Subsection not defined!!!\n\n",
-			text: "Subsection not defined!!!",
+			raw: '## Subsection not defined!!!\n\n',
+			text: 'Subsection not defined!!!',
 			tokens: []
 		});
 	}
 
 	const subsectionTokens = splitSubsectionsTokens(tokens);
 
-	return Object.entries(subsectionTokens).reduce(
-		(result, [subsection, tokens]) => {
-			result[subsection] = groupTokens(tokens).map((group) => toContent(group));
-			return result;
-		},
-		{} as SectionContent
-	);
+	return Object.entries(subsectionTokens).reduce((result, [subsection, tokens]) => {
+		result[subsection] = groupTokens(tokens).map((group) => toContent(group));
+		return result;
+	}, {} as SectionContent);
 }
 
 type SubsectionTokens = {
@@ -71,7 +68,7 @@ function splitSubsectionsTokens(tokens: marked.TokensList): SubsectionTokens {
 
 	const subsectionHeaders = tokens
 		.map((token, index) => ({ token, index }))
-		.filter(({ token }) => token.type === "heading" && token.depth === 2) as {
+		.filter(({ token }) => token.type === 'heading' && token.depth === 2) as {
 		token: marked.Tokens.Heading;
 		index: number;
 	}[];
@@ -92,38 +89,36 @@ function splitSubsectionsTokens(tokens: marked.TokensList): SubsectionTokens {
 }
 
 type CodeTokenGroup = {
-	type: "code";
+	type: 'code';
 	token: marked.Tokens.Code;
 };
 
 type TextTokenGroup = {
-	type: "text";
+	type: 'text';
 	tokens: marked.Token[];
 };
 
 type TokensGroup = CodeTokenGroup | TextTokenGroup;
 
-function groupTokens(
-	tokens: marked.TokensList | marked.Token[]
-): TokensGroup[] {
+function groupTokens(tokens: marked.TokensList | marked.Token[]): TokensGroup[] {
 	const groups: TokensGroup[] = [];
 
 	let curTextGroup: TextTokenGroup | null = null;
 
 	for (const token of tokens) {
-		if (token.type === "code") {
+		if (token.type === 'code') {
 			if (curTextGroup) {
 				groups.push(curTextGroup);
 				curTextGroup = null;
 			}
 
 			groups.push({
-				type: "code",
+				type: 'code',
 				token
 			});
 		} else {
 			curTextGroup = curTextGroup ?? {
-				type: "text",
+				type: 'text',
 				tokens: []
 			};
 
@@ -140,15 +135,15 @@ function groupTokens(
 
 function toContent(group: TokensGroup): Content {
 	switch (group.type) {
-		case "code":
+		case 'code':
 			return {
-				type: "code",
+				type: 'code',
 				content: group.token.text,
 				language: group.token.lang
 			};
-		case "text":
+		case 'text':
 			return {
-				type: "html",
+				type: 'html',
 				content: marked.parser(group.tokens)
 			};
 	}

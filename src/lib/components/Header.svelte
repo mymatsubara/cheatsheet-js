@@ -1,7 +1,7 @@
----
-import GithubLink from "./GithubLink.svelte";
-import SearchBar from "./SearchBar.svelte";
----
+<script lang="ts">
+	import GithubLink from '$lib/components/GithubLink.svelte';
+	import SearchBar from '$lib/components/SearchBar.svelte';
+</script>
 
 <header
 	class="z-10 py-3 px-3 sm:px-6 bg-neutral-200 sticky top-0 flex items-center justify-between gap-2"
@@ -16,9 +16,9 @@ import SearchBar from "./SearchBar.svelte";
 	</div>
 	<div class="flex sm:gap-4 items-center">
 		<div class="hidden sm:block">
-			<GithubLink client:only="svelte" />
+			<GithubLink />
 		</div>
-		<SearchBar client:only="svelte" />
+		<SearchBar />
 	</div>
 </header>
 

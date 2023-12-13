@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Fuse from "fuse.js";
-	import Masonry from "svelte-bricks";
-	import { searchQuery } from "../../scripts/svelte/search-store";
-	import Section from "./Section.svelte";
-	import type { CheatSheetData } from "./types";
+	import { searchQuery } from '$lib/stores/search';
+	import Fuse from 'fuse.js';
+	import Masonry from 'svelte-bricks';
+	import Section from './Section.svelte';
+	import type { CheatSheetData } from './types';
 
 	export let sections: CheatSheetData;
 
@@ -16,16 +16,12 @@
 	);
 
 	const fuse = new Fuse(mapped, {
-		keys: ["section", "subsection"],
+		keys: ['section', 'subsection'],
 		threshold: 0.2
 	});
 	type FuzzySearcher = typeof fuse;
 
-	function filter(
-		data: CheatSheetData,
-		query: string,
-		fuzzy: FuzzySearcher
-	): CheatSheetData {
+	function filter(data: CheatSheetData, query: string, fuzzy: FuzzySearcher): CheatSheetData {
 		const r = fuzzy.search(query);
 
 		console.log(r.map((r) => r.score));
@@ -46,9 +42,7 @@
 		return results;
 	}
 
-	$: filteredSections = $searchQuery
-		? filter(sections, $searchQuery, fuse)
-		: sections;
+	$: filteredSections = $searchQuery ? filter(sections, $searchQuery, fuse) : sections;
 	$: items = Object.entries(filteredSections).map(([title, subsections]) => ({
 		title,
 		subsections

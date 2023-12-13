@@ -1,0 +1,126 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		font-family: 'Fira Code', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+			Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+			Segoe UI Symbol, Noto Color Emoji;
+		background-color: #f6f6f6;
+		@apply text-gray-700;
+	}
+
+	code {
+		font-family: 'Source Code Pro', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco,
+			Consolas, Liberation Mono, Courier New, monospace;
+		border-radius: 3px;
+		background: #3333;
+		padding: 0.5px 3px;
+	}
+}
+
+@layer utilities {
+	.code-font {
+		font-family: 'Source Code Pro', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco,
+			Consolas, Liberation Mono, Courier New, monospace;
+	}
+
+	.code-editor {
+		font-family: 'Source Code Pro', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco,
+			Consolas, Liberation Mono, Courier New, monospace;
+	}
+
+	.ace_hidden-cursors {
+		opacity: 0;
+	}
+
+	/* Overriding dracula */
+	/* .ace-dracula .ace_comment {
+    color: #6A9955
+    } */
+
+	/* == Prose styles == */
+	.prose {
+		@apply text-sm;
+		font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+			Arial, sans-serif;
+	}
+
+	.prose p {
+		margin-bottom: 0.7rem;
+	}
+
+	/* Headings */
+	.prose h1,
+	.prose h2,
+	.prose h3 {
+		font-weight: 700;
+		margin-top: 1rem;
+		margin-bottom: 0.2rem;
+	}
+
+	.prose h1 {
+		font-size: 1.5rem;
+	}
+
+	.prose h2 {
+		font-size: 1.3rem;
+	}
+
+	.prose h3 {
+		font-size: 1rem;
+	}
+
+	.prose ul,
+	.prose li {
+		margin-bottom: 0.7rem;
+	}
+
+	/* Link */
+	.prose a {
+		color: rgb(37, 105, 214);
+	}
+
+	/* Image */
+	.prose img {
+		margin: 1rem 0;
+	}
+
+	/* Lists */
+	.prose ul > li,
+	.prose ol > li {
+		margin-bottom: 0.3rem;
+		margin-left: 0.3rem;
+	}
+
+	.prose li::marker {
+		color: #333e;
+		font-weight: 600;
+	}
+
+	.prose ul li {
+		list-style-type: disc;
+		list-style-position: inside;
+	}
+
+	.prose ol li {
+		list-style-type: decimal;
+		list-style-position: inside;
+	}
+
+	.prose ul ul,
+	.prose ol ul {
+		list-style-type: circle;
+		list-style-position: inside;
+		margin-left: 15px;
+	}
+
+	.prose ol ol,
+	.prose ul ol {
+		list-style-type: lower-latin;
+		list-style-position: inside;
+		margin-left: 15px;
+	}
+}

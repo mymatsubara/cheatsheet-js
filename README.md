@@ -2,7 +2,7 @@
 
 cheatsheet.js is an interactive javascript cheatsheet website.
 
-![Website usage](/public/cheatsheet-js.gif)
+![Website usage](/static/cheatsheet-js.gif)
 
 > ### 🔴 Check out the live website: [here](https://mymatsubara.github.io/cheatsheet-js/)
 
@@ -10,7 +10,7 @@ cheatsheet.js is an interactive javascript cheatsheet website.
 
 Found any typo, wanna add or modify the content of the website, wanna suggest some other changes?
 
-Check out the [CONTRIBUTING.md](/CONTRIBUTING.md) for more informations!
+Check out the [CONTRIBUTING.md](/CONTRIBUTING.md) for more information!
 
 ## How to run the project locally
 
