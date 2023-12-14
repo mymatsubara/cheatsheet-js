@@ -17,14 +17,13 @@ You can add your **javascript script** directly to your **html files** using the
 	<head>
 		<script>
 			// !!! Add you javascript code inside the `script` tag !!!
-			console.log("hello from html file");
+			console.log('hello from html file');
 		</script>
 	</head>
 	<body>
 		<h1>Your script was executed!</h1>
 		<p>
-			Press <b><code>f12</code></b> and go to the <b><code>Console</code></b> to
-			see the output.
+			Press <b><code>f12</code></b> and go to the <b><code>Console</code></b> to see the output.
 		</p>
 	</body>
 </html>
@@ -44,7 +43,7 @@ You can reference an **external script** in your html using using `<script src="
 1. Create a script file called `script.js` with the following content:
 
 ```javascript
-console.log("hello from external script");
+console.log('hello from external script');
 ```
 
 2. Create a html file called `index.html` in the **same folder** as `script.js` with the following content:
@@ -57,8 +56,7 @@ console.log("hello from external script");
 	<body>
 		<h1>Your script was executed!</h1>
 		<p>
-			Press <b><code>f12</code></b> and go to the <b><code>Console</code></b> to
-			see the output.
+			Press <b><code>f12</code></b> and go to the <b><code>Console</code></b> to see the output.
 		</p>
 	</body>
 </html>
@@ -78,7 +76,7 @@ You can execute **javascript** code outside the browser using `Node.js`.
 2. Create a file called `index.js` with the following content:
 
 ```javascript
-console.log("hello from Node.js");
+console.log('hello from Node.js');
 ```
 
 3. Open a terminal where the file is located
@@ -94,8 +92,8 @@ Use `console.log()` to print messages to the screen.
 
 ```javascript
 // Edit the messages bellow and see the output change
-console.log("👋");
-console.log("message1", "message2", "message3");
+console.log('👋');
+console.log('message1', 'message2', 'message3');
 ```
 
 ## comments
@@ -117,15 +115,15 @@ Use `/**/` to create a **multi-line comment**.
 
 ```javascript
 // You can name values by defining variables
-const variable1 = "1️⃣";
-let variable2 = "2️⃣";
-var variable3 = "3️⃣"; // `var` is not recommended
+const variable1 = '1️⃣';
+let variable2 = '2️⃣';
+var variable3 = '3️⃣'; // `var` is not recommended
 
 console.log(variable1, variable2, variable3);
 
 // You can assign new values to `let` and `var` variables
-variable2 = "❗";
-variable3 = "❕";
+variable2 = '❗';
+variable3 = '❕';
 
 console.log(variable1, variable2, variable3);
 
@@ -137,7 +135,7 @@ console.log(variable1, variable2, variable3);
 ## alert
 
 ```javascript
-alert("👾 Hacker detected 👾");
+alert('alert fired');
 ```
 
 ## undefined and null
