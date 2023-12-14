@@ -118,7 +118,7 @@ console.log('s.substring(start, end):', s2);
 `string.charAt(index)` returns the character at `index`.
 
 ```javascript
-console.log('abcdefg'.chatAt(3));
+console.log('abcdefg'.charAt(3));
 ```
 
 ## .toLowerCase()
