@@ -9,7 +9,7 @@
 	export let open = false;
 </script>
 
-<div class="subsection">
+<div>
 	<button
 		class="w-full"
 		on:click={() => {
@@ -18,11 +18,11 @@
 	>
 		<div class="hover:bg-neutral-100 p-1.5 border-b border-neutral-200">
 			<div class="flex justify-between items-center">
-				<h3 class="text-blue-700 font-semibold text-sm">
+				<h3 class="text-left text-blue-700 font-semibold text-sm">
 					{title}
 				</h3>
 				<div class="chevron">
-					<ChevronDownIcon class="h-5 text-neutral-700" />
+					<ChevronDownIcon class="h-5 text-neutral-700 {open ? 'rotate-180' : ''} transition-all" />
 				</div>
 			</div>
 		</div>
@@ -48,10 +48,6 @@
 </div>
 
 <style>
-	.subsection {
-		--animation: ease-out 200ms;
-	}
-
 	/* Animate chevron rotation */
 	.chevron {
 		transition: rotate var(--animation);
