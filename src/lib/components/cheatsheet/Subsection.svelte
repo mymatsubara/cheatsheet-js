@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Content } from "../../cheatsheet/parse";
-	import CodeEditor from "../CodeEditor.svelte";
-	import ChevronDownIcon from "../icons/ChevronDownIcon.svelte";
+	import CodeEditor from '$lib/components/CodeEditor.svelte';
+	import type { Content } from '../../cheatsheet/parse';
+	import ChevronDownIcon from '../icons/ChevronDownIcon.svelte';
 
 	export let contents: Content[];
 	export let title: string;
@@ -10,7 +10,12 @@
 </script>
 
 <div class="subsection">
-	<label class="cursor-pointer">
+	<button
+		class="w-full"
+		on:click={() => {
+			open = !open;
+		}}
+	>
 		<div class="hover:bg-neutral-100 p-1.5 border-b border-neutral-200">
 			<div class="flex justify-between items-center">
 				<h3 class="text-blue-700 font-semibold text-sm">
@@ -20,20 +25,16 @@
 					<ChevronDownIcon class="h-5 text-neutral-700" />
 				</div>
 			</div>
-			<input bind:value={open} class="hidden" type="checkbox" />
 		</div>
-	</label>
+	</button>
 
-	<div class="subsection-container">
+	<div>
 		{#if open}
 			<div>
 				{#each contents as block}
-					{#if block.type === "code"}
+					{#if block.type === 'code'}
 						<div class="mb-3">
-							<CodeEditor
-								code={block.content}
-								config={{ language: block.language }}
-							/>
+							<CodeEditor code={block.content} config={{ language: block.language }} />
 						</div>
 					{:else}
 						<div class="prose my-3 px-3">
@@ -49,21 +50,6 @@
 <style>
 	.subsection {
 		--animation: ease-out 200ms;
-	}
-
-	/* Animate container */
-	.subsection-container {
-		display: grid;
-		grid-template-rows: 0fr;
-		transition: grid-template-rows var(--animation);
-	}
-
-	label:has(input:checked) + .subsection-container {
-		grid-template-rows: 1fr;
-	}
-
-	.subsection-container > div {
-		overflow: hidden;
 	}
 
 	/* Animate chevron rotation */
