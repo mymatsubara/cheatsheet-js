@@ -1,17 +1,16 @@
 <script lang="ts">
-	import type { Ace } from "ace-builds";
-	import { onDestroy } from "svelte";
-	import { writable } from "svelte/store";
-	import { makeEditor, runCode, type EditorConfigs } from "../scripts/editor";
-	import RefreshIcon from "./icons/RefreshIcon.svelte";
+	import type { Ace } from 'ace-builds';
+	import { onDestroy } from 'svelte';
+	import { writable } from 'svelte/store';
+	import { makeEditor, runCode, type EditorConfigs } from '../scripts/editor';
+	import RefreshIcon from './icons/RefreshIcon.svelte';
 
 	export let code: string;
 	export let height: string | undefined = undefined;
 	export let config: EditorConfigs = {};
 	export let autorun = true;
 
-	let canRun =
-		config.language === undefined || config.language === "javascript";
+	let canRun = config.language === undefined || config.language === 'javascript';
 
 	let editorElement: HTMLElement;
 	let editor: Ace.Editor;
@@ -34,12 +33,12 @@
 
 			if (autorun && canRun) {
 				run();
-				editor.session.on("change", () => {
+				editor.session.on('change', () => {
 					debounceTimeout && clearTimeout(debounceTimeout);
 					debounceTimeout = setTimeout(run, 500);
 				});
 			} else {
-				editor.session.removeListener("change", () => {});
+				editor.session.removeListener('change', () => {});
 			}
 
 			setup = true;
@@ -55,14 +54,14 @@
 	<div
 		bind:this={editorElement}
 		class="text-sm code-editor font-semibold"
-		style={height ? `height: ${height}` : ""}
+		style={height ? `height: ${height}` : ''}
 	>
 		{code}
 	</div>
 	<div class="flex gap-2">
 		{#if $logs?.length}
 			<div
-				class="code-font text-sm flex flex-col gap-1 px-5 py-2 grow bg-neutral-100 border border-neutral-200"
+				class="code-font text-sm flex flex-col gap-1 px-5 py-2 grow bg-neutral-100 border border-neutral-200 w-10 overflow-x-auto"
 			>
 				<div class="flex gap-2 items-center">
 					<div class="underline">Output:</div>
