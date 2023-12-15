@@ -41,11 +41,11 @@
 		placeholder="Search"
 	/>
 	<div
-		class="placeholder absolute top-1/2 -translate-y-1/2 left-8 text-neutral-500 pointer-events-none gap-1"
+		class="placeholder absolute top-1/2 -translate-y-1/2 left-8 text-neutral-600 pointer-events-none gap-1"
 	>
 		Type
 		<span
-			class="text-sm font-semibold rounded border-neutral-500 border px-1 pb-[1px] h-max leading-0"
+			class="text-sm font-semibold rounded border-neutral-600 border px-1 pb-[1px] h-max leading-0"
 			>/</span
 		>
 		to search

@@ -17,12 +17,7 @@
 	}
 </script>
 
-<a
-	href="https://github.com/mymatsubara/cheatsheet-js"
-	target="_blank"
-	aria-label="Github repository"
-	title="Github repository"
->
+<a href="https://github.com/mymatsubara/cheatsheet-js" target="_blank" title="Github repository">
 	<div class="flex gap-1 py-1 px-2 rounded items-center hover:bg-neutral-300">
 		<GithubIcon class="h-6" />
 		<div class="text-xs font-semibold rounded-sm bg-neutral-100 px-1 py-0.5 flex tracking-tighter">
