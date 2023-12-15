@@ -28,23 +28,21 @@
 		</div>
 	</button>
 
-	<div>
-		{#if open}
-			<div>
-				{#each contents as block}
-					{#if block.type === 'code'}
-						<div class="mb-3">
-							<CodeEditor code={block.content} config={{ language: block.language }} />
-						</div>
-					{:else}
-						<div class="prose my-3 px-3">
-							{@html block.content}
-						</div>
-					{/if}
-				{/each}
-			</div>
-		{/if}
-	</div>
+	{#if open}
+		<div>
+			{#each contents as block}
+				{#if block.type === 'code'}
+					<div class="mb-3">
+						<CodeEditor code={block.content} config={{ language: block.language }} />
+					</div>
+				{:else}
+					<div class="prose my-3 px-3">
+						{@html block.content}
+					</div>
+				{/if}
+			{/each}
+		</div>
+	{/if}
 </div>
 
 <style>
