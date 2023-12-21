@@ -208,6 +208,11 @@ execute().then((result) => console.log('result =', result));
 
 A little bit harder to understand compared to the `async/await` solution, right? That's the power of `async/await`!
 
+For more information check the mdn docs:
+
+- [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+- [await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await)
+
 ## Promise.all()
 
 - Use `Promise.all(promises)` to await for multiple promises concurrently. It resolves to an array with all the promises results in the order they were provided.
@@ -237,6 +242,8 @@ Promise.all(promises)
 	.catch((err) => console.log('Error:', err));
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all).
+
 ## Promise.allSettled()
 
 Use `Promise.allSettled(promises)` to await for multiple promises **even if a rejection occurs**. Resolves to an array objects of the following types:
@@ -255,6 +262,8 @@ Promise.allSettled(promises)
 	.then((result) => console.log(result))
 	.catch((err) => console.log('Error:', err));
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled).
 
 ## error handling
 
@@ -345,3 +354,5 @@ promise
 		console.log('second .then() result =', result);
 	});
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch).

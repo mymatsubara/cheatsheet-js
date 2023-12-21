@@ -13,13 +13,13 @@ class Person {
 	}
 }
 
-const person = new Person("Gigachad");
+const person = new Person('Gigachad');
 
 person.sayHello();
 console.log(person);
 ```
 
-The code above has the **same result** as the following code - with some [minor differences](https://javascript.info/class#not-just-a-syntactic-sugar).
+The code above has the **same result** as the code bellow (with some [minor differences](https://javascript.info/class#not-just-a-syntactic-sugar) though).
 
 ```javascript
 function Person(name) {
@@ -30,11 +30,13 @@ Person.prototype.sayHello = function () {
 	console.log(`Hello, my name is ${this.name}`);
 };
 
-const person = new Person("Gigachad");
+const person = new Person('Gigachad');
 
 person.sayHello();
 console.log(person);
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes).
 
 ## getter and setter
 
@@ -50,21 +52,26 @@ class Contact {
 
 	// Setter for `email`
 	set email(value) {
-		console.log("email set");
+		console.log('email set');
 		this._email = value;
 	}
 
 	// Getter for `email`
 	get email() {
-		console.log("email get");
+		console.log('email get');
 		return this._email;
 	}
 }
 
-const contact = new Contact("test@gmail.com");
+const contact = new Contact('test@gmail.com');
 
 console.log(contact.email);
 ```
+
+For more information check the mdn docs:
+
+- [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)
+- [setter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
 
 ## class field
 
@@ -74,17 +81,19 @@ class Person {
 	age = 400 + 20;
 
 	constructor(name) {
-		console.log("inside constructor - age:", this.age);
+		console.log('inside constructor - age:', this.age);
 		this.name = name;
 	}
 }
 
-const person = new Person("Gigachad");
+const person = new Person('Gigachad');
 
 console.log();
-console.log("outside constructor");
+console.log('outside constructor');
 console.log(person);
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields).
 
 ## bind `this` to the instance object
 
@@ -106,7 +115,7 @@ class ThisPrinter {
 	};
 }
 
-const printer = new ThisPrinter("hello");
+const printer = new ThisPrinter('hello');
 
 // `this` is bind to global this (which should be undefined)
 setTimeout(printer.print, 1000);
@@ -135,7 +144,7 @@ class Item {
 	}
 
 	use() {
-		console.log("Item used");
+		console.log('Item used');
 	}
 }
 
@@ -154,7 +163,7 @@ class Sword extends Item {
 
 	// Override Item's `use` method
 	use() {
-		console.log("Inspecting sword...");
+		console.log('Inspecting sword...');
 		super.use(); // call Item's `use` method
 	}
 }
@@ -165,6 +174,8 @@ sword.sell();
 sword.attack();
 sword.use();
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/extends).
 
 ## static methods/properties
 
@@ -193,6 +204,8 @@ class Calculator {
 
 console.log(Calculator.pi);
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static).
 
 ## private methods/properties
 
@@ -225,6 +238,8 @@ counter.increment();
 // counter.#count = 0;
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties).
+
 ## instanceof
 
 Use the `instanceof` operator to check if an object is belongs to a specific class. Inheritance is also considered.
@@ -239,3 +254,5 @@ console.log(child instanceof Parent); // true
 console.log(child instanceof Child); // true
 console.log(child instanceof Array); // false
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof).

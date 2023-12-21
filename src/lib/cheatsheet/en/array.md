@@ -3,16 +3,18 @@
 An `Array` is an object which can store multiple elements in sequence.
 
 ```javascript
-const array = ["string", 2, false];
+const array = ['string', 2, false];
 
 console.log(array);
 console.log(array.length);
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array).
+
 ## access an array element
 
 ```javascript
-const array = ["string", 2, false];
+const array = ['string', 2, false];
 
 console.log(array[0]);
 console.log(array[1]);
@@ -20,72 +22,87 @@ console.log(array[2]);
 console.log(array[3]); // out of bonds
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array).
+
 ## for loop: iterate over an array
 
 Use `for...of` to iterate over elements of an array:
 
 ```javascript
-const array = ["element0", "element1", "element2"];
+const array = ['element0', 'element1', 'element2'];
 
 for (let element of array) {
-	console.log("element =", element);
+	console.log('element =', element);
 }
 ```
 
 Use `for...in` to iterate over the indexes of an array:
 
 ```javascript
-const array = ["element0", "element1", "element2"];
+const array = ['element0', 'element1', 'element2'];
 
 for (let index in array) {
-	console.log("index =", index);
+	console.log('index =', index);
 	console.log(`array[${index}] =`, array[index]);
 }
 ```
 
+For more information check the mdn docs:
+
+- [for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
+- [for...in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
+
 ## .push(): add an item to the end of an array
 
 ```javascript
-const array = ["element0", "element1"];
+const array = ['element0', 'element1'];
 
 console.log(array);
 array.push(1);
 console.log(array);
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push).
+
 ## .unshift(): add item to the start of an array
 
 ```javascript
-const array = ["element0", "element1"];
+const array = ['element0', 'element1'];
 
 console.log(array);
 array.unshift(1);
 console.log(array);
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift).
+
 ## .pop(): remove last item
 
 ```javascript
-const array = ["element0", "element1"];
+const array = ['element0', 'element1'];
 
 console.log(array);
 const removed = array.pop();
 console.log(array);
 
-console.log("removed =", removed);
+console.log('removed =', removed);
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop).
 
 ## .shift(): remove first item
 
 ```javascript
-const array = ["element0", "element1"];
+const array = ['element0', 'element1'];
 
 console.log(array);
 const removed = array.shift();
 console.log(array);
 
-console.log("removed =", removed);
+console.log('removed =', removed);
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift).
 
 ## .slice(): get a slice of an array
 
@@ -103,6 +120,8 @@ console.log(array.slice(start));
 console.log(array.slice(start, end));
 console.log(array.slice(0, end));
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice).
 
 ## .splice(): remove or replace existing elements and/or insert new ones
 
@@ -157,18 +176,20 @@ console.log(array);
 const start = 3;
 const n = 4;
 const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const removed = array.splice(start, n, "replace1", true, "replace3");
+const removed = array.splice(start, n, 'replace1', true, 'replace3');
 
 console.log(removed);
 console.log(array);
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice).
 
 ## .filter(): create a filtered array
 
 - Filter an array using a `predicate` function which returns a `boolean`.
 
 ```javascript
-const array = ["123", "12345", "12", "1", "123", "12"];
+const array = ['123', '12345', '12', '1', '123', '12'];
 
 // Return `true` from an element whose length is greater than 2
 const predicate = (element) => element.length > 2;
@@ -181,7 +202,7 @@ console.log(array);
 - The `predicate` function can also receive the index of the array element as its second argument:
 
 ```javascript
-const array = ["even1", "odd1", "even2", "odd2", "even3", "odd3"];
+const array = ['even1', 'odd1', 'even2', 'odd2', 'even3', 'odd3'];
 
 // Filter elements whose index is even
 const filtered = array.filter((element, index) => index % 2 === 0);
@@ -190,7 +211,7 @@ console.log(filtered);
 console.log(array);
 ```
 
-For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
 ## .map(): transform one array to another
 
@@ -204,7 +225,7 @@ console.log(mapped);
 console.log(array);
 ```
 
-For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
 
 ## .reduce(): iterate over array and accumulate over a value
 
@@ -222,28 +243,32 @@ const sum = array.reduce(predicate, initialValue);
 console.log(sum);
 ```
 
-For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
 
 ## .forEach(): iterate over elements of an array
 
 ```javascript
-const array = ["a", "b", "c"];
+const array = ['a', 'b', 'c'];
 
 // An alternative to `for` loops
 array.forEach((element, index) => {
-	console.log("element:", element);
-	console.log("index:", index);
+	console.log('element:', element);
+	console.log('index:', index);
 });
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach).
 
 ## .join(): join an array into a string
 
 ```javascript
-const array = ["apple", "pineapple", "grape"];
-const separator = "@";
+const array = ['apple', 'pineapple', 'grape'];
+const separator = '@';
 
 console.log(array.join(separator));
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join).
 
 ## create an array filled with zeros
 

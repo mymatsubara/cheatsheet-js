@@ -6,19 +6,21 @@ Usually when something unexpected happens in your code, an error is thrown and y
 // If an error occurs inside the `try` block,
 // the code execution jumps to the `catch` block
 try {
-	console.log("1: before error");
+	console.log('1: before error');
 	undefined_variable;
-	console.log("x: after error (not executed)");
+	console.log('x: after error (not executed)');
 } catch (err) {
-	console.log("2: inside catch");
+	console.log('2: inside catch');
 
 	// `err` contains information about the error (usually the `name` and `message`,
 	// sometimes the `stack` depending on the runtime)
-	console.log("3:", err.name);
-	console.log("4:", err.message);
-	console.log("5:", err.stack);
+	console.log('3:', err.name);
+	console.log('4:', err.message);
+	console.log('5:', err.stack);
 }
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch).
 
 ## throw
 
@@ -27,22 +29,24 @@ Use the `throw` statement emit your own custom errors. Even though you can `thro
 ```javascript
 function divide(a, b) {
 	if (b === 0) {
-		throw new Error("Cannot divide by 0");
+		throw new Error('Cannot divide by 0');
 	}
 
 	return a / b;
 }
 
 try {
-	console.log("before error");
+	console.log('before error');
 
 	divide(10, 0);
 
-	console.log("after error");
+	console.log('after error');
 } catch (err) {
 	console.log(err.message);
 }
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw).
 
 ## finally
 
@@ -52,11 +56,11 @@ Use the `finally` construct along with `try...catch` to run a block of code whet
 
 ```javascript
 try {
-	console.log("try block executed");
+	console.log('try block executed');
 } catch (err) {
-	console.log("catch block executed");
+	console.log('catch block executed');
 } finally {
-	console.log("🚩 FINALLY BLOCK EXECUTED");
+	console.log('🚩 FINALLY BLOCK EXECUTED');
 }
 ```
 
@@ -64,12 +68,12 @@ try {
 
 ```javascript
 try {
-	console.log("try block executed");
+	console.log('try block executed');
 	bad_code;
 } catch (err) {
-	console.log("catch block executed");
+	console.log('catch block executed');
 } finally {
-	console.log("🚩 FINALLY BLOCK EXECUTED");
+	console.log('🚩 FINALLY BLOCK EXECUTED');
 }
 ```
 
@@ -77,13 +81,13 @@ try {
 
 ```javascript
 try {
-	console.log("try block executed");
+	console.log('try block executed');
 	bad_code;
 } catch (err) {
-	console.log("catch block executed");
+	console.log('catch block executed');
 	throw err;
 } finally {
-	console.log("🚩 FINALLY BLOCK EXECUTED");
+	console.log('🚩 FINALLY BLOCK EXECUTED');
 }
 ```
 
@@ -92,16 +96,18 @@ try {
 ```javascript
 function finallyWithReturn() {
 	try {
-		console.log("try block executed");
+		console.log('try block executed');
 		return 1;
 	} finally {
-		console.log("🚩 FINALLY BLOCK EXECUTED");
+		console.log('🚩 FINALLY BLOCK EXECUTED');
 	}
 }
 
 const result = finallyWithReturn();
-console.log("result = ", result);
+console.log('result = ', result);
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch#the_finally_block).
 
 ## custom errors
 
@@ -111,18 +117,20 @@ Create a custom error class by extending from `Error`.
 class CustomError extends Error {
 	constructor(message) {
 		super(message);
-		this.name = "CustomError";
+		this.name = 'CustomError';
 	}
 }
 
 try {
-	throw new CustomError("custom message");
+	throw new CustomError('custom message');
 } catch (err) {
 	if (err instanceof CustomError) {
-		console.log("err is a CustomError");
+		console.log('err is a CustomError');
 	}
 
 	console.log(err.name);
 	console.log(err.message);
 }
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error#custom_error_types).

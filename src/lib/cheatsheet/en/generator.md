@@ -5,22 +5,22 @@ A generator can return multiple values without storing all of them in memory. Us
 ```javascript
 function* createGenerator() {
 	yield 1;
-	console.log("2: after first yield");
+	console.log('2: after first yield');
 
 	yield 2;
-	console.log("4: after second yield");
+	console.log('4: after second yield');
 
 	yield 3;
-	console.log("6: after third yield");
+	console.log('6: after third yield');
 }
 
 const generator = createGenerator();
 
 // Use .next to manually iterate over a generator
-console.log("1:", generator.next());
-console.log("3:", generator.next());
-console.log("5:", generator.next());
-console.log("7:", generator.next());
+console.log('1:', generator.next());
+console.log('3:', generator.next());
+console.log('5:', generator.next());
+console.log('7:', generator.next());
 ```
 
 Since a generator is an iterable, you can also use `for...of` to iterate over it:
@@ -39,6 +39,8 @@ for (let i of generator) {
 	console.log(i);
 }
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator).
 
 ## combining generators
 
@@ -64,6 +66,8 @@ for (const i of generator) {
 }
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield*).
+
 ## passing values to a generator
 
 You can also pass values to an iterator each time you call `.next(value)`:
@@ -71,23 +75,25 @@ You can also pass values to an iterator each time you call `.next(value)`:
 ```javascript
 function* generate() {
 	const received1 = yield 1;
-	console.log("2: received1 = ", received1);
+	console.log('2: received1 = ', received1);
 
 	const received2 = yield 2;
-	console.log("4: received2 = ", received2);
+	console.log('4: received2 = ', received2);
 
 	const received3 = yield 3;
-	console.log("6: received3 = ", received3);
+	console.log('6: received3 = ', received3);
 }
 
 const generator = generate();
 
 // The first call to .next() won't pass the value to the generator
-console.log("1:", generator.next("pass1"));
-console.log("3:", generator.next("pass2"));
-console.log("5:", generator.next("pass3"));
-console.log("7:", generator.next("pass4"));
+console.log('1:', generator.next('pass1'));
+console.log('3:', generator.next('pass2'));
+console.log('5:', generator.next('pass3'));
+console.log('7:', generator.next('pass4'));
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator/next#sending_values_to_the_generator).
 
 ## async generators
 
@@ -150,3 +156,5 @@ async function execute() {
 
 execute();
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator).

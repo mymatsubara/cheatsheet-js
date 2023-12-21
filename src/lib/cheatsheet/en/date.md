@@ -13,14 +13,14 @@ For more information check the [mdn docs](https://developer.mozilla.org/docs/Web
 ## from string
 
 ```javascript
-const date1 = new Date("1995-12-17T03:24:00");
-const date2 = new Date("2023-01-15");
+const date1 = new Date('1995-12-17T03:24:00');
+const date2 = new Date('2023-01-15');
 
 console.log(date1);
 console.log(date2);
 ```
 
-For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format).
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format).
 
 ## from year, month, day, hours, minutes and seconds
 
@@ -119,6 +119,8 @@ console.log(date);
 console.log(date.getTime()); // unix timestamp
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#instance_methods).
+
 ## from epoch timestamp
 
 `Epoch timestamp` is the number of milliseconds elapsed after the midnight at the beginning of January 1st, 1970, UTC.
@@ -194,19 +196,21 @@ const date = new Date();
 console.log(date.toLocaleTimeString());
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date.prototype.todatestring).
+
 ## .toLocaleDateString(): more control over formatted string
 
 ```javascript
 // Set locale to `undefined` to use the browser's default language
-const locale = "en-US";
+const locale = 'en-US';
 
 const options = {
-	weekday: "long",
-	year: "2-digit",
-	month: "short",
-	hour: "2-digit",
-	minute: "2-digit",
-	timeZone: "America/Cambridge_Bay"
+	weekday: 'long',
+	year: '2-digit',
+	month: 'short',
+	hour: '2-digit',
+	minute: '2-digit',
+	timeZone: 'America/Cambridge_Bay'
 };
 
 const date = new Date();
@@ -222,30 +226,30 @@ You have more control over the formatted string using `date.toLocaleDateString(l
 
 ```typescript
 interface DateTimeFormatOptions {
-	localeMatcher?: "best fit" | "lookup" | undefined;
-	weekday?: "long" | "short" | "narrow" | undefined;
-	era?: "long" | "short" | "narrow" | undefined;
-	year?: "numeric" | "2-digit" | undefined;
-	month?: "numeric" | "2-digit" | "long" | "short" | "narrow" | undefined;
-	day?: "numeric" | "2-digit" | undefined;
-	hour?: "numeric" | "2-digit" | undefined;
-	minute?: "numeric" | "2-digit" | undefined;
-	second?: "numeric" | "2-digit" | undefined;
+	localeMatcher?: 'best fit' | 'lookup' | undefined;
+	weekday?: 'long' | 'short' | 'narrow' | undefined;
+	era?: 'long' | 'short' | 'narrow' | undefined;
+	year?: 'numeric' | '2-digit' | undefined;
+	month?: 'numeric' | '2-digit' | 'long' | 'short' | 'narrow' | undefined;
+	day?: 'numeric' | '2-digit' | undefined;
+	hour?: 'numeric' | '2-digit' | undefined;
+	minute?: 'numeric' | '2-digit' | undefined;
+	second?: 'numeric' | '2-digit' | undefined;
 	timeZoneName?:
-		| "short"
-		| "long"
-		| "shortOffset"
-		| "longOffset"
-		| "shortGeneric"
-		| "longGeneric"
+		| 'short'
+		| 'long'
+		| 'shortOffset'
+		| 'longOffset'
+		| 'shortGeneric'
+		| 'longGeneric'
 		| undefined;
-	formatMatcher?: "best fit" | "basic" | undefined;
+	formatMatcher?: 'best fit' | 'basic' | undefined;
 	hour12?: boolean | undefined;
 	timeZone?: string | undefined; // Timezone identifier list (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
 }
 ```
 
-For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString).
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString).
 
 ## to specific timezone
 
@@ -254,7 +258,7 @@ Use `date.toLocaleString()` to format a `Date` to a specific timezone. [[Timezon
 ```javascript
 const now = new Date();
 const formatted = now.toLocaleString(undefined, {
-	timezone: "America/Cambridge_Bay"
+	timezone: 'America/Cambridge_Bay'
 });
 
 console.log(formatted);

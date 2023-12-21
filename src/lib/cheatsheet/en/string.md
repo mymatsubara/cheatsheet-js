@@ -38,6 +38,8 @@ console.log(`Hello, my name is ${name}`);
 console.log(`Some math: ${1 + 1}`);
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
+
 ## escape characters
 
 If you want to display some special characters in a `String`, you might need to escape them. To escape a character, prepend it with a backslash (`\`).
@@ -81,6 +83,8 @@ const path = String.raw`\home\usr\.vimrc`;
 console.log(path);
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Character_escape).
+
 ## .length
 
 `string.length` contains the number of characters in a string.
@@ -96,6 +100,8 @@ console.log('12345'.length);
 ```javascript
 console.log('a,b,c,123'.split(','));
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split).
 
 ## .substring()
 
@@ -113,6 +119,8 @@ console.log('s.substring(start):', s1);
 console.log('s.substring(start, end):', s2);
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring).
+
 ## .charAt()
 
 `string.charAt(index)` returns the character at `index`.
@@ -120,6 +128,8 @@ console.log('s.substring(start, end):', s2);
 ```javascript
 console.log('abcdefg'.charAt(3));
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt).
 
 ## .toLowerCase()
 

@@ -4,14 +4,14 @@ An `Object` can be used to store **key-values pairs**.
 
 ```javascript
 const child = {
-	name: "Jujubinha",
-	surname: "Monstra",
+	name: 'Jujubinha',
+	surname: 'Monstra',
 	age: 20
 };
 
 const father = {
-	name: "Jujuba",
-	surname: "Monstra",
+	name: 'Jujuba',
+	surname: 'Monstra',
 	age: 66,
 	// You can nest `Object`s and/or `Array`s
 	child: child
@@ -20,18 +20,20 @@ const father = {
 console.log(father);
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object).
+
 ## access an object's property
 
 ```javascript
 const equipment = {
-	name: "suppa ring",
+	name: 'suppa ring',
 	status: {
 		attack: 10,
 		defense: 5
 	}
 };
 
-const key = "status";
+const key = 'status';
 
 // Accessing object's property
 console.log(equipment.name);
@@ -44,15 +46,15 @@ console.log(equipment[key]);
 
 ```javascript
 const equipment = {
-	name: "suppa ring",
+	name: 'suppa ring',
 	status: {
 		attack: 10,
 		defense: 5
 	}
 };
 
-equipment.name = "bad ring";
-equipment.owner = "Gigachad"; // insert new key-value pair
+equipment.name = 'bad ring';
+equipment.owner = 'Gigachad'; // insert new key-value pair
 
 console.log(equipment);
 ```
@@ -61,7 +63,7 @@ console.log(equipment);
 
 ```javascript
 const person = {
-	name: "Gigachad",
+	name: 'Gigachad',
 	age: 420
 };
 
@@ -69,6 +71,8 @@ console.log(person);
 delete person.age; // removes "age"
 console.log(person);
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete).
 
 ## method: a function property
 
@@ -85,6 +89,8 @@ console.log(calculator.add(1, 2));
 console.log(calculator.sub(1, 2));
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Glossary/Method).
+
 ## this: reference other properties inside an method
 
 If you want to access another property of the same `object`, you can use the `this` binding.
@@ -100,8 +106,8 @@ const person = {
 	}
 };
 
-console.log("this:", person.getThis());
-console.log("Is under 18?", person.isUnder18());
+console.log('this:', person.getThis());
+console.log('Is under 18?', person.isUnder18());
 ```
 
 It is worth noting that [arrow functions](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Functions/Arrow_functions) do not provide their own `this` binding.
@@ -113,49 +119,55 @@ const person = {
 	getThis: () => this
 };
 
-console.log("this:", person.getThis());
+console.log('this:', person.getThis());
 
 // Should error because `this` is `undefined`
-console.log("Is under 18?", person.isUnder18());
+console.log('Is under 18?', person.isUnder18());
 ```
 
-There a lot more details related to `this` keyword. For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/this).
+There a lot more details related to `this` keyword. For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/this).
 
 ## Object.keys(): list an object's keys
 
 ```javascript
 const person = {
-	name: "Jujubinha",
-	surname: "Monstra",
+	name: 'Jujubinha',
+	surname: 'Monstra',
 	age: 20
 };
 
 console.log(Object.keys(person));
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys).
+
 ## Object.values(): list an object's values
 
 ```javascript
 const person = {
-	name: "Jujubinha",
-	surname: "Monstra",
+	name: 'Jujubinha',
+	surname: 'Monstra',
 	age: 20
 };
 
 console.log(Object.values(person));
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values).
+
 ## Object.entries(): list an object's key-values pairs
 
 ```javascript
 const person = {
-	name: "Jujubinha",
-	surname: "Monstra",
+	name: 'Jujubinha',
+	surname: 'Monstra',
 	age: 20
 };
 
 console.log(Object.entries(person));
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries).
 
 ## prototype object
 
@@ -167,7 +179,7 @@ Prototypes are important because every time an object's **property** is accessed
 
 ```javascript
 const person = {
-	name: "Gigachad"
+	name: 'Gigachad'
 };
 
 // Get the prototype object of `person`
@@ -185,7 +197,7 @@ console.log(person.toString());
 
 ```javascript
 const person = {
-	name: "Gigachad"
+	name: 'Gigachad'
 };
 
 // Declare a new object
@@ -203,12 +215,9 @@ person.sayHello();
 
 // The following prototype chain is set:
 // `person`->`newPrototype`->`Object.prototype`
+console.log('person->newPrototype:', Object.getPrototypeOf(person) === newPrototype);
 console.log(
-	"person->newPrototype:",
-	Object.getPrototypeOf(person) === newPrototype
-);
-console.log(
-	"newPrototype->Object.prototype:",
+	'newPrototype->Object.prototype:',
 	Object.getPrototypeOf(newPrototype) === Object.prototype
 );
 
@@ -238,14 +247,14 @@ Person.prototype.isOver18 = function () {
 // 	2. Assigns `Person.prototype` to `newInstance's` prototype
 // 	3. Execute the function `Person` with `this` bound to `newInstance`
 //	4. `new Person("Gigachad", 420)` returns `newInstance`
-const person = new Person("Gigachad", 420);
+const person = new Person('Gigachad', 420);
 
-console.log("person =", person);
-console.log("Person.prototype =", Person.prototype);
+console.log('person =', person);
+console.log('Person.prototype =', Person.prototype);
 console.log(Object.getPrototypeOf(person) === Person.prototype);
 
-console.log("Is under 18?", person.isUnder18());
-console.log("Is over 18?", person.isOver18());
+console.log('Is under 18?', person.isUnder18());
+console.log('Is over 18?', person.isOver18());
 ```
 
-For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/new).
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/new).

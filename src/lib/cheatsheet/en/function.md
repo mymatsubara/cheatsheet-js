@@ -14,7 +14,7 @@ greeting();
 greeting();
 ```
 
-For more information about functions check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Functions).
+For more information about functions check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Functions).
 
 ## function which receives inputs
 
@@ -236,6 +236,8 @@ const result = factorial(3);
 console.log(result);
 ```
 
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Glossary/Recursion).
+
 ## .call(): call a function with another `this`
 
 - If you want to change the `this` binding when calling a function, use the `.call()` method:
@@ -282,6 +284,8 @@ obj1.printThis(69, 'yeet');
 obj1.printThis.call(obj2, 420, 'gigachad');
 ```
 
+For more information about check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call).
+
 ## .apply(): call a function with another `this`
 
 The only difference between `.apply()` and `.call()` is that the former take function arguments as an array.
@@ -303,6 +307,8 @@ const obj2 = {
 // Arguments are passed as an array
 obj1.printThis.apply(obj2, [333, 'apply']);
 ```
+
+For more information about check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply).
 
 ## .bind(): create a new function with a bound `this`
 

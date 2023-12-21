@@ -10,7 +10,7 @@ console.log(n1);
 console.log(n2);
 ```
 
-For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number).
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number).
 
 ## arithmetic operations
 
@@ -67,9 +67,9 @@ console.log(i);
 Use the `Number()` function to convert a `string`
 
 ```javascript
-const fromString1 = Number("12345");
-const fromString2 = Number("1.5");
-const fromString3 = Number("text");
+const fromString1 = Number('12345');
+const fromString2 = Number('1.5');
+const fromString3 = Number('text');
 
 console.log("Number('12345'):", fromString1);
 console.log("Number('1.5'): ", fromString2);
@@ -86,10 +86,10 @@ const fromFalse = Number(false);
 const fromUndefined = Number(undefined);
 const fromNull = Number(null);
 
-console.log("Number(true): ", fromTrue);
-console.log("Number(false): ", fromFalse);
-console.log("Number(undefined): ", fromUndefined);
-console.log("Number(null): ", fromNull);
+console.log('Number(true): ', fromTrue);
+console.log('Number(false): ', fromFalse);
+console.log('Number(undefined): ', fromUndefined);
+console.log('Number(null): ', fromNull);
 ```
 
 ## parseInt()
@@ -97,9 +97,9 @@ console.log("Number(null): ", fromNull);
 Use `parseInt()` to convert a `string` into an integer `number`.
 
 ```javascript
-console.log(parseInt("123"));
-console.log(parseInt("1.5")); // keep only the integer part
-console.log(parseInt("text"));
+console.log(parseInt('123'));
+console.log(parseInt('1.5')); // keep only the integer part
+console.log(parseInt('text'));
 ```
 
 ## parseFloat()
@@ -107,10 +107,12 @@ console.log(parseInt("text"));
 Use `parseFloat()` to convert a `string` into a floating point `number`.
 
 ```javascript
-console.log(parseFloat("123"));
-console.log(parseFloat("1.5"));
-console.log(parseFloat("test"));
+console.log(parseFloat('123'));
+console.log(parseFloat('1.5'));
+console.log(parseFloat('test'));
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt).
 
 ## hexadecimal, binary and decimal exponential notations
 
@@ -181,7 +183,7 @@ console.log(`${aBin} >> ${shift} = ${signedRightShift.toString(2)}`);
 console.log(`${aBin} >>> ${shift} = ${zeroFillRightShift.toString(2)}`);
 ```
 
-For more information check out [the w3schools tutorial](https://www.w3schools.com/js/js_bitwise.asp).
+For more information check [the w3schools tutorial](https://www.w3schools.com/js/js_bitwise.asp).
 
 ## NaN: Not-A-Number
 
@@ -189,7 +191,7 @@ For more information check out [the w3schools tutorial](https://www.w3schools.co
 
 ```javascript
 const n1 = NaN;
-const n2 = Number("test");
+const n2 = Number('test');
 const check = isNaN(n2);
 
 console.log(n1);
@@ -197,19 +199,21 @@ console.log(n2);
 console.log(check);
 ```
 
+For more information check [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN).
+
 ## .toLocaleString(): format a number separators (eg. decimal and thousand separators)
 
 Use `number.toLocaleString(locale)` to format a number according to a locale. [[Locale list](https://www.techonthenet.com/js/language_tags.php)]
 
 ```javascript
 const number = 123456.789;
-const locale = "de-DE";
+const locale = 'de-DE';
 
 // German: `,` as decimal separator and `.` as thousand separator
 console.log(number.toLocaleString(locale));
 ```
 
-For more information check the out [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString).
+For more information check the [mdn docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString).
 
 ## .toLocaleString(): format currency
 
@@ -219,9 +223,9 @@ Use `number.toLocaleString()` to format a number as a currency. [[Currency list]
 const value = 420.69;
 
 const formatted = value.toLocaleString(undefined, {
-	currency: "BRL",
+	currency: 'BRL',
 	maximumFractionDigits: 2,
-	style: "currency"
+	style: 'currency'
 });
 
 console.log(formatted);

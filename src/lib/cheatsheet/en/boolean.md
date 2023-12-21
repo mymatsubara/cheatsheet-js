@@ -12,7 +12,7 @@ console.log(off);
 
 They are widely used to execute code conditionally using `if`, `while` or `for` statements.
 
-For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean).
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean).
 
 ## comparison operators (==, ===, !=, !==, >, >=, <, <=)
 
@@ -22,8 +22,8 @@ For more information check out the [mdn docs](https://developer.mozilla.org/docs
 console.log(1 == 1); // equality
 console.log(1 === 1); // strict equality
 
-console.log(1 == "1"); // equality
-console.log(1 === "1"); // strict equality
+console.log(1 == '1'); // equality
+console.log(1 === '1'); // strict equality
 ```
 
 - Inequality comparison (`!=` or `!==`)
@@ -32,8 +32,8 @@ console.log(1 === "1"); // strict equality
 console.log(1 != 1); // inequality
 console.log(1 !== 1); // strict inequality
 
-console.log(1 != "1"); // inequality
-console.log(1 !== "1"); // strict inequality
+console.log(1 != '1'); // inequality
+console.log(1 !== '1'); // strict inequality
 ```
 
 - Greater than (`>`) and greater than or equal (`>=`)
@@ -50,7 +50,7 @@ console.log(10 > 10); // less than
 console.log(10 >= 10); // less than or equal
 ```
 
-For more information check out the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Expressions_and_operators#comparison_operators).
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Expressions_and_operators#comparison_operators).
 
 ## logical operators (&&, ||, !)
 
@@ -92,11 +92,11 @@ console.log(!(4 > 5));
 ```javascript
 // Change the conditions bellow and check the output
 if (5 !== 5) {
-	console.log("if.1: executed");
+	console.log('if.1: executed');
 }
 
 if (3 > 1) {
-	console.log("if.2: executed");
+	console.log('if.2: executed');
 }
 ```
 
@@ -105,9 +105,9 @@ if (3 > 1) {
 ```javascript
 // Change the value bellow to `true` and check the output
 if (true) {
-	console.log("if: executed");
+	console.log('if: executed');
 } else {
-	console.log("else: executed");
+	console.log('else: executed');
 }
 ```
 
@@ -117,24 +117,26 @@ if (true) {
 // Only the first block of code whose condition is `true` executes
 // Change the boolean values bellow and check the output
 if (true) {
-	console.log("if: executed");
+	console.log('if: executed');
 } else if (true) {
-	console.log("else if 1: executed");
+	console.log('else if 1: executed');
 } else if (true) {
-	console.log("else if 2: executed");
+	console.log('else if 2: executed');
 } else {
-	console.log("else: executed");
+	console.log('else: executed');
 }
 ```
 
 ```javascript
 // You can also use `else if` without `else`
 if (false) {
-	console.log("if: executed");
+	console.log('if: executed');
 } else if (true) {
-	console.log("else if: executed");
+	console.log('else if: executed');
 }
 ```
+
+For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/if...else).
 
 ## while loops
 
@@ -143,7 +145,7 @@ if (false) {
 ```javascript
 let i = 5;
 while (i > 0) {
-	console.log("i = ", i);
+	console.log('i = ', i);
 	i = i - 1; // Decrement i
 }
 ```
@@ -156,7 +158,9 @@ let i = 0;
 // Check the condition only after the
 // block has been executed once
 do {
-	console.log("i = ", i);
+	console.log('i = ', i);
 	i = i - 1; // Decrement i
 } while (i > 0);
 ```
+
+For more information checkout the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/while).
