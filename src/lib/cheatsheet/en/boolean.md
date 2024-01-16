@@ -46,8 +46,8 @@ console.log(10 >= 10); // greater than of equal
 - Less than (`<`) and less than or equal (`<=`)
 
 ```javascript
-console.log(10 > 10); // less than
-console.log(10 >= 10); // less than or equal
+console.log(10 < 10); // less than
+console.log(10 <= 10); // less than or equal
 ```
 
 For more information check the [mdn docs](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Expressions_and_operators#comparison_operators).
