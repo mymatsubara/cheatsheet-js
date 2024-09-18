@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { base } from '$app/paths';
 	import GithubLink from '$lib/components/GithubLink.svelte';
 	import SearchBar from '$lib/components/SearchBar.svelte';
 </script>
@@ -10,7 +9,7 @@
 	<div class="flex gap-2 sm:gap-3 items-center">
 		<img
 			class="h-6 sm:h-10"
-			src="{base}/logo.svg"
+			src="./logo.svg"
 			alt="cheatsheet.js logo - Interactive javascript cheatsheet"
 		/>
 		<h1
