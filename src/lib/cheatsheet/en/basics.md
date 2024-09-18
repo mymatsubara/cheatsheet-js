@@ -4,7 +4,7 @@
 2. Go to the `Console` tab.
 3. Write some javascript and press `Enter` to execute it.
 
-![Executing javascript on console](/cheatsheet/basics/dev-tools.gif)
+![Executing javascript on console](./cheatsheet/basics/dev-tools.gif)
 
 ## execute javascript from an inline <script> tag
 
@@ -34,7 +34,7 @@ You can add your **javascript script** directly to your **html files** using the
 
 ### Step by step
 
-![Creating and opening a html file with inline script](/cheatsheet/basics/inline-script.gif)
+![Creating and opening a html file with inline script](./cheatsheet/basics/inline-script.gif)
 
 ## execute an external javascript script from html
 
@@ -66,7 +66,7 @@ console.log('hello from external script');
 
 ### Step by step
 
-![Creating and opening a javascript and referencing it from html](/cheatsheet/basics/external-script.gif)
+![Creating and opening a javascript and referencing it from html](./cheatsheet/basics/external-script.gif)
 
 ## execute javascript outside the browser using Node.js
 
@@ -84,7 +84,7 @@ console.log('hello from Node.js');
 
 ### Step by step
 
-![Executing a script using Node.js](/cheatsheet/basics/node-js.gif)
+![Executing a script using Node.js](./cheatsheet/basics/node-js.gif)
 
 ## console.log()
 
